@@ -15,7 +15,7 @@ class SlackBot():
         file with the access token for the slack workspace.
     """
 
-    def __init__(self, config_file, **kwargs) -> None:
+    def __init__(self, config_file) -> None:
         self._token = self._get_token(config_file)
         self._client = self.connect()
 
@@ -73,24 +73,24 @@ class SlackBot():
                 if output:
                     return conversation_id
                 break
-
         return conversation_id
 
     def send_message(self, verbose=False, **kwargs):
-        """Send a message to the channel
+        """Send a message to a channel.
 
         Parameters
         ----------
-        verbose : bool, optional
-            print WebClient respons, by default False
         message : str, optional
             message to send over slack. If not provided a default message is sent.
         channel : str, optional.
             slack channel where the message is sent to. If not provided, the message
             is sent to `general`.
+        verbose : bool, optional
+            print WebClient respons, by default False
+
         Note
         ----
-        The bot has to have been previously added to the channel
+        Make sure that the bot has been previously added the bot to the channel.
         """
         message = kwargs.get('message', "Ciao! Your results are ready! :)")
         channel = kwargs.get('channel', "general")
@@ -113,5 +113,5 @@ class SlackBot():
 # Debug
 if __name__ == "__main__":
 
-    bot = SlackBot(".tokens/token")
+    bot = SlackBot(".tokens/slack")
     bot.send_message(channel='topopt', message='test')
