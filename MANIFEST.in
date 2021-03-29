@@ -1,11 +1,27 @@
+graft src
+
+prune .github
+prune data
+prune docs
+prune tests
+prune temp
+prune scripts
+prune examples
+
 include AUTHORS.rst
 include CONTRIBUTING.rst
 include HISTORY.rst
 include LICENSE
 include README.rst
+include requirements.txt
 
-recursive-include tests *
-recursive-exclude * __pycache__
-recursive-exclude * *.py[co]
+include *.txt
+include Makefile
+include tox.ini
 
-recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif
+exclude requirements-dev.txt
+exclude pytest.ini .bumpversion.cfg .editorconfig
+exclude tasks.py
+exclude CONTRIBUTING.md
+
+global-exclude *.py[cod] __pycache__ *.dylib *.nb[ic] .DS_Store
