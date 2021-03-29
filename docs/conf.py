@@ -3,6 +3,10 @@
 # bots documentation build configuration file, created by
 # sphinx-quickstart on Fri Jun  9 13:47:02 2017.
 #
+# This file only contains a selection of the most common options. For a full
+# list see the documentation:
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
+#
 # This file is execfile()d with the current directory set to its
 # containing dir.
 #
@@ -19,9 +23,16 @@
 #
 import os
 import sys
+from sphinx.ext.napoleon.docstring import NumpyDocstring
 sys.path.insert(0, os.path.abspath('..'))
 
 import bots
+
+# -- Project information -----------------------------------------------------
+
+project = 'CodeBots'
+copyright = '2021, Francesco Ranaudo'
+author = 'Francesco Ranaudo'
 
 # -- General configuration ---------------------------------------------
 
@@ -31,7 +42,19 @@ import bots
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
+    'sphinx_automodapi.automodapi',
+    'sphinx.ext.doctest',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.mathjax',
+    'sphinx.ext.napoleon',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.githubpages',
+    'sphinx.ext.inheritance_diagram',
+    # 'nbsphinx',
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -44,11 +67,6 @@ source_suffix = '.rst'
 
 # The master toctree document.
 master_doc = 'index'
-
-# General information about the project.
-project = 'bots'
-copyright = "2021, Francesco Ranaudo"
-author = "Francesco Ranaudo"
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
@@ -75,27 +93,72 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 pygments_style = 'sphinx'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
-todo_include_todos = False
+todo_include_todos = True
 
+# autodoc options
+autodoc_default_flags = [
+    'undoc-members',
+    # 'show-inheritance',
+]
+
+autodoc_member_order = 'alphabetical'
+
+autoclass_content = 'class'
+
+# napoleon options
+napoleon_google_docstring = False
+napoleon_numpy_docstring = True
+napoleon_include_init_with_doc = False
+napoleon_include_private_with_doc = True
+napoleon_include_special_with_doc = True
+napoleon_use_admonition_for_examples = False
+napoleon_use_admonition_for_notes = False
+napoleon_use_admonition_for_references = False
+napoleon_use_ivar = False
+napoleon_use_param = False
+napoleon_use_rtype = False
 
 # -- Options for HTML output -------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-#
-html_theme = 'alabaster'
-
 # Theme options are theme-specific and customize the look and feel of a
 # theme further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+# Material theme options (see theme.conf for more information)
+html_theme = 'sphinx_material'
+html_logo = "_static/images/icon.png"
+html_theme_options = {
+    'nav_title': 'CodeBots',
+    'google_analytics_account': 'G-1186S5WWWK',
+    'base_url': 'https://github.com/franaudo/bots',
+    'color_primary': 'white',
+    'color_accent': 'red',
+    'repo_url': 'https://github.com/franaudo/bots',
+    'repo_name': 'bots',
+    'repo_type': 'github',
+    'globaltoc_depth': 1,
+    'globaltoc_collapse': False,
+    'globaltoc_includehidden': False,
+    # 'html_minify': True,
+    # 'css_minify': True,
+}
+html_last_updated_fmt = ''
+html_copy_source = False
+html_show_sourcelink = False
+html_add_permalinks = ''
+html_experimental_html5_writer = True
+html_compact_lists = True
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+# # Additional
+# plot_html_show_source_link = False
+# plot_html_show_formats = False
 
 # -- Options for HTMLHelp output ---------------------------------------
 

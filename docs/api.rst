@@ -1,20 +1,8 @@
-=====
-Usage
-=====
-
-To use bots in a project::
-
-    import bots
-    from bots import
-
-
 ********************************************************************************
-Examples
+API Reference
 ********************************************************************************
 
 .. toctree::
-   :maxdepth: 2
-   :titlesonly:
-   :glob:
+    :maxdepth: 2
 
-   examples/slackbot.rst
+    api/bots

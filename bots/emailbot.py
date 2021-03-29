@@ -23,12 +23,12 @@ class Sender():
 
     @property
     def username(self):
-        """ str : username used to access the sender email account"""
+        """str : username used to access the sender email account"""
         return self._username
 
     @property
     def password(self):
-        """ str : password used to access the sender email account"""
+        """str : password used to access the sender email account"""
         return self._password
 
     @classmethod
