@@ -34,7 +34,7 @@ project = "CodeBots"
 copyright = "2021, Francesco Ranaudo"
 author = "Francesco Ranaudo"
 # The full version, including alpha/beta/rc tags
-release = "0.1.1"
+release = "0.1.2"
 
 # -- General configuration ---------------------------------------------
 
