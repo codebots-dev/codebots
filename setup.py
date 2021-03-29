@@ -17,6 +17,8 @@ setup_requirements = ['pytest-runner', ]
 test_requirements = ['pytest>=3', ]
 
 setup(
+    name='codebots',
+    version='0.1.1',
     author="Francesco Ranaudo",
     author_email='mycoderesults@gmail.com',
     python_requires='>=3.5',
@@ -42,12 +44,10 @@ setup(
     long_description=readme + '\n\n' + history,
     include_package_data=True,
     keywords='codebots',
-    name='codebots',
     packages=find_packages(include=['codebots', 'codebots.*']),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/franaudo/codebots',
-    version='0.1.1',
     zip_safe=False,
 )

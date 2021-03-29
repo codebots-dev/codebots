@@ -6,7 +6,6 @@ import pytest
 
 from click.testing import CliRunner
 
-from codebots import codebots
 from codebots import cli
 
 
