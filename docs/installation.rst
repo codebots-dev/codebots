@@ -8,13 +8,13 @@ Installation
 Stable release
 --------------
 
-To install bots, run this command in your terminal:
+To install codebots, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install bots
+    $ pip install codebots
 
-This is the preferred method to install bots, as it will always install the most recent stable release.
+This is the preferred method to install codebots, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -26,19 +26,19 @@ you through the process.
 From sources
 ------------
 
-The sources for bots can be downloaded from the `Github repo`_.
+The sources for codebots can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/franaudo/bots
+    $ git clone git://github.com/franaudo/codebots
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl -OJL https://github.com/franaudo/bots/tarball/master
+    $ curl -OJL https://github.com/franaudo/codebots/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/franaudo/bots
-.. _tarball: https://github.com/franaudo/bots/tarball/master
+.. _Github repo: https://github.com/franaudo/codebots
+.. _tarball: https://github.com/franaudo/codebots/tarball/master

@@ -25,5 +25,5 @@ deploy:
     secure: PLEASE_REPLACE_ME
   on:
     tags: true
-    repo: franaudo/bots
+    repo: franaudo/codebots
     python: 3.8

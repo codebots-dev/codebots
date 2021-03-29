@@ -1,1 +1,1 @@
-"""Unit test package for bots."""
+"""Unit test package for codebots."""

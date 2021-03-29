@@ -54,7 +54,7 @@ jobs:
                   echo "::set-output name=commit_type::main"
               fi;
           fi;
-          echo "Docs will be deployed to https://franaudo.github.io/bots/$FOLDER_NAME"
+          echo "Docs will be deployed to https://franaudo.github.io/codebots/$FOLDER_NAME"
           mkdir -p deploy/$BRANCH_OR_TAG && mv -T dist/docs deploy/$FOLDER_NAME/
       - name: Deploy docs
         if: success() && steps.docs.outputs.commit_type != 'pull'

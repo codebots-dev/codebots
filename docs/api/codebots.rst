@@ -6,7 +6,7 @@ CodeBots collection for tasks automation.
 Email
 -----
 
-.. currentmodule:: bots.emailbot
+.. currentmodule:: codebots.emailbot
 
 .. autosummary::
 
@@ -17,7 +17,7 @@ Email
 Slack
 -----
 
-.. currentmodule:: bots.slackbot
+.. currentmodule:: codebots.slackbot
 
 .. autosummary::
 

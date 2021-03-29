@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
-"""Tests for `bots` package."""
+"""Tests for `codebots` package."""
 
 import pytest
 
 from click.testing import CliRunner
 
-from bots import bots
-from bots import cli
+from codebots import codebots
+from codebots import cli
 
 
 @pytest.fixture
@@ -31,7 +31,7 @@ def test_command_line_interface():
     runner = CliRunner()
     result = runner.invoke(cli.main)
     assert result.exit_code == 0
-    assert 'bots.cli.main' in result.output
+    assert 'codebots.cli.main' in result.output
     help_result = runner.invoke(cli.main, ['--help'])
     assert help_result.exit_code == 0
     assert '--help  Show this message and exit.' in help_result.output

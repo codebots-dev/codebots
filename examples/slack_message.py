@@ -1,4 +1,4 @@
-from bots import SlackBot
+from codebots.slackbot import SlackBot
 
 # Create a bot: you need to specify the location of the access token file ".tokens/slack"
 bot = SlackBot(".tokens/slack")

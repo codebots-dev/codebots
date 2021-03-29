@@ -1,7 +1,7 @@
 Sender
 ======
 
-.. currentmodule:: bots.emailbot
+.. currentmodule:: codebots.emailbot
 
 .. autoclass:: Sender
 

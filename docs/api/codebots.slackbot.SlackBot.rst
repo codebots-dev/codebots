@@ -1,7 +1,7 @@
 SlackBot
 ========
 
-.. currentmodule:: bots.slackbot
+.. currentmodule:: codebots.slackbot
 
 .. autoclass:: SlackBot
    :show-inheritance:

@@ -2,10 +2,10 @@
 Usage
 =====
 
-To use bots in a project::
+To use codebots in a project::
 
-    import bots
-    from bots import
+    import codebots
+    from codebots import ...
 
 
 ********************************************************************************

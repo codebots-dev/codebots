@@ -1,26 +1,26 @@
-====
-bots
-====
+========
+Codebots
+========
 
 
-.. image:: https://img.shields.io/pypi/v/bots.svg
-        :target: https://pypi.python.org/pypi/bots
+.. image:: https://img.shields.io/pypi/v/codebots.svg
+        :target: https://pypi.python.org/pypi/codebots
 
-.. image:: https://img.shields.io/travis/franaudo/bots.svg
-        :target: https://travis-ci.com/franaudo/bots
+.. image:: https://img.shields.io/travis/franaudo/codebots.svg
+        :target: https://travis-ci.com/franaudo/codebots
 
-.. image:: https://readthedocs.org/projects/bots/badge/?version=latest
-        :target: https://bots.readthedocs.io/en/latest/?version=latest
+.. image:: https://readthedocs.org/projects/codebots/badge/?version=latest
+        :target: https://codebots.readthedocs.io/en/latest/?version=latest
         :alt: Documentation Status
 
 
 
 
-collection of bots for tasks automation
+collection of codebots for tasks automation
 
 
 * Free software: MIT license
-* Documentation: https://bots.readthedocs.io.
+* Documentation: https://codebots.readthedocs.io.
 
 
 Features
