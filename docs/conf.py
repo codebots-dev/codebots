@@ -24,51 +24,51 @@
 import os
 import sys
 from sphinx.ext.napoleon.docstring import NumpyDocstring
-sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath(".."))
 
 import codebots
 
 # -- Project information -----------------------------------------------------
 
-project = 'CodeBots'
-copyright = '2021, Francesco Ranaudo'
-author = 'Francesco Ranaudo'
+project = "CodeBots"
+copyright = "2021, Francesco Ranaudo"
+author = "Francesco Ranaudo"
 
 # -- General configuration ---------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #
-# needs_sphinx = '1.0'
+# needs_sphinx = "1.0"
 
 # Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
+# extensions coming with Sphinx (named "sphinx.ext.*") or your custom ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
-    'sphinx_automodapi.automodapi',
-    'sphinx.ext.doctest',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.napoleon',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
-    'sphinx.ext.inheritance_diagram',
-    # 'nbsphinx',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx_automodapi.automodapi",
+    "sphinx.ext.doctest",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.mathjax",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.githubpages",
+    "sphinx.ext.inheritance_diagram",
+    # "nbsphinx",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-# source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+# source_suffix = [".rst", ".md"]
+source_suffix = ".rst"
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = "index"
 
-# The version info for the project you're documenting, acts as replacement
+# The version info for the project you"re documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
 # the built documents.
 #
@@ -87,23 +87,23 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = "sphinx"
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
 # autodoc options
 autodoc_default_flags = [
-    'undoc-members',
-    # 'show-inheritance',
+    "undoc-members",
+    # "show-inheritance",
 ]
 
-autodoc_member_order = 'alphabetical'
+autodoc_member_order = "alphabetical"
 
-autoclass_content = 'class'
+autoclass_content = "class"
 
 # napoleon options
 napoleon_google_docstring = False
@@ -127,34 +127,34 @@ napoleon_use_rtype = False
 # documentation.
 #
 # Material theme options (see theme.conf for more information)
-html_theme = 'sphinx_material'
+html_theme = "sphinx_material"
 html_logo = "_static/images/icon.png"
 html_theme_options = {
-    'nav_title': 'CodeBots',
-    'google_analytics_account': 'G-1186S5WWWK',
-    'base_url': 'https://github.com/franaudo/codebots',
-    'color_primary': 'white',
-    'color_accent': 'red',
-    'repo_url': 'https://github.com/franaudo/codebots',
-    'repo_name': 'codebots',
-    'repo_type': 'github',
-    'globaltoc_depth': 1,
-    'globaltoc_collapse': False,
-    'globaltoc_includehidden': False,
-    # 'html_minify': True,
-    # 'css_minify': True,
+    "nav_title": "CodeBots",
+    "google_analytics_account": "G-1186S5WWWK",
+    "base_url": "https://github.com/franaudo/codebots",
+    "color_primary": "white",
+    "color_accent": "red",
+    "repo_url": "https://github.com/franaudo/codebots",
+    "repo_name": "codebots",
+    "repo_type": "github",
+    "globaltoc_depth": 1,
+    "globaltoc_collapse": False,
+    "globaltoc_includehidden": False,
+    # "html_minify": True,
+    # "css_minify": True,
 }
-html_last_updated_fmt = ''
+html_last_updated_fmt = ""
 html_copy_source = False
 html_show_sourcelink = False
-html_add_permalinks = ''
+html_add_permalinks = ""
 html_experimental_html5_writer = True
 html_compact_lists = True
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ["_static"]
 
 # # Additional
 # plot_html_show_source_link = False
@@ -163,36 +163,36 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'botsdoc'
+htmlhelp_basename = "botsdoc"
 
 
 # -- Options for LaTeX output ------------------------------------------
 
 latex_elements = {
-    # The paper size ('letterpaper' or 'a4paper').
+    # The paper size ("letterpaper" or "a4paper").
     #
-    # 'papersize': 'letterpaper',
+    # "papersize": "letterpaper",
 
-    # The font size ('10pt', '11pt' or '12pt').
+    # The font size ("10pt", "11pt" or "12pt").
     #
-    # 'pointsize': '10pt',
+    # "pointsize": "10pt",
 
     # Additional stuff for the LaTeX preamble.
     #
-    # 'preamble': '',
+    # "preamble": "",
 
     # Latex figure (float) alignment
     #
-    # 'figure_align': 'htbp',
+    # "figure_align": "htbp",
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass
 # [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'codebots.tex',
-     'codebots Documentation',
-     'Francesco Ranaudo', 'manual'),
+    (master_doc, "codebots.tex",
+     "codebots Documentation",
+     "Francesco Ranaudo", "manual"),
 ]
 
 
@@ -201,8 +201,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'codebots',
-     'codebots Documentation',
+    (master_doc, "codebots",
+     "codebots Documentation",
      [author], 1)
 ]
 
@@ -213,12 +213,12 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'codebots',
-     'codebots Documentation',
+    (master_doc, "codebots",
+     "codebots Documentation",
      author,
-     'codebots',
-     'One line description of project.',
-     'Miscellaneous'),
+     "codebots",
+     "One line description of project.",
+     "Miscellaneous"),
 ]
 
 
