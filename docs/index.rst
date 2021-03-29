@@ -1,5 +1,5 @@
 Welcome to codebots's documentation!
-================================
+====================================
 
 .. image:: https://img.shields.io/pypi/v/codebots.svg
         :target: https://pypi.python.org/pypi/codebots
