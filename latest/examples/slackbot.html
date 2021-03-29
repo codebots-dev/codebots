@@ -56,7 +56,7 @@
   <script async src='https://www.google-analytics.com/analytics.js'></script>
   
   
-    <title>Get notified on slack &#8212; CodeBots 0.1.1 documentation</title>
+    <title>Get notified on slack &#8212; CodeBots 0.1.2 documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/material.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
@@ -94,7 +94,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex navheader">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../index.html" title="CodeBots 0.1.1 documentation"
+        <a href="../index.html" title="CodeBots 0.1.2 documentation"
            class="md-header-nav__button md-logo">
           
             &nbsp;
@@ -142,7 +142,7 @@
       
         <div class="md-flex__cell md-flex__cell--shrink">
           <div class="md-header-nav__source">
-            <a href="https://github.com/franaudo/bots" title="Go to repository" class="md-source" data-md-source="github">
+            <a href="https://github.com/franaudo/codebots" title="Go to repository" class="md-source" data-md-source="github">
 
     <div class="md-source__icon">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
@@ -151,7 +151,7 @@
     </div>
   
   <div class="md-source__repository">
-    bots
+    codebots
   </div>
 </a>
           </div>
@@ -180,7 +180,7 @@
   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
       <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">CodeBots 0.1.1 documentation</a></li>
+          <li class="md-tabs__item"><a href="../index.html" class="md-tabs__link">CodeBots 0.1.2 documentation</a></li>
           <li class="md-tabs__item"><a href="../usage.html" class="md-tabs__link">Usage</a></li>
       </ul>
     </div>
@@ -193,16 +193,16 @@
             <div class="md-sidebar__inner">
               <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../index.html" title="CodeBots 0.1.1 documentation" class="md-nav__button md-logo">
+    <a href="../index.html" title="CodeBots 0.1.2 documentation" class="md-nav__button md-logo">
       
         <img src="../_static/" alt=" logo" width="48" height="48">
       
     </a>
     <a href="../index.html"
-       title="CodeBots 0.1.1 documentation">CodeBots</a>
+       title="CodeBots 0.1.2 documentation">CodeBots</a>
   </label>
     <div class="md-nav__source">
-      <a href="https://github.com/franaudo/bots" title="Go to repository" class="md-source" data-md-source="github">
+      <a href="https://github.com/franaudo/codebots" title="Go to repository" class="md-source" data-md-source="github">
 
     <div class="md-source__icon">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
@@ -211,7 +211,7 @@
     </div>
   
   <div class="md-source__repository">
-    bots
+    codebots
   </div>
 </a>
     </div>
@@ -240,7 +240,7 @@
   
 <h1 id="examples-slackbot--page-root">Get notified on slack<a class="headerlink" href="#examples-slackbot--page-root" title="Permalink to this headline">¶</a></h1>
 <p>This example shows how to set-up a slackbot.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bots</span> <span class="kn">import</span> <span class="n">SlackBot</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">codebots.slackbot</span> <span class="kn">import</span> <span class="n">SlackBot</span>
 
 <span class="c1"># Create a bot: you need to specify the location of the access token file ".tokens/slack"</span>
 <span class="n">bot</span> <span class="o">=</span> <span class="n">SlackBot</span><span class="p">(</span><span class="s2">".tokens/slack"</span><span class="p">)</span>
