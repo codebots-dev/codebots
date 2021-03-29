@@ -44,7 +44,7 @@ setup(
     long_description=readme + "\n\n" + history,
     include_package_data=True,
     keywords="codebots",
-    packages=find_packages(include=["codebots", "codebots.*"]),
+    packages=["codebots"],
     package_dir={'': 'src'},
     setup_requires=setup_requirements,
     test_suite="tests",
