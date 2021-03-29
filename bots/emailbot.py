@@ -1,9 +1,10 @@
 import yagmail
 
-__all__=[
+__all__ = [
     'Sender',
     'EmailBot'
 ]
+
 
 class Sender():
     """Sender class to manage the sender email settings.
@@ -15,6 +16,7 @@ class Sender():
     password : str
         password used to access the seder email account
     """
+
     def __init__(self, username, password) -> None:
         self._username = username
         self._password = password
@@ -44,6 +46,7 @@ class Sender():
         user = cls(username=username, password=password)
         return user
 
+
 class EmailBot:
     """EmailBot.
 
@@ -52,10 +55,11 @@ class EmailBot:
     sender : obj
         Sender object configured with sender account credentials.
     """
+
     def __init__(self, sender) -> None:
         self.sender = sender
 
-    def send_email(self, receiver,subject, body, attachment=None):
+    def send_email(self, receiver, subject, body, attachment=None):
         """Send an email to an email address.
 
         Parameters
@@ -77,6 +81,7 @@ class EmailBot:
             attachments=attachment,
         )
 
+
 # Debug
 if __name__ == "__main__":
     sender = Sender.form_file(".tokens/email")
@@ -87,4 +92,3 @@ if __name__ == "__main__":
 
     bot = EmailBot(sender)
     bot.send_email(receiver, subject, body)
-
