@@ -5,8 +5,13 @@ Installation
 ============
 
 
-Stable release
---------------
+Stable release (WIP
+-------------------
+
+.. warning::
+
+   Currently not stable release is available. Check the `from source` installation below.
+
 
 To install codebots, run this command in your terminal:
 
@@ -28,7 +33,14 @@ From sources
 
 The sources for codebots can be downloaded from the `Github repo`_.
 
-You can either clone the public repository:
+The easiest way is to install the package directly from GitHub. Execute the following
+in your terminal:
+
+.. code-block:: console
+
+    pip install git+git://github.com/franaudo/codebots
+
+Alternatively, you can either clone the public repository:
 
 .. code-block:: console
 

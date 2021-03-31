@@ -22,6 +22,7 @@ Welcome to codebots's documentation!
    api
    contributing
    authors
+   license
    history
 
 Indices and tables

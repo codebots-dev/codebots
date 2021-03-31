@@ -18,3 +18,4 @@ Examples
    :glob:
 
    examples/slackbot.rst
+   examples/emailbot.rst
