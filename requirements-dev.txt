@@ -24,5 +24,6 @@ pydocstyle
 sphinx >=3.4
 sphinx_material
 sphinx_automodapi
+sphinx_compas_theme
 
 -e .
