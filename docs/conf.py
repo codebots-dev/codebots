@@ -23,8 +23,11 @@
 #
 import os
 import sys
+import inspect
+import importlib
+
 from sphinx.ext.napoleon.docstring import NumpyDocstring
-sys.path.insert(0, os.path.abspath(".."))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../src'))
 
 import codebots
 
@@ -103,9 +106,7 @@ autodoc_default_flags = [
     # "show-inheritance",
 ]
 
-autodoc_member_order = "alphabetical"
 
-autoclass_content = "class"
 
 # napoleon options
 napoleon_google_docstring = False
@@ -120,6 +121,71 @@ napoleon_use_ivar = False
 napoleon_use_param = False
 napoleon_use_rtype = False
 
+
+# docstring sections
+
+autodoc_member_order = "alphabetical"
+autoclass_content = "class"
+autosummary_generate = True
+
+def parse_attributes_section(self, section):
+    return self._format_fields("Attributes", self._consume_fields())
+
+NumpyDocstring._parse_attributes_section = parse_attributes_section
+
+def patched_parse(self):
+    self._sections["attributes"] = self._parse_attributes_section
+    self._unpatched_parse()
+
+NumpyDocstring._unpatched_parse = NumpyDocstring._parse
+NumpyDocstring._parse = patched_parse
+
+# intersphinx options
+
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/", None),
+}
+
+# linkcode
+
+def linkcode_resolve(domain, info):
+    if domain != 'py':
+        return None
+    if not info['module']:
+        return None
+    if not info['fullname']:
+        return None
+
+    package = info['module'].split('.')[0]
+    if not package.startswith('compas_fea'):
+        return None
+
+    module = importlib.import_module(info['module'])
+    parts = info['fullname'].split('.')
+
+    if len(parts) == 1:
+        obj = getattr(module, info['fullname'])
+        filename = inspect.getmodule(obj).__name__.replace('.', '/')
+        lineno = inspect.getsourcelines(obj)[1]
+    elif len(parts) == 2:
+        obj_name, attr_name = parts
+        obj = getattr(module, obj_name)
+        attr = getattr(obj, attr_name)
+        if inspect.isfunction(attr):
+            filename = inspect.getmodule(obj).__name__.replace('.', '/')
+            lineno = inspect.getsourcelines(attr)[1]
+        else:
+            return None
+    else:
+        return None
+
+    return f"https://github.com/compas-dev/compas_fea/blob/master/src/{filename}.py#L{lineno}"
+
+# extlinks
+
+extlinks = {}
+
+
 # -- Options for HTML output -------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -130,6 +196,7 @@ napoleon_use_rtype = False
 #
 # Material theme options (see theme.conf for more information)
 html_theme = "sphinx_material"
+# html_theme_path = sphinx_compas_theme.get_html_theme_path()
 html_logo = "_static/images/icon.png"
 html_theme_options = {
     "nav_title": "CodeBots",

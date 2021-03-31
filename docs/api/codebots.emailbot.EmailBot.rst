@@ -1,7 +1,7 @@
 EmailBot
 ========
 
-.. currentmodule:: bots.emailbot
+.. currentmodule:: codebots.emailbot
 
 .. autoclass:: EmailBot
    :show-inheritance:
