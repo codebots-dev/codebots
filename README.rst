@@ -10,23 +10,23 @@ Codebots
         :target: https://travis-ci.com/franaudo/codebots
 
 .. image:: https://readthedocs.org/projects/codebots/badge/?version=latest
-        :target: https://codebots.readthedocs.io/en/latest/?version=latest
+        :target: https://franaudo.github.io/codebots/latest/
         :alt: Documentation Status
 
 
+Collection of codebots for tasks automation. Supported bots:
+
+* EmailBot: useful to get an email when a task is complete
+* SlackBot: same thing, but you get a slack message instead.
 
 
-collection of codebots for tasks automation
-
-
-* Free software: MIT license
-* Documentation: https://codebots.readthedocs.io.
+Full documentation: https://franaudo.github.io/codebots/latest/.
 
 
 Features
 --------
 
-* TODO
+* Free software: MIT license
 
 Credits
 -------
