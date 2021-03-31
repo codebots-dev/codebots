@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   
-  <title>codebots - Get notified on slack</title>
+  <title>codebots - Get notified via email</title>
   
 
   <meta charset="utf-8" />
@@ -19,11 +19,11 @@
   <link rel="stylesheet" type="text/css" href="../_static/css/compas-reference.css" />
 
   
-    <link rel="next" title="Get notified via email" href="emailbot.html" />
+    <link rel="next" title="API Reference" href="../api.html" />
   
 
   
-    <link rel="prev" title="Usage" href="../usage.html" />
+    <link rel="prev" title="Get notified on slack" href="slackbot.html" />
   
 
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
@@ -84,44 +84,50 @@
             
               <li class="breadcrumb-item"><a href="../usage.html">Usage</a></li>
             
-            <li class="breadcrumb-item active" aria-current="page">Get notified on slack</li>
+            <li class="breadcrumb-item active" aria-current="page">Get notified via email</li>
           </ol>
         </nav>
         
 
         
         
-        <div class="section" id="get-notified-on-slack">
-<h1>Get notified on slack</h1>
-<p>This example shows how to set-up a slackbot.</p>
-<p>First, you need to setup things in slack. Follow this guide to create a custom
-Slack bot to deploy to your workspace:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Create a new workspace!</p>
-<p>It is advised to create a new workspace (for free) in Slack before starting
-spamming people…! ;)</p>
+        <div class="section" id="get-notified-via-email">
+<h1>Get notified via email</h1>
+<p>This example shows how to set-up an emailbot.</p>
+<p>First, you need to setup an email account.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Create a brand new account!</p>
+<p>It is STRONGLY advised to create a new email account (must be <cite>GMAIL</cite>)!!
+You will have to save the login credentials on your system, which is a huge
+security issue!</p>
 </div>
-<p>You can go here to create the app: <a class="reference external" href="https://api.slack.com/apps?new_granular_bot_app=1">https://api.slack.com/apps?new_granular_bot_app=1</a></p>
-<p>Give it a name (‘codebot’ for example) and select the workspace where it will be deployied.</p>
-<p>Once you have created the app, you need to grant it acces to writing and reading
-in your workspace. Go to <cite>OAuth $ Permissions</cite> and in <cite>Scopes</cite> and add:</p>
-<ul class="simple">
-<li><p><cite>channels:read</cite></p></li>
-<li><p><cite>chat:write</cite></p></li>
-</ul>
-<p>Install the app in your workspace and copy the <cite>OAuth Token</cite></p>
-<p>Finally, create a secret file (no extension needed) somewhere hidden on your
-system and paste the token in it. You will reference this file when you create
-your <cite>SlackBot</cite>. In the example below it is saved in in the folder <cite>.tokens</cite> with
-the name <cite>slack</cite></p>
-<div class="language-python notranslate"><div class="highlight"><pre><code><span></span><span class="kn">from</span> <span class="nn">codebots.slackbot</span> <span class="kn">import</span> <span class="n">SlackBot</span>
+<p>Create a secret file (no extension needed) somewhere hidden on your system with
+the username in the first line and the password in the line below. it should look
+like this:</p>
+<div class="language-python notranslate"><div class="highlight"><pre><code><span></span>username@gmail.com
+PaSsWoRd!
+</code></pre></div>
+</div>
+<p>Here an example on how to receive an email from the bot:</p>
+<div class="language-python notranslate"><div class="highlight"><pre><code><span></span><span class="kn">from</span> <span class="nn">codebots</span> <span class="kn">import</span> <span class="n">EmailBot</span>
+<span class="kn">from</span> <span class="nn">codebots</span> <span class="kn">import</span> <span class="n">Sender</span>
 
-<span class="c1"># Create a bot: you need to specify the location of the access token file &quot;.tokens/slack&quot;</span>
-<span class="n">bot</span> <span class="o">=</span> <span class="n">SlackBot</span><span class="p">(</span><span class="s2">&quot;.tokens/slack&quot;</span><span class="p">)</span>
+<span class="c1"># initiate the Sender with some credentials:</span>
+<span class="c1"># - you can specify the location of the access config file &quot;.tokens/email&quot; (keep this secret!)</span>
+<span class="c1"># - or you can pass username and password on the fly (not a great idea...)</span>
+<span class="n">sender</span> <span class="o">=</span> <span class="n">Sender</span><span class="o">.</span><span class="n">form_file</span><span class="p">(</span><span class="s2">&quot;.tokens/email&quot;</span><span class="p">)</span>
 
-<span class="c1"># Ask the bot to send a test message to a the &#39;general&#39; channel of your workspace</span>
-<span class="n">bot</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s1">&#39;general&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="c1"># Crete the bot: not it can send emails on behalf of the Sender account</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">EmailBot</span><span class="p">(</span><span class="n">sender</span><span class="p">)</span>
+
+<span class="c1"># set the email content</span>
+<span class="n">receiver</span> <span class="o">=</span> <span class="s2">&quot;francesco.ranaudo@gmail.com&quot;</span>
+<span class="n">subject</span> <span class="o">=</span> <span class="s2">&quot;message from bot&quot;</span>
+<span class="n">body</span> <span class="o">=</span> <span class="s2">&quot;This message was sent by a bot&quot;</span>
+
+<span class="c1"># Ask the bot to compose your email and send it</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">send_email</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
 </code></pre></div>
 </div>
 </div>
@@ -162,7 +168,7 @@ the name <cite>slack</cite></p>
       <div class="d-none d-xl-block col-xl-2 compas-toc" role="toc">
         
         <ul class="nav flex-column" id="compas-toc">
-<li class="nav-item"><a class="nav-link reference internal" href="#">Get notified on slack</a></li>
+<li class="nav-item"><a class="nav-link reference internal" href="#">Get notified via email</a></li>
 </ul>
 
       </div>
@@ -174,20 +180,20 @@ the name <cite>slack</cite></p>
   <footer class="compas-footer">
     <nav class="nav p-2">
       
-        <a href="../usage.html" title="Usage" class="nav-link footer-link float-start text-left d-flex w-50" rel="prev">
+        <a href="slackbot.html" title="Get notified on slack" class="nav-link footer-link float-start text-left d-flex w-50" rel="prev">
           <div class="nav-button p-2 m-2"><i class="fas fa-arrow-left"></i></div>
           <div class="nav-title flex-grow-1 align-self-center">
             <div class="nav-direction small font-weight-light">Previous</div>
-            Usage
+            Get notified on slack
           </div>
         </a>
       
 
       
-        <a href="emailbot.html" title="Get notified via email" class="nav-link footer-link float-end text-right d-flex w-50" rel="next">
+        <a href="../api.html" title="API Reference" class="nav-link footer-link float-end text-right d-flex w-50" rel="next">
           <div class="nav-title footer-link flex-grow-1 align-self-center">
             <div class="nav-direction small font-weight-light">Next</div>
-            Get notified via email
+            API Reference
           </div>
           <div class="nav-button p-2 m-2"><i class="fas fa-arrow-right"></i></div>
         </a>

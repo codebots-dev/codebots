@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   
-  <title>codebots - Get notified on slack</title>
+  <title>codebots - License</title>
   
 
   <meta charset="utf-8" />
@@ -11,19 +11,19 @@
   <meta name="author" content="franaudo" />
   <meta name="description" content="" />
 
-  <link rel="shortcut icon" href="../_static/images/compas.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="_static/images/compas.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
-  <link rel="stylesheet" type="text/css" href="../_static/css/compas.css" />
-  <link rel="stylesheet" type="text/css" href="../_static/css/compas-reference.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/compas.css" />
+  <link rel="stylesheet" type="text/css" href="_static/css/compas-reference.css" />
 
   
-    <link rel="next" title="Get notified via email" href="emailbot.html" />
+    <link rel="next" title="History" href="history.html" />
   
 
   
-    <link rel="prev" title="Usage" href="../usage.html" />
+    <link rel="prev" title="Credits" href="authors.html" />
   
 
   <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
@@ -35,7 +35,7 @@
     <nav class="navbar navbar-expand navbar-dark col flex-column flex-md-row text-center">
       <!-- brand -->
       <a class="navbar-brand" href="https://franaudo.github.io/codebots/latest/">
-        <img src="../_static/images/compas_icon_white.png" alt="codebots" width="48px" height="48px" />
+        <img src="_static/images/compas_icon_white.png" alt="codebots" width="48px" height="48px" />
       </a>
       <!-- brand -->
       <!-- primary -->
@@ -80,48 +80,39 @@
         
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb mb-3 bg-white px-0">
-            <li class="breadcrumb-item"><a href="../index.html">docs</a></li>
+            <li class="breadcrumb-item"><a href="index.html">docs</a></li>
             
-              <li class="breadcrumb-item"><a href="../usage.html">Usage</a></li>
-            
-            <li class="breadcrumb-item active" aria-current="page">Get notified on slack</li>
+            <li class="breadcrumb-item active" aria-current="page">License</li>
           </ol>
         </nav>
         
 
         
         
-        <div class="section" id="get-notified-on-slack">
-<h1>Get notified on slack</h1>
-<p>This example shows how to set-up a slackbot.</p>
-<p>First, you need to setup things in slack. Follow this guide to create a custom
-Slack bot to deploy to your workspace:</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Create a new workspace!</p>
-<p>It is advised to create a new workspace (for free) in Slack before starting
-spamming people…! ;)</p>
-</div>
-<p>You can go here to create the app: <a class="reference external" href="https://api.slack.com/apps?new_granular_bot_app=1">https://api.slack.com/apps?new_granular_bot_app=1</a></p>
-<p>Give it a name (‘codebot’ for example) and select the workspace where it will be deployied.</p>
-<p>Once you have created the app, you need to grant it acces to writing and reading
-in your workspace. Go to <cite>OAuth $ Permissions</cite> and in <cite>Scopes</cite> and add:</p>
-<ul class="simple">
-<li><p><cite>channels:read</cite></p></li>
-<li><p><cite>chat:write</cite></p></li>
-</ul>
-<p>Install the app in your workspace and copy the <cite>OAuth Token</cite></p>
-<p>Finally, create a secret file (no extension needed) somewhere hidden on your
-system and paste the token in it. You will reference this file when you create
-your <cite>SlackBot</cite>. In the example below it is saved in in the folder <cite>.tokens</cite> with
-the name <cite>slack</cite></p>
-<div class="language-python notranslate"><div class="highlight"><pre><code><span></span><span class="kn">from</span> <span class="nn">codebots.slackbot</span> <span class="kn">import</span> <span class="n">SlackBot</span>
+        <div class="section" id="license">
+<h1>License</h1>
+<div class="language-python notranslate"><div class="highlight"><pre><code><span></span><span class="n">MIT</span> <span class="n">License</span>
 
-<span class="c1"># Create a bot: you need to specify the location of the access token file &quot;.tokens/slack&quot;</span>
-<span class="n">bot</span> <span class="o">=</span> <span class="n">SlackBot</span><span class="p">(</span><span class="s2">&quot;.tokens/slack&quot;</span><span class="p">)</span>
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="mi">2021</span><span class="p">,</span> <span class="n">Francesco</span> <span class="n">Ranaudo</span>
 
-<span class="c1"># Ask the bot to send a test message to a the &#39;general&#39; channel of your workspace</span>
-<span class="n">bot</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s1">&#39;general&#39;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="n">Permission</span> <span class="ow">is</span> <span class="n">hereby</span> <span class="n">granted</span><span class="p">,</span> <span class="n">free</span> <span class="n">of</span> <span class="n">charge</span><span class="p">,</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">person</span> <span class="n">obtaining</span> <span class="n">a</span> <span class="n">copy</span>
+<span class="n">of</span> <span class="n">this</span> <span class="n">software</span> <span class="ow">and</span> <span class="n">associated</span> <span class="n">documentation</span> <span class="n">files</span> <span class="p">(</span><span class="n">the</span> <span class="s2">&quot;Software&quot;</span><span class="p">),</span> <span class="n">to</span> <span class="n">deal</span>
+<span class="ow">in</span> <span class="n">the</span> <span class="n">Software</span> <span class="n">without</span> <span class="n">restriction</span><span class="p">,</span> <span class="n">including</span> <span class="n">without</span> <span class="n">limitation</span> <span class="n">the</span> <span class="n">rights</span>
+<span class="n">to</span> <span class="n">use</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">modify</span><span class="p">,</span> <span class="n">merge</span><span class="p">,</span> <span class="n">publish</span><span class="p">,</span> <span class="n">distribute</span><span class="p">,</span> <span class="n">sublicense</span><span class="p">,</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="n">sell</span>
+<span class="n">copies</span> <span class="n">of</span> <span class="n">the</span> <span class="n">Software</span><span class="p">,</span> <span class="ow">and</span> <span class="n">to</span> <span class="n">permit</span> <span class="n">persons</span> <span class="n">to</span> <span class="n">whom</span> <span class="n">the</span> <span class="n">Software</span> <span class="ow">is</span>
+<span class="n">furnished</span> <span class="n">to</span> <span class="n">do</span> <span class="n">so</span><span class="p">,</span> <span class="n">subject</span> <span class="n">to</span> <span class="n">the</span> <span class="n">following</span> <span class="n">conditions</span><span class="p">:</span>
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">copyright</span> <span class="n">notice</span> <span class="ow">and</span> <span class="n">this</span> <span class="n">permission</span> <span class="n">notice</span> <span class="n">shall</span> <span class="n">be</span> <span class="n">included</span> <span class="ow">in</span> <span class="nb">all</span>
+<span class="n">copies</span> <span class="ow">or</span> <span class="n">substantial</span> <span class="n">portions</span> <span class="n">of</span> <span class="n">the</span> <span class="n">Software</span><span class="o">.</span>
+
+<span class="n">THE</span> <span class="n">SOFTWARE</span> <span class="n">IS</span> <span class="n">PROVIDED</span> <span class="s2">&quot;AS IS&quot;</span><span class="p">,</span> <span class="n">WITHOUT</span> <span class="n">WARRANTY</span> <span class="n">OF</span> <span class="n">ANY</span> <span class="n">KIND</span><span class="p">,</span> <span class="n">EXPRESS</span> <span class="n">OR</span>
+<span class="n">IMPLIED</span><span class="p">,</span> <span class="n">INCLUDING</span> <span class="n">BUT</span> <span class="n">NOT</span> <span class="n">LIMITED</span> <span class="n">TO</span> <span class="n">THE</span> <span class="n">WARRANTIES</span> <span class="n">OF</span> <span class="n">MERCHANTABILITY</span><span class="p">,</span>
+<span class="n">FITNESS</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">PARTICULAR</span> <span class="n">PURPOSE</span> <span class="n">AND</span> <span class="n">NONINFRINGEMENT</span><span class="o">.</span> <span class="n">IN</span> <span class="n">NO</span> <span class="n">EVENT</span> <span class="n">SHALL</span> <span class="n">THE</span>
+<span class="n">AUTHORS</span> <span class="n">OR</span> <span class="n">COPYRIGHT</span> <span class="n">HOLDERS</span> <span class="n">BE</span> <span class="n">LIABLE</span> <span class="n">FOR</span> <span class="n">ANY</span> <span class="n">CLAIM</span><span class="p">,</span> <span class="n">DAMAGES</span> <span class="n">OR</span> <span class="n">OTHER</span>
+<span class="n">LIABILITY</span><span class="p">,</span> <span class="n">WHETHER</span> <span class="n">IN</span> <span class="n">AN</span> <span class="n">ACTION</span> <span class="n">OF</span> <span class="n">CONTRACT</span><span class="p">,</span> <span class="n">TORT</span> <span class="n">OR</span> <span class="n">OTHERWISE</span><span class="p">,</span> <span class="n">ARISING</span> <span class="n">FROM</span><span class="p">,</span>
+<span class="n">OUT</span> <span class="n">OF</span> <span class="n">OR</span> <span class="n">IN</span> <span class="n">CONNECTION</span> <span class="n">WITH</span> <span class="n">THE</span> <span class="n">SOFTWARE</span> <span class="n">OR</span> <span class="n">THE</span> <span class="n">USE</span> <span class="n">OR</span> <span class="n">OTHER</span> <span class="n">DEALINGS</span> <span class="n">IN</span> <span class="n">THE</span>
+<span class="n">SOFTWARE</span><span class="o">.</span>
+
 </code></pre></div>
 </div>
 </div>
@@ -131,7 +122,7 @@ the name <cite>slack</cite></p>
       <!-- content -->
       <!-- sidebar -->
       <div class="col-12 col-md-3 compas-sidebar" role="navigation">
-        <form id="search" class="d-flex align-items-center compas-searchbox" action="../search.html" method="get">
+        <form id="search" class="d-flex align-items-center compas-searchbox" action="search.html" method="get">
           <input class="form-control" type="text" name="q" placeholder="Search docs" />
           <input type="hidden" name="check_keywords" value="yes" />
           <input type="hidden" name="area" value="default" />
@@ -144,14 +135,14 @@ the name <cite>slack</cite></p>
           <div id="compas-navigation" class="collapse compas-navigation">
           <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="nav flex-column active">
-<li class="nav-item"><a class="nav-link reference internal" href="../info.html">Codebots</a></li>
-<li class="nav-item"><a class="nav-link reference internal" href="../installation.html">Installation</a></li>
-<li class="nav-item active"><a class="nav-link reference internal" href="../usage.html">Usage</a></li>
-<li class="nav-item"><a class="nav-link reference internal" href="../api.html">API Reference</a></li>
-<li class="nav-item"><a class="nav-link reference internal" href="../contributing.html">Contributing</a></li>
-<li class="nav-item"><a class="nav-link reference internal" href="../authors.html">Credits</a></li>
-<li class="nav-item"><a class="nav-link reference internal" href="../license.html">License</a></li>
-<li class="nav-item"><a class="nav-link reference internal" href="../history.html">History</a></li>
+<li class="nav-item"><a class="nav-link reference internal" href="info.html">Codebots</a></li>
+<li class="nav-item"><a class="nav-link reference internal" href="installation.html">Installation</a></li>
+<li class="nav-item"><a class="nav-link reference internal" href="usage.html">Usage</a></li>
+<li class="nav-item"><a class="nav-link reference internal" href="api.html">API Reference</a></li>
+<li class="nav-item"><a class="nav-link reference internal" href="contributing.html">Contributing</a></li>
+<li class="nav-item"><a class="nav-link reference internal" href="authors.html">Credits</a></li>
+<li class="nav-item active"><a class="nav-link active current reference internal" href="#">License</a></li>
+<li class="nav-item"><a class="nav-link reference internal" href="history.html">History</a></li>
 </ul>
 
           </div>
@@ -162,7 +153,7 @@ the name <cite>slack</cite></p>
       <div class="d-none d-xl-block col-xl-2 compas-toc" role="toc">
         
         <ul class="nav flex-column" id="compas-toc">
-<li class="nav-item"><a class="nav-link reference internal" href="#">Get notified on slack</a></li>
+<li class="nav-item"><a class="nav-link reference internal" href="#">License</a></li>
 </ul>
 
       </div>
@@ -174,20 +165,20 @@ the name <cite>slack</cite></p>
   <footer class="compas-footer">
     <nav class="nav p-2">
       
-        <a href="../usage.html" title="Usage" class="nav-link footer-link float-start text-left d-flex w-50" rel="prev">
+        <a href="authors.html" title="Credits" class="nav-link footer-link float-start text-left d-flex w-50" rel="prev">
           <div class="nav-button p-2 m-2"><i class="fas fa-arrow-left"></i></div>
           <div class="nav-title flex-grow-1 align-self-center">
             <div class="nav-direction small font-weight-light">Previous</div>
-            Usage
+            Credits
           </div>
         </a>
       
 
       
-        <a href="emailbot.html" title="Get notified via email" class="nav-link footer-link float-end text-right d-flex w-50" rel="next">
+        <a href="history.html" title="History" class="nav-link footer-link float-end text-right d-flex w-50" rel="next">
           <div class="nav-title footer-link flex-grow-1 align-self-center">
             <div class="nav-direction small font-weight-light">Next</div>
-            Get notified via email
+            History
           </div>
           <div class="nav-button p-2 m-2"><i class="fas fa-arrow-right"></i></div>
         </a>
@@ -245,9 +236,9 @@ the name <cite>slack</cite></p>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.0.0/anchor.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 
-  <script src="../_static/underscore.js"></script>
-  <script src="../_static/doctools.js"></script>
-  <script src="../_static/js/searchtools_.js"></script>
+  <script src="_static/underscore.js"></script>
+  <script src="_static/doctools.js"></script>
+  <script src="_static/js/searchtools_.js"></script>
 
   <script>
   $(document).ready(function() {
