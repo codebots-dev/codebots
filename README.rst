@@ -14,7 +14,9 @@ Codebots
         :alt: Documentation Status
 
 
-Collection of codebots for tasks automation. Supported bots:
+This is a collection of simple bots to help with boring tasks during coding.
+
+Currently supported bots:
 
 * EmailBot: useful to get an email when a task is complete
 * SlackBot: same thing, but you get a slack message instead.
@@ -29,7 +31,7 @@ Features
 * Free software: MIT license
 
 Credits
--------
+~~~~~~~
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
