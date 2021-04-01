@@ -9,7 +9,7 @@ Email
 .. currentmodule:: codebots.emailbot
 
 .. autosummary::
-   :toctree: generated
+   :toctree:
 
     Sender
     EmailBot
@@ -21,7 +21,7 @@ Slack
 .. currentmodule:: codebots.slackbot
 
 .. autosummary::
-   :toctree: generated
+   :toctree:
 
     SlackBot
 
