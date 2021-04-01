@@ -1,22 +1,23 @@
-﻿.. rst-class:: detail
-
-EmailBot
+﻿codebots.emailbot.EmailBot
 ==========================
 
 .. currentmodule:: codebots.emailbot
 
 .. autoclass:: EmailBot
 
-    
-    
+   
+   .. automethod:: __init__
 
-    .. rubric:: Methods
+   
+   .. rubric:: Methods
 
-    .. autosummary::
-        :toctree:
+   .. autosummary::
+   
+      ~EmailBot.__init__
+      ~EmailBot.send_email
+   
+   
 
-    
-        ~EmailBot.send_email
-
-    
-    
+   
+   
+   
