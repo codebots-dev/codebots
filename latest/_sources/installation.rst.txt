@@ -8,24 +8,28 @@ Installation
 Stable release (WIP)
 --------------------
 
+
+To install codebots, run this command in your terminal:
+
+.. code-block:: console
+
+    $ pip install codebots
+
+This is the preferred method to install codebots, as it will always install the most recent stable release.
+
+If you don't have `pip`_ installed, this `Python installation guide`_ can guide
+you through the process.
+
+.. _pip: https://pip.pypa.io
+.. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
+
+
 .. warning::
 
-   Currently no stable release is available. Check the `from source` installation below.
+    sometimes (not sure why yet) the requirements are not installed with the package.
+    this is simply fixe by running 'pip install slack_sdk click yagmail' in the same
+    environment you have installed `codebots`
 
-
-.. To install codebots, run this command in your terminal:
-
-.. .. code-block:: console
-
-..     $ pip install codebots
-
-.. This is the preferred method to install codebots, as it will always install the most recent stable release.
-
-.. If you don't have `pip`_ installed, this `Python installation guide`_ can guide
-.. you through the process.
-
-.. .. _pip: https://pip.pypa.io
-.. .. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
 
 
 From sources
