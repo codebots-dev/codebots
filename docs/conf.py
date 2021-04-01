@@ -408,9 +408,9 @@ html_theme_options = {
     "nav_links": [
         {"href": "index", "internal": True, "title": "codebots"},
         {
-            "href": "https://squidfunk.github.io/mkdocs-material/",
+            "href": "https://github.com/franaudo",
             "internal": False,
-            "title": "Material for MkDocs",
+            "title": "About me",
         },
     ],
     "heroes": {
@@ -421,9 +421,9 @@ html_theme_options = {
     "version_json": "_static/versions.json",
     "version_info": {
         "Release": "https://franaudo.github.io/codebots/",
-        "Development": "https://franaudo.github.io/codebots/devel/",
+        "Development": "https://franaudo.github.io/codebots/development/",
         "Release (rel)": "/codebots/",
-        "Development (rel)": "/codebots/devel/",
+        "Development (rel)": "/codebots/development/",
     },
     "table_classes": ["plain"],
 }
