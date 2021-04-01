@@ -2,7 +2,20 @@
 Usage
 =====
 
-To use bots in a project::
+To use codebots in a project::
 
-    import bots
-    from bots import
+    import codebots
+    from codebots import ...
+
+
+********************************************************************************
+Examples
+********************************************************************************
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :glob:
+
+   examples/slackbot.rst
+   examples/emailbot.rst
