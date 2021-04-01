@@ -1,15 +1,13 @@
 Welcome to codebots's documentation!
 ====================================
 
-.. image:: https://img.shields.io/pypi/v/codebots.svg
-        :target: https://pypi.python.org/pypi/codebots
-
-.. image:: https://img.shields.io/travis/franaudo/codebots.svg
-        :target: https://travis-ci.com/franaudo/codebots
-
-.. image:: https://readthedocs.org/projects/codebots/badge/?version=latest
-        :target: https://codebots.readthedocs.io/en/latest/?version=latest
+.. image:: https://github.com/franaudo/codebots/actions/workflows/docs.yml/badge.svg
+        :target: https://github.com/franaudo/codebots/actions/workflows/docs.yml
         :alt: Documentation Status
+
+.. image:: https://github.com/franaudo/codebots/actions/workflows/python-package.yml/badge.svg
+        :target: https://github.com/franaudo/codebots/actions/workflows/python-package.yml
+        :alt: Python package
 
 
 .. toctree::

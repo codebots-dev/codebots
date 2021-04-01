@@ -6,6 +6,10 @@ Codebots
         :target: https://github.com/franaudo/codebots/actions/workflows/docs.yml
         :alt: Documentation Status
 
+.. image:: https://github.com/franaudo/codebots/actions/workflows/python-package.yml/badge.svg
+        :target: https://github.com/franaudo/codebots/actions/workflows/python-package.yml
+        :alt: Python package
+
 
 This is a collection of simple bots to help with boring tasks during coding.
 
