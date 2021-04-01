@@ -2,15 +2,8 @@
 Codebots
 ========
 
-
-.. image:: https://img.shields.io/pypi/v/codebots.svg
-        :target: https://pypi.python.org/pypi/codebots
-
-.. image:: https://img.shields.io/travis/franaudo/codebots.svg
-        :target: https://travis-ci.com/franaudo/codebots
-
-.. image:: https://readthedocs.org/projects/codebots/badge/?version=latest
-        :target: https://franaudo.github.io/codebots/latest/
+.. image:: https://github.com/franaudo/codebots/actions/workflows/docs.yml/badge.svg
+        :target: https://github.com/franaudo/codebots/actions/workflows/docs.yml
         :alt: Documentation Status
 
 
