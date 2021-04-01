@@ -4,28 +4,29 @@
 .. currentmodule:: codebots.slackbot
 
 .. autoclass:: SlackBot
+   :exclude-members:
 
    
-   .. automethod:: __init__
-
    
    .. rubric:: Methods
 
    .. autosummary::
-   
-      ~SlackBot.__init__
+      :toctree: generated/
+
       ~SlackBot.connect
       ~SlackBot.fetch_channel_id
       ~SlackBot.send_message
    
    
-
    
    
-   .. rubric:: Attributes
+   
+   .. rubric:: Properties
 
    .. autosummary::
-   
+      :toctree: generated/
+
       ~SlackBot.client
+   
    
    

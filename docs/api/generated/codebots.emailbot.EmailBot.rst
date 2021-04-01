@@ -4,20 +4,19 @@
 .. currentmodule:: codebots.emailbot
 
 .. autoclass:: EmailBot
+   :exclude-members:
 
    
-   .. automethod:: __init__
-
    
    .. rubric:: Methods
 
    .. autosummary::
-   
-      ~EmailBot.__init__
+      :toctree: generated/
+
       ~EmailBot.send_email
    
    
-
+   
    
    
    

@@ -10,7 +10,7 @@ Stable release (WIP)
 
 .. warning::
 
-   Currently not stable release is available. Check the `from source` installation below.
+   Currently no stable release is available. Check the `from source` installation below.
 
 
 .. To install codebots, run this command in your terminal:

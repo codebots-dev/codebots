@@ -4,27 +4,28 @@
 .. currentmodule:: codebots.emailbot
 
 .. autoclass:: Sender
+   :exclude-members:
 
    
-   .. automethod:: __init__
-
    
    .. rubric:: Methods
 
    .. autosummary::
-   
-      ~Sender.__init__
+      :toctree: generated/
+
       ~Sender.form_file
    
    
-
    
    
-   .. rubric:: Attributes
+   
+   .. rubric:: Properties
 
    .. autosummary::
-   
+      :toctree: generated/
+
       ~Sender.password
       ~Sender.username
+   
    
    
