@@ -1,2 +1,3 @@
 yagmail
 slack_sdk
+Click>=7.0
