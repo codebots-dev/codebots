@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 with open("README.rst") as readme_file:
     readme = readme_file.read()
 
-with open("HISTORY.rst") as history_file:
+with open("CHANGELOG.rst") as history_file:
     history = history_file.read()
 
 requirements = ["Click>=7.0", ]
@@ -20,7 +20,7 @@ setup(
     name="codebots",
     version="0.2.0",
     author="Francesco Ranaudo",
-    author_email="mycoderesults@gmail.com",
+    author_email="ranaudo@arch.ethz.ch",
     python_requires=">=3.5",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",

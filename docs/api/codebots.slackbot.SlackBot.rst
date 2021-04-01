@@ -1,31 +1,32 @@
-SlackBot
-========
+﻿codebots.slackbot.SlackBot
+==========================
 
 .. currentmodule:: codebots.slackbot
 
 .. autoclass:: SlackBot
-   :show-inheritance:
+   :exclude-members:
 
-   .. rubric:: Attributes Summary
-
-   .. autosummary::
-
-      ~SlackBot.client
-
-   .. rubric:: Methods Summary
+   
+   
+   .. rubric:: Methods
 
    .. autosummary::
+      :toctree: generated/
 
       ~SlackBot.connect
       ~SlackBot.fetch_channel_id
       ~SlackBot.send_message
+   
+   
+   
+   
+   
+   .. rubric:: Properties
 
-   .. rubric:: Attributes Documentation
+   .. autosummary::
+      :toctree: generated/
 
-   .. autoattribute:: client
-
-   .. rubric:: Methods Documentation
-
-   .. automethod:: connect
-   .. automethod:: fetch_channel_id
-   .. automethod:: send_message
+      ~SlackBot.client
+   
+   
+   

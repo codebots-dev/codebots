@@ -10,7 +10,7 @@ prune examples
 
 include AUTHORS.rst
 include CONTRIBUTING.rst
-include HISTORY.rst
+include CHANGELOG.rst
 include LICENSE
 include README.rst
 include requirements.txt

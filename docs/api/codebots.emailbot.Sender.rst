@@ -1,28 +1,31 @@
-Sender
-======
+﻿codebots.emailbot.Sender
+========================
 
 .. currentmodule:: codebots.emailbot
 
 .. autoclass:: Sender
+   :exclude-members:
 
-   .. rubric:: Attributes Summary
+   
+   
+   .. rubric:: Methods
 
    .. autosummary::
+      :toctree: generated/
+
+      ~Sender.form_file
+   
+   
+   
+   
+   
+   .. rubric:: Properties
+
+   .. autosummary::
+      :toctree: generated/
 
       ~Sender.password
       ~Sender.username
-
-   .. rubric:: Methods Summary
-
-   .. autosummary::
-
-      ~Sender.form_file
-
-   .. rubric:: Attributes Documentation
-
-   .. autoattribute:: password
-   .. autoattribute:: username
-
-   .. rubric:: Methods Documentation
-
-   .. automethod:: form_file
+   
+   
+   

@@ -1,17 +1,22 @@
-EmailBot
-========
+﻿codebots.emailbot.EmailBot
+==========================
 
-.. currentmodule:: bots.emailbot
+.. currentmodule:: codebots.emailbot
 
 .. autoclass:: EmailBot
-   :show-inheritance:
+   :exclude-members:
 
-   .. rubric:: Methods Summary
+   
+   
+   .. rubric:: Methods
 
    .. autosummary::
+      :toctree: generated/
 
       ~EmailBot.send_email
-
-   .. rubric:: Methods Documentation
-
-   .. automethod:: send_email
+   
+   
+   
+   
+   
+   

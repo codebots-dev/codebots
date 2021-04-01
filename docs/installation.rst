@@ -5,22 +5,27 @@ Installation
 ============
 
 
-Stable release
---------------
+Stable release (WIP)
+--------------------
 
-To install codebots, run this command in your terminal:
+.. warning::
 
-.. code-block:: console
+   Currently no stable release is available. Check the `from source` installation below.
 
-    $ pip install codebots
 
-This is the preferred method to install codebots, as it will always install the most recent stable release.
+.. To install codebots, run this command in your terminal:
 
-If you don't have `pip`_ installed, this `Python installation guide`_ can guide
-you through the process.
+.. .. code-block:: console
 
-.. _pip: https://pip.pypa.io
-.. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
+..     $ pip install codebots
+
+.. This is the preferred method to install codebots, as it will always install the most recent stable release.
+
+.. If you don't have `pip`_ installed, this `Python installation guide`_ can guide
+.. you through the process.
+
+.. .. _pip: https://pip.pypa.io
+.. .. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
 
 
 From sources
@@ -28,7 +33,14 @@ From sources
 
 The sources for codebots can be downloaded from the `Github repo`_.
 
-You can either clone the public repository:
+The easiest way is to install the package directly from GitHub. Execute the following
+in your terminal:
+
+.. code-block:: console
+
+    pip install git+git://github.com/franaudo/codebots
+
+Alternatively, you can either clone the public repository:
 
 .. code-block:: console
 

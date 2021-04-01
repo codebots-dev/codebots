@@ -2,34 +2,29 @@
 Codebots
 ========
 
-
-.. image:: https://img.shields.io/pypi/v/codebots.svg
-        :target: https://pypi.python.org/pypi/codebots
-
-.. image:: https://img.shields.io/travis/franaudo/codebots.svg
-        :target: https://travis-ci.com/franaudo/codebots
-
-.. image:: https://readthedocs.org/projects/codebots/badge/?version=latest
-        :target: https://codebots.readthedocs.io/en/latest/?version=latest
+.. image:: https://github.com/franaudo/codebots/actions/workflows/docs.yml/badge.svg
+        :target: https://github.com/franaudo/codebots/actions/workflows/docs.yml
         :alt: Documentation Status
 
 
+This is a collection of simple bots to help with boring tasks during coding.
+
+Currently supported bots:
+
+* EmailBot: useful to get an email when a task is complete
+* SlackBot: same thing, but you get a slack message instead.
 
 
-collection of codebots for tasks automation
-
-
-* Free software: MIT license
-* Documentation: https://codebots.readthedocs.io.
+Full documentation: https://franaudo.github.io/codebots/latest/.
 
 
 Features
 --------
 
-* TODO
+* Free software: MIT license
 
 Credits
--------
+~~~~~~~
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
