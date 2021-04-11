@@ -19,3 +19,4 @@ Examples
 
    examples/slackbot.rst
    examples/emailbot.rst
+   examples/telegrambot.rst
