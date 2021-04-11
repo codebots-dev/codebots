@@ -59,7 +59,7 @@ class TeleBot():
         json
             response from the server
         """
-        response = requests.get(self._url+bot_message)
+        response = requests.get(self._url + bot_message)
         return response.json()
 
 
@@ -70,4 +70,3 @@ if __name__ == '__main__':
 
     # send the message
     bot.send_message('ciao mamma')
-

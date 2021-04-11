@@ -6,7 +6,7 @@ import pytest
 
 from click.testing import CliRunner
 
-from codebots import cli
+from codebots.utilities import cli
 
 
 @pytest.fixture
