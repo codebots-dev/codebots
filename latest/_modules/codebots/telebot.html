@@ -360,7 +360,7 @@
 <span class="sd">        json</span>
 <span class="sd">            response from the server</span>
 <span class="sd">        """</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_url</span><span class="o">+</span><span class="n">bot_message</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_url</span> <span class="o">+</span> <span class="n">bot_message</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span></div></div>
 
 
@@ -371,7 +371,6 @@
 
     <span class="c1"># send the message</span>
     <span class="n">bot</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="s1">'ciao mamma'</span><span class="p">)</span>
-
 </pre>
        </div>
       </article>
