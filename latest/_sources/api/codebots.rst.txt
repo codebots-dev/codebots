@@ -25,3 +25,14 @@ Slack
 
     SlackBot
 
+
+Telegram
+--------
+
+.. currentmodule:: codebots.telebot
+
+.. autosummary::
+   :toctree:
+
+    TeleBot
+
