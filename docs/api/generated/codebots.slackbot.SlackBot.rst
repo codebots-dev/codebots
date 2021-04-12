@@ -5,28 +5,31 @@
 
 .. autoclass:: SlackBot
    :exclude-members:
+..    :members:
+..    :inherited-members:
 
    
    
    .. rubric:: Methods
 
    .. autosummary::
-      :toctree: generated/
+      :toctree: methods/
 
-      ~SlackBot.connect
-      ~SlackBot.fetch_channel_id
-      ~SlackBot.send_message
+      SlackBot.connect
+      SlackBot.fetch_channel_id
+      SlackBot.send_message
    
    
    
+
    
    
    .. rubric:: Properties
 
    .. autosummary::
-      :toctree: generated/
+      :toctree: attributes/
 
-      ~SlackBot.client
+      SlackBot.client
    
    
    

@@ -5,18 +5,21 @@
 
 .. autoclass:: EmailBot
    :exclude-members:
+..    :members:
+..    :inherited-members:
 
    
    
    .. rubric:: Methods
 
    .. autosummary::
-      :toctree: generated/
+      :toctree: methods/
 
-      ~EmailBot.send_email
+      EmailBot.send_email
    
    
    
+
    
    
    

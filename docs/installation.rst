@@ -5,8 +5,8 @@ Installation
 ============
 
 
-Stable release (WIP)
---------------------
+Stable release
+--------------
 
 
 To install codebots, run this command in your terminal:

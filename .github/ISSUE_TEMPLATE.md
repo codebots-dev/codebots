@@ -1,4 +1,4 @@
-* bots version:
+* codebots version:
 * Python version:
 * Operating System:
 

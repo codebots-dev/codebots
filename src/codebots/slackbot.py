@@ -88,8 +88,8 @@ class SlackBot():
         verbose : bool, optional
             print WebClient respons, by default False
 
-        Note
-        ----
+        Notes
+        -----
         Make sure that the bot has been previously added the bot to the channel.
         """
         message = kwargs.get('message', "Ciao! Your results are ready! :)")

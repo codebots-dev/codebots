@@ -1,10 +1,8 @@
-:orphan:
-
 codebots.slackbot.SlackBot.connect
 ==================================
 
 .. currentmodule:: codebots.slackbot
 
-method
+**Method**
 
 .. automethod:: SlackBot.connect

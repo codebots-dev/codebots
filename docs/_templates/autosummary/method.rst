@@ -1,10 +1,8 @@
-:orphan:
-
-{{ fullname | escape | underline}}
+{{ fullname | underline}}
 
 .. currentmodule:: {{ module }}
 
-method
+**Method**
 
 .. auto{{ objtype }}:: {{ objname }}
 

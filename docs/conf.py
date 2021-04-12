@@ -354,11 +354,10 @@ extensions = [
     "sphinx_copybutton",
 ]
 
-autosummary_generate = True
-autoclass_content = "class"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
+
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -378,7 +377,7 @@ html_static_path = ["_static"]
 
 # -- HTML theme settings ------------------------------------------------
 
-html_show_sourcelink = True
+html_show_sourcelink = False
 html_sidebars = {
     "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
 }
@@ -454,6 +453,10 @@ extlinks = {
     "durole": ("http://docutils.sourceforge.net/docs/ref/rst/" "roles.html#%s", ""),
     "dudir": ("http://docutils.sourceforge.net/docs/ref/rst/" "directives.html#%s", ""),
 }
+
+
+autosummary_generate = True
+autoclass_content = "class"
 
 # Enable eval_rst in markdown
 def setup(app):

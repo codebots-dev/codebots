@@ -118,6 +118,7 @@ def docs(ctx, doctest=False, rebuild=False, check_links=False):
             testdocs(ctx, rebuild=rebuild)
 
         opts = '-E' if rebuild else ''
+        # ctx.run('sphinx-autogen -o generated *.rst')
         ctx.run('sphinx-build {} -b html docs dist/docs'.format(opts))
 
         if check_links:

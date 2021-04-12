@@ -5,18 +5,21 @@
 
 .. autoclass:: TeleBot
    :exclude-members:
+..    :members:
+..    :inherited-members:
 
    
    
    .. rubric:: Methods
 
    .. autosummary::
-      :toctree: generated/
+      :toctree: methods/
 
-      ~TeleBot.send_message
+      TeleBot.send_message
    
    
    
+
    
    
    
