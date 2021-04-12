@@ -63,5 +63,5 @@ In action
 
 this is an example implementation:
 
-.. literalinclude:: /../examples/slack_message.py
+.. literalinclude:: /../examples/telegram_message.py
     :language: python

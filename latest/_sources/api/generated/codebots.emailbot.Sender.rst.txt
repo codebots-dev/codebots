@@ -5,27 +5,30 @@
 
 .. autoclass:: Sender
    :exclude-members:
+..    :members:
+..    :inherited-members:
 
    
    
    .. rubric:: Methods
 
    .. autosummary::
-      :toctree: generated/
+      :toctree: methods/
 
-      ~Sender.form_file
+      Sender.form_file
    
    
    
+
    
    
    .. rubric:: Properties
 
    .. autosummary::
-      :toctree: generated/
+      :toctree: attributes/
 
-      ~Sender.password
-      ~Sender.username
+      Sender.password
+      Sender.username
    
    
    
