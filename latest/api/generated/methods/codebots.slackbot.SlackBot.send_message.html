@@ -298,6 +298,130 @@
          Method
         </strong>
        </p>
+       <dl class="py method">
+        <dt id="codebots.slackbot.SlackBot.send_message">
+         <code class="sig-prename descclassname">
+          <span class="pre">
+           SlackBot.
+          </span>
+         </code>
+         <code class="sig-name descname">
+          <span class="pre">
+           send_message
+          </span>
+         </code>
+         <span class="sig-paren">
+          (
+         </span>
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            verbose
+           </span>
+          </span>
+          <span class="o">
+           <span class="pre">
+            =
+           </span>
+          </span>
+          <span class="default_value">
+           <span class="pre">
+            False
+           </span>
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="o">
+           <span class="pre">
+            **
+           </span>
+          </span>
+          <span class="n">
+           <span class="pre">
+            kwargs
+           </span>
+          </span>
+         </em>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="reference internal" href="../../../_modules/codebots/slackbot.html#SlackBot.send_message">
+          <span class="viewcode-link">
+           <span class="pre">
+            [source]
+           </span>
+          </span>
+         </a>
+         <a class="headerlink" href="#codebots.slackbot.SlackBot.send_message" title="Permalink to this definition">
+          ¶
+         </a>
+        </dt>
+        <dd>
+         <p>
+          Send a message to a channel.
+         </p>
+         <dl class="field-list simple">
+          <dt class="field-odd">
+           Parameters
+          </dt>
+          <dd class="field-odd">
+           <dl class="simple">
+            <dt>
+             <strong>
+              message
+             </strong>
+             <span class="classifier">
+              str, optional
+             </span>
+            </dt>
+            <dd>
+             <p>
+              message to send over slack. If not provided a default message is sent.
+             </p>
+            </dd>
+            <dt>
+             <strong>
+              channel
+             </strong>
+             <span class="classifier">
+              str, optional.
+             </span>
+            </dt>
+            <dd>
+             <p>
+              slack channel where the message is sent to. If not provided, the message
+is sent to
+              <cite>
+               general
+              </cite>
+              .
+             </p>
+            </dd>
+            <dt>
+             <strong>
+              verbose
+             </strong>
+             <span class="classifier">
+              bool, optional
+             </span>
+            </dt>
+            <dd>
+             <p>
+              print WebClient respons, by default False
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <p class="rubric">
+          Notes
+         </p>
+         <p>
+          Make sure that the bot has been previously added the bot to the channel.
+         </p>
+        </dd>
+       </dl>
       </article>
      </div>
     </div>
