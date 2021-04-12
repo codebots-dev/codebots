@@ -33,4 +33,8 @@ beautifulsoup4
 python-slugify[unidecode]
 css_html_js_minify
 
+yagmail
+slack_sdk
+Click>=7.0
+
 -e .
