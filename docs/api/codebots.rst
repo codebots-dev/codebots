@@ -36,3 +36,13 @@ Telegram
 
     TeleBot
 
+
+SSH
+---
+
+.. currentmodule:: codebots.sshbot
+
+.. autosummary::
+   :toctree: generated
+
+    sshBot

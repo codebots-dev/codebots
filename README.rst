@@ -10,6 +10,10 @@ Codebots
         :target: https://github.com/franaudo/codebots/actions/workflows/python-package.yml
         :alt: Python package
 
+.. image:: https://github.com/franaudo/codebots/actions/workflows/codeql-analysis.yml/badge.svg
+        :target: https://github.com/franaudo/codebots/actions/workflows/codeql-analysis.yml
+        :alt: CodeQL
+
 
 This is a collection of simple bots to help with boring tasks during coding.
 
@@ -17,7 +21,7 @@ Currently supported bots:
 
 * EmailBot: useful to get an email when a task is complete
 * SlackBot: same thing, but you get a slack message instead.
-
+* TeleBot: again the same thing, but you get a message on Telegram this time.
 
 Full documentation: https://franaudo.github.io/codebots/latest/.
 
@@ -26,6 +30,8 @@ Features
 --------
 
 * Free software: MIT license
+* Easy to useful
+* Fun
 
 Credits
 ~~~~~~~

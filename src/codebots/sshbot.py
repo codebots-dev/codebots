@@ -6,6 +6,9 @@ import sys
 import subprocess
 import argparse
 
+__all__ = ["sshBot"]
+
+
 class sshBot():
     """sshBot to help with ssh connections to a server.
 
@@ -20,6 +23,7 @@ class sshBot():
     pvtkey : str
         path to the private RSA key file
     """
+
     def __init__(self, hostname=None, username=None, password=None, pvtkey=None) -> None:
 
         self.hostname = hostname
@@ -83,27 +87,33 @@ class sshBot():
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         if self.pvtkey:
             k = paramiko.RSAKey.from_private_key_file(self.pvtkey, password=self.password)
-        ssh_client.connect( hostname=self.hostname, username=self.username, password=self.password, pkey=k )
+        ssh_client.connect(hostname=self.hostname, username=self.username, password=self.password, pkey=k)
         print("connected")
         return ssh_client
 
-    def exectute_cmd(self, command):
+    def exectute_cmds(self, commands):
         """execute general command on the server side
 
         Parameters
         ----------
-        command : str
-            command to execute on the server
+        commands : list of str
+            list of commands (str) to execute on the server.
 
         Returns
         -------
-        args
-            vstdin, stdout, stderr output
+        None
         """
         if not self.ssh_client:
             self.ssh_client = self.connect_ssh_client()
-        vstdin, stdout, stderr = self.ssh_client.exec_command(command)
-        return vstdin, stdout, stderr
+
+        # commands = [ "/home/ubuntu/firstscript.sh", "/home/ubuntu/secondscript.sh" ]
+        for command in commands:
+            print("Executing {}".format(command))
+            stdin, stdout, stderr = self.ssh_client.exec_command(command)
+            print(stdout.read())
+            print("Errors")
+            print(stderr.read())
+        self.ssh_client.close()
 
     def connect_sftp_client(self):
         """connect to the server through SFPT on port 22.
@@ -116,7 +126,7 @@ class sshBot():
         transport = paramiko.Transport((self.hostname, 22))
         if self.pvtkey:
             k = paramiko.RSAKey.from_private_key_file(self.pvtkey, password=self.password)
-        transport.connect(username=self.username, password=self.password, pkey=k )
+        transport.connect(username=self.username, password=self.password, pkey=k)
         return paramiko.SFTPClient.from_transport(transport)
 
     def get_folder_from_server(self, path, dest, recursive=True):
@@ -160,6 +170,7 @@ class sshBot():
         # close the connection
         sftp_client.close()
 
+
 if __name__ == '__main__':
 
     bot = sshBot.from_credentials_file(".tokens/home.json")
@@ -171,9 +182,4 @@ if __name__ == '__main__':
     # localfolderpath = '/home/fr/Desktop/'
     # bot.get_folder_from_server(remotefolder, localfolderpath)
 
-    _, out, _ = bot.exectute_cmd(command="ls -al")
-
-    print(out)
-
-
-
+    bot.exectute_cmds(commands=['ls'])
