@@ -44,6 +44,7 @@ class sshBot():
             it should have the following structure:
 
             .. code-block:: json
+
                 {
                     "hostname" : "_______",
                     "username" : "_______",
