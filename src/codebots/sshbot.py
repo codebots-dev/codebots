@@ -61,13 +61,13 @@ class sshBot():
             credentials = json.load(f)
         return cls(**credentials)
 
-    def gen_keypair(self, ssh_folder="/home/fr/.ssh"):
+    def gen_keypair(self, ssh_folder):
         """create a set of public and private keys and save them in the given
         folder.
 
         Parameters
         ----------
-        ssh_folder : str, optional
+        ssh_folder : str
             folder where the keys are saved
         """
         key = paramiko.RSAKey.generate(4096)
@@ -92,13 +92,16 @@ class sshBot():
         print("connected")
         return ssh_client
 
-    def exectute_cmds(self, commands):
+    def exectute_cmds(self, commands, close_connection=True):
         """execute general command on the server side
 
         Parameters
         ----------
         commands : list of str
             list of commands (str) to execute on the server.
+        close_connection : bool (optional)
+            if true close the ssh connection, by default True. Leave the connection
+            open if you plan to run several commands.
 
         Returns
         -------
@@ -114,7 +117,11 @@ class sshBot():
             print(stdout.read())
             print("Errors")
             print(stderr.read())
-        self.ssh_client.close()
+
+        # close the connection
+        if close_connection:
+            self.ssh_client.close()
+            self.ssh_client = None
 
     def connect_sftp_client(self):
         """connect to the server through SFPT on port 22.
@@ -130,7 +137,7 @@ class sshBot():
         transport.connect(username=self.username, password=self.password, pkey=k)
         return paramiko.SFTPClient.from_transport(transport)
 
-    def get_folder_from_server(self, path, dest, recursive=True):
+    def get_folder_from_server(self, path, dest, recursive=True, close_connection=True):
         """Retrieve the content of a folder from the server.
 
         Parameters
@@ -142,7 +149,10 @@ class sshBot():
         dest : str
             path to the folder on the client (local)
         recursive : bool (optional)
-            if true get subfolders content, by default True
+            if true get subfolders content, by default
+        close_connection : bool (optional)
+            if true close the ssh connection, by default True. Leave the connection
+            open if you plan to run several commands.
 
         Return
         ------
@@ -154,33 +164,34 @@ class sshBot():
         """
 
         # connect to the server through SFPT
-        sftp_client = self.connect_sftp_client()
+        if not self.sftp_client:
+            self.sftp_client = self.connect_sftp_client()
+            print("connection enstablished")
 
-        for item in sftp_client.listdir(path):
+        for item in self.sftp_client.listdir(path):
             remotefile = os.path.join(path, str(item))
             if not os.path.isdir(dest):
                 os.mkdir(dest)
             localfilepath = os.path.join(dest, str(item))
             # check if it is a folder (note file w/o ext will thorw an exception!)
             if '.' in item:
-                sftp_client.get(remotefile, localfilepath)
+                self.sftp_client.get(remotefile, localfilepath)
             else:
                 if recursive:
-                    self.get_folder_from_server(sftp_client, remotefile, localfilepath)
-
+                    self.get_folder_from_server(self.sftp_client, remotefile, localfilepath)
+        print("files tranferred!")
         # close the connection
-        sftp_client.close()
+        if close_connection:
+            self.sftp_client.close()
+            self.sftp_client = None
+            print("connection closed")
 
 
 if __name__ == '__main__':
 
     bot = sshBot.from_credentials_file(".tokens/home.json")
 
-    # bot.connect_ssh_client()
-
-    # # get folder content
-    # remotefolder =  '/home/franaudo/Documents/code/'
-    # localfolderpath = '/home/fr/Desktop/'
-    # bot.get_folder_from_server(remotefolder, localfolderpath)
-
-    bot.exectute_cmds(commands=['ls'])
+    bot.exectute_cmds(commands=['ls'], close_connection=False)
+    print(bot.ssh_client)
+    bot.exectute_cmds(commands=['ls -l'], close_connection=True)
+    print(bot.ssh_client)
