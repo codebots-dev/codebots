@@ -15,13 +15,28 @@ class sshBot():
     Parameters
     ----------
     hostname : str
-        ip address of the server
+        ip address of the server, by default None.
     username : str
-        username on the server
+        username on the server, by default None.
     password : str
-        password on the server
+        password on the server, by default None.
     pvtkey : str
-        path to the private RSA key file
+        path to the private RSA key file, by default None.
+
+    Attributes
+    ----------
+    hostname : str
+        ip address of the server, by default None.
+    username : str
+        username on the server, by default None.
+    password : str
+        password on the server, by default None.
+    pvtkey : str
+        path to the private RSA key file, by default None.
+    ssh_client : obj
+        paramiko `SSHClient` object, if a connection is active, otherwise None
+    sftp_client : obj
+        paramiko `SFTPClient` object, if a connection is active, otherwise None
     """
 
     def __init__(self, hostname=None, username=None, password=None, pvtkey=None) -> None:
