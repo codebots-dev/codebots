@@ -10,7 +10,7 @@ with open("README.rst") as readme_file:
 with open("CHANGELOG.rst") as history_file:
     history = history_file.read()
 
-requirements = ["Click>=7.0", ]
+requirements = ["Click>=7.0", "slack_sdk", "yagmail"]
 
 setup_requirements = ["pytest-runner", ]
 
@@ -18,7 +18,7 @@ test_requirements = ["pytest>=3", ]
 
 setup(
     name="codebots",
-    version="0.4.0",
+    version="0.4.1",
     author="Francesco Ranaudo",
     author_email="ranaudo@arch.ethz.ch",
     python_requires=">=3.5",

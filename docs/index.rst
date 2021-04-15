@@ -9,6 +9,9 @@ Welcome to codebots's documentation!
         :target: https://github.com/franaudo/codebots/actions/workflows/python-package.yml
         :alt: Python package
 
+.. image:: https://github.com/franaudo/codebots/actions/workflows/codeql-analysis.yml/badge.svg
+        :target: https://github.com/franaudo/codebots/actions/workflows/codeql-analysis.yml
+        :alt: CodeQL
 
 .. toctree::
    :maxdepth: 1
