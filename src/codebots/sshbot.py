@@ -6,7 +6,9 @@ import sys
 # import subprocess
 # import argparse
 
-__all__ = ["sshBot"]
+__all__ = [
+    'sshBot'
+]
 
 
 class sshBot():
@@ -34,9 +36,9 @@ class sshBot():
     pvtkey : str
         path to the private RSA key file, by default None.
     ssh_client : obj
-        paramiko `SSHClient` object, if a connection is active, otherwise None
+        paramiko `SSHClient` object, if a connection is active, otherwise None.
     sftp_client : obj
-        paramiko `SFTPClient` object, if a connection is active, otherwise None
+        paramiko `SFTPClient` object, if a connection is active, otherwise None.
     """
 
     def __init__(self, hostname=None, username=None, password=None, pvtkey=None) -> None:
@@ -50,7 +52,7 @@ class sshBot():
 
     @classmethod
     def from_credentials_file(cls, json_file):
-        """get credentials from json file
+        """Get credentials from json file
 
         Parameters
         ----------
@@ -77,7 +79,7 @@ class sshBot():
         return cls(**credentials)
 
     def gen_keypair(self, ssh_folder):
-        """create a set of public and private keys and save them in the given
+        """Create a set of public and private keys and save them in the given
         folder.
 
         Parameters
@@ -92,7 +94,7 @@ class sshBot():
             key_file.write(key.write_private_key(sys.stdout))
 
     def connect_ssh_client(self):
-        """establish the ssh connection
+        """Establish the ssh connection
 
         Returns
         -------
@@ -107,8 +109,8 @@ class sshBot():
         print("connected")
         return ssh_client
 
-    def exectute_cmds(self, commands, close_connection=True):
-        """execute general command on the server side
+    def execute_cmds(self, commands, close_connection=True):
+        """Execute general command on the server side
 
         Parameters
         ----------
@@ -139,10 +141,10 @@ class sshBot():
             self.ssh_client = None
 
     def connect_sftp_client(self):
-        """connect to the server through SFPT on port 22.
+        """Connect to the server through SFPT on port 22.
 
-        Return
-        ------
+        Returns
+        -------
         obj
             paramiko sfpt client object
         """
@@ -166,15 +168,10 @@ class sshBot():
         recursive : bool (optional)
             if true get subfolders content, by default
         close_connection : bool (optional)
-            if true close the ssh connection, by default True. Leave the connection
-            open if you plan to run several commands.
+            if true close the ssh connection, by default True. Leave the connection open if you plan to run several commands.
 
-        Return
-        ------
-        None
-
-        Warning
-        -------
+        Warnings
+        --------
         If in any folder there are files without extensions, the code will fail!
         """
 
@@ -206,7 +203,7 @@ if __name__ == '__main__':
 
     bot = sshBot.from_credentials_file(".tokens/home.json")
 
-    bot.exectute_cmds(commands=['ls'], close_connection=False)
+    bot.execute_cmds(commands=['ls'], close_connection=False)
     print(bot.ssh_client)
-    bot.exectute_cmds(commands=['ls -l'], close_connection=True)
+    bot.execute_cmds(commands=['ls -l'], close_connection=True)
     print(bot.ssh_client)

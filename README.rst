@@ -30,8 +30,8 @@ Features
 --------
 
 * Free software: MIT license
-* Easy to useful
-* Fun
+* Easy to use
+* Fun (well, for someone...)
 
 Credits
 ~~~~~~~
