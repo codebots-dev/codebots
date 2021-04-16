@@ -44,7 +44,7 @@
 # copyright = "2021, Francesco Ranaudo"
 # author = "Francesco Ranaudo"
 # # The full version, including alpha/beta/rc tags
-# release = "0.4.2"
+# release = "0.4.3"
 # # release = LooseVersion(sphinx_material.__version__).vstring
 
 # # -- General configuration ---------------------------------------------
