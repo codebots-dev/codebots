@@ -1,7 +1,7 @@
-﻿codebots.slackbot.SlackBot
-==========================
+﻿codebots.bots.slackbot.SlackBot
+===============================
 
-.. currentmodule:: codebots.slackbot
+.. currentmodule:: codebots.bots.slackbot
 
 .. autoclass:: SlackBot
    :exclude-members:

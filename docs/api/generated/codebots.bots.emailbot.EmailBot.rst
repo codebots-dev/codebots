@@ -1,7 +1,7 @@
-﻿codebots.emailbot.EmailBot
-==========================
+﻿codebots.bots.emailbot.EmailBot
+===============================
 
-.. currentmodule:: codebots.emailbot
+.. currentmodule:: codebots.bots.emailbot
 
 .. autoclass:: EmailBot
    :exclude-members:

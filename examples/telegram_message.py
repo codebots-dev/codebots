@@ -1,4 +1,4 @@
-from codebots import TeleBot
+from codebots.bots import TeleBot
 
 # Create a bot: you need to specify the location of the access token file ".tokens/telegram.json"
 bot = TeleBot('.tokens/telegram.json')

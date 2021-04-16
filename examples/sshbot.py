@@ -1,4 +1,4 @@
-from codebots import sshBot
+from codebots.bots import sshBot
 
 # execute command on the server
 bot = sshBot.from_credentials_file(".tokens/home.json")

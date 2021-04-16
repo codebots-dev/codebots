@@ -1,5 +1,5 @@
-from codebots import EmailBot
-from codebots import Sender
+from codebots.bots import EmailBot
+from codebots.bots import Sender
 
 # initiate the Sender with some credentials:
 # - you can specify the location of the access config file ".tokens/email" (keep this secret!)

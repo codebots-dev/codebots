@@ -1,7 +1,7 @@
-﻿codebots.telebot.TeleBot
-========================
+﻿codebots.bots.telebot.TeleBot
+=============================
 
-.. currentmodule:: codebots.telebot
+.. currentmodule:: codebots.bots.telebot
 
 .. autoclass:: TeleBot
    :exclude-members:

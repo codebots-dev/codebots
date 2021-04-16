@@ -1,7 +1,7 @@
-﻿codebots.sshbot.sshBot
-======================
+﻿codebots.bots.sshbot.sshBot
+===========================
 
-.. currentmodule:: codebots.sshbot
+.. currentmodule:: codebots.bots.sshbot
 
 .. autoclass:: sshBot
    :exclude-members:

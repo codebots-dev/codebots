@@ -1,7 +1,7 @@
-﻿codebots.emailbot.Sender
-========================
+﻿codebots.bots.emailbot.Sender
+=============================
 
-.. currentmodule:: codebots.emailbot
+.. currentmodule:: codebots.bots.emailbot
 
 .. autoclass:: Sender
    :exclude-members:
