@@ -1,48 +1,11 @@
-CodeBots
+codebots
 ========
 
-CodeBots collection for tasks automation.
+Package to ease boring procedures with the help of a collection of bots.
 
-Email
------
+.. toctree::
+    :maxdepth: 2
 
-.. currentmodule:: codebots.emailbot
-
-.. autosummary::
-   :toctree: generated
-
-    Sender
-    EmailBot
+    codebots.bots
 
 
-Slack
------
-
-.. currentmodule:: codebots.slackbot
-
-.. autosummary::
-   :toctree: generated
-
-    SlackBot
-
-
-Telegram
---------
-
-.. currentmodule:: codebots.telebot
-
-.. autosummary::
-   :toctree: generated
-
-    TeleBot
-
-
-SSH
----
-
-.. currentmodule:: codebots.sshbot
-
-.. autosummary::
-   :toctree: generated
-
-    sshBot

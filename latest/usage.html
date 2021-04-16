@@ -345,15 +345,32 @@
         </a>
        </h1>
        <p>
-        To use codebots in a project:
+        A simple example of typical applicaiton can be to have a
+        <cite>
+         bot
+        </cite>
+        to send you a
+message (over email, slack, telegram, …) once your code triggers an action.
+       </p>
+       <p>
+        For example:
        </p>
        <div class="highlight-default notranslate">
         <div class="highlight">
          <pre><span></span><span class="kn">import</span> <span class="nn">codebots</span>
-<span class="kn">from</span> <span class="nn">codebots</span> <span class="kn">import</span> <span class="o">...</span>
+<span class="kn">from</span> <span class="nn">codebots.bots</span> <span class="kn">import</span> <span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">bot</span><span class="o">&gt;</span>
+
+<span class="n">bot</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">bot</span><span class="o">&gt;</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">YOUR</span> <span class="n">SUPER</span> <span class="n">AWESOME</span> <span class="n">CODE</span>
+
+<span class="n">bot</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="s2">"your code is working!"</span><span class="p">)</span>
 </pre>
         </div>
        </div>
+       <p>
+        For more datiled examples of applicaitons, check the list below!
+       </p>
        <h2 id="examples">
         Examples
         <a class="headerlink" href="#examples" title="Permalink to this headline">
@@ -429,7 +446,7 @@
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              Apr 15, 2021.
+              Apr 16, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">

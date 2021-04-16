@@ -24,21 +24,13 @@ you through the process.
 .. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
 
 
-.. warning::
-
-    sometimes (not sure why yet) the requirements are not installed with the package.
-    this is simply fixe by running 'pip install slack_sdk click yagmail' in the same
-    environment you have installed `codebots`
-
-
 
 From sources
 ------------
 
 The sources for codebots can be downloaded from the `Github repo`_.
 
-The easiest way is to install the package directly from GitHub. Execute the following
-in your terminal:
+Execute the following in your terminal:
 
 .. code-block:: console
 
@@ -61,6 +53,13 @@ Once you have a copy of the source, you can install it with:
 .. code-block:: console
 
     $ python setup.py install
+
+If you want to develop `codebots`, then install it in `edit` mode. From the folder
+containing the source code, run:
+
+.. code-block:: console
+
+    $ pip install -e .
 
 
 .. _Github repo: https://github.com/franaudo/codebots
