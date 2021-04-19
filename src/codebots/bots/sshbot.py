@@ -109,7 +109,7 @@ class sshBot():
         print("connected")
         return ssh_client
 
-    def execute_cmds(self, commands, close_connection=True):
+    def execute_cmds(self, commands, close_connection=True, verbose=True):
         """Execute general command on the server side
 
         Parameters
@@ -127,18 +127,25 @@ class sshBot():
         if not self.ssh_client:
             self.ssh_client = self.connect_ssh_client()
 
+        out_dict = {"stdout": [], "stderr": []}
         # commands = [ "/home/ubuntu/firstscript.sh", "/home/ubuntu/secondscript.sh" ]
         for command in commands:
             print("Executing {}".format(command))
             stdin, stdout, stderr = self.ssh_client.exec_command(command)
-            print(stdout.read())
-            print("Errors")
-            print(stderr.read())
+            out_dict["stdout"].append(stdout.read().rstrip().decode("utf-8"))
+            out_dict["stderr"].append(stderr.read().rstrip().decode("utf-8"))
+
+            if verbose:
+                print(stdout.read())
+                print("Errors")
+                print(stderr.read())
 
         # close the connection
         if close_connection:
             self.ssh_client.close()
             self.ssh_client = None
+
+        return out_dict
 
     def connect_sftp_client(self):
         """Connect to the server through SFPT on port 22.
