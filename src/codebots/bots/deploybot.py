@@ -46,6 +46,10 @@ class DeployBot():
         bot.configure_server(sshbot)
         # deployment
         bot.deploy_to_server()
+
+    Warnings
+    --------
+    I still need to figure out how to avoid the use of sshkeys for the pushing part
     """
 
     def __init__(self, local_repo_path, server_repo_path, server_address) -> None:
@@ -60,15 +64,15 @@ class DeployBot():
         """
         if 'deploy' in self.local_repo.remotes:
             self.local_repo.delete_remote("deploy")
-        self.local_repo.create_remote("deploy", self.server_repo_path)
+        self.local_repo.create_remote("deploy", self.server_complete_path)
         print('deploy added to remotes')
         print('local repository configured!')
 
     def configure_server(self, sshbot):
         """Configure the server side:
-        - check if server has git repo folder;
-        - if not clone repo or create a bare repo;
-        - configure the server repository to sync with the local.
+            - check if server has git repository folder;
+            - if not create a bare repository;
+            - configure the server repository to sync with the local.
 
         Parameters
         ----------
@@ -97,25 +101,7 @@ class DeployBot():
                                                                   'config receive.denyCurrentBranch updateInstead')], verbose=False)
         print('server repository configured!')
 
-    def git_push(self, commit_message, remote_name):
-        """Push the local repo to the server
-
-        Parameters
-        ----------
-        commit_message : str
-            message for the commit.
-        remote_name : str
-            name of the git remote.
-        """
-        try:
-            self.local_repo.git.add(A=True)
-            self.local_repo.index.commit(commit_message)
-            remote = self.local_repo.remote(name=remote_name)
-            remote.push()
-        except:
-            print('Some error occured while pushing the code')
-
-    def deploy_to_server(self, remote_name="deploy", commit_message="deployed"):
+    def deploy_to_server(self, remote_name="deploy", local_name="master", commit_message="deployed"):
         """Deploy the changes to the server.
 
         Parameters
@@ -127,7 +113,30 @@ class DeployBot():
         """
         if remote_name not in self.local_repo.remotes:
             self.configure_local()
-        self.git_push(commit_message, remote_name)
+        self._git_push(commit_message, remote_name, local_name)
+
+    def _git_hooks(self):
+        raise NotImplementedError()
+
+    def _git_push(self, commit_message, remote_name, local_name):
+        """Push the local repo to the server
+
+        Parameters
+        ----------
+        commit_message : str
+            message for the commit.
+        remote_name : str
+            name of the git remote.
+        """
+
+        if self.local_repo.index.diff(None) or self.local_repo.untracked_files:
+
+            self.local_repo.git.add(A=True)
+            self.local_repo.git.commit(m='msg')
+            self.local_repo.git.push('--set-upstream', remote_name, local_name)
+            print('local deployed to server')
+        else:
+            print('no changes')
 
     # def print_commit(commit):
     #     print('----')
@@ -148,9 +157,8 @@ class DeployBot():
 
 
 if __name__ == "__main__":
-    bot = DeployBot('/home/fr/Code/repo_test', '/home/franaudo/code/repo_test2', 'franaudo@nefcloud')
+    bot = DeployBot('/home/fr/Code/repo_test', '/home/franaudo/code/repo_test', 'franaudo@nefcloud')
     sshbot = sshBot.from_credentials_file(".tokens/home.json")
+    bot.configure_local()
     bot.configure_server(sshbot)
-
-    # bot.configure_local()
-    # bot.deploy_to_server()
+    bot.deploy_to_server()

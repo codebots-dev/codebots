@@ -46,3 +46,15 @@ SSH
    :toctree: generated
 
     sshBot
+
+
+Deployment
+----------
+
+.. currentmodule:: codebots.bots.deploybot
+
+.. autosummary::
+   :toctree: generated
+
+    DeployBot
+
