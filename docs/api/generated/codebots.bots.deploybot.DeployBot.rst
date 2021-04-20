@@ -18,7 +18,6 @@
       DeployBot.configure_local
       DeployBot.configure_server
       DeployBot.deploy_to_server
-      DeployBot.git_push
    
    
    

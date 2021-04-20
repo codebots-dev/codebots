@@ -108,6 +108,8 @@ class DeployBot():
         ----------
         remote_name : str, optional
             name of the git remote, by default "deploy"
+        local_name : str, optional
+            name of the local branch to push, by default "master"
         commit_message : str, optional
             message for the commit, by default "deployed"
         """
@@ -127,6 +129,8 @@ class DeployBot():
             message for the commit.
         remote_name : str
             name of the git remote.
+        local_name : str, optional
+            name of the local branch to push.
         """
 
         if self.local_repo.index.diff(None) or self.local_repo.untracked_files:
