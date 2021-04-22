@@ -110,8 +110,8 @@ class SlackBot():
             print(f"Error: {e}")
 
 
-# Debug
-if __name__ == "__main__":
+# # Debug
+# if __name__ == "__main__":
 
-    bot = SlackBot(".tokens/slack")
-    bot.send_message(channel='topopt', message='test')
+#     bot = SlackBot(".tokens/slack")
+#     bot.send_message(channel='topopt', message='test')

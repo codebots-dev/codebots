@@ -3,8 +3,6 @@ import os
 import json
 
 import sys
-# import subprocess
-# import argparse
 
 __all__ = [
     'sshBot'
@@ -128,7 +126,7 @@ class sshBot():
             self.ssh_client = self.connect_ssh_client()
 
         out_dict = {"stdout": [], "stderr": []}
-        # commands = [ "/home/ubuntu/firstscript.sh", "/home/ubuntu/secondscript.sh" ]
+
         for command in commands:
             print("Executing {}".format(command))
             stdin, stdout, stderr = self.ssh_client.exec_command(command)
@@ -207,10 +205,11 @@ class sshBot():
 
 
 if __name__ == '__main__':
+    pass
 
-    bot = sshBot.from_credentials_file(".tokens/home.json")
+    # bot = sshBot.from_credentials_file(".tokens/home.json")
 
-    bot.execute_cmds(commands=['ls'], close_connection=False)
-    print(bot.ssh_client)
-    bot.execute_cmds(commands=['ls -l'], close_connection=True)
-    print(bot.ssh_client)
+    # bot.execute_cmds(commands=['ls'], close_connection=False)
+    # print(bot.ssh_client)
+    # bot.execute_cmds(commands=['ls -l'], close_connection=True)
+    # print(bot.ssh_client)

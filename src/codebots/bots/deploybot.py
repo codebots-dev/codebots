@@ -1,7 +1,5 @@
 import os
-import re
 from git import Repo
-import subprocess
 from codebots.bots import sshBot
 
 COMMITS_TO_PRINT = 5
@@ -133,14 +131,14 @@ class DeployBot():
             name of the local branch to push.
         """
 
-        if self.local_repo.index.diff(None) or self.local_repo.untracked_files:
+        # if self.local_repo.index.diff(None) or self.local_repo.untracked_files:
 
-            self.local_repo.git.add(A=True)
-            self.local_repo.git.commit(m='msg')
-            self.local_repo.git.push('--set-upstream', remote_name, local_name)
-            print('local deployed to server')
-        else:
-            print('no changes')
+        self.local_repo.git.add(A=True)
+        self.local_repo.git.commit(m='msg')
+        self.local_repo.git.push('--set-upstream', remote_name, local_name)
+        print('local deployed to server')
+        # else:
+        #     print('no changes')
 
     # def print_commit(commit):
     #     print('----')
@@ -160,9 +158,9 @@ class DeployBot():
     #     print('Last commit for repo is {}.'.format(str(repo.head.commit.hexsha)))
 
 
-if __name__ == "__main__":
-    bot = DeployBot('/home/fr/Code/repo_test', '/home/franaudo/code/repo_test', 'franaudo@nefcloud')
-    sshbot = sshBot.from_credentials_file(".tokens/home.json")
-    bot.configure_local()
-    bot.configure_server(sshbot)
-    bot.deploy_to_server()
+# if __name__ == "__main__":
+#     bot = DeployBot('/home/fr/Code/myRepos/rpc', '/home/franaudo/code/rpc', 'franaudo@nefcloud')
+#     sshbot = sshBot.from_credentials_file(".tokens/home.json")
+#     bot.configure_local()
+#     bot.configure_server(sshbot)
+#     bot.deploy_to_server(local_name="master")

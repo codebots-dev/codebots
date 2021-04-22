@@ -33,3 +33,4 @@ Examples
    examples/emailbot.rst
    examples/telegrambot.rst
    examples/sshbot.rst
+   examples/deploybot.rst

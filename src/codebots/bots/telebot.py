@@ -63,10 +63,10 @@ class TeleBot():
         return response.json()
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
-    # init the bot
-    bot = TeleBot('.tokens/telegram.json')
+#     # init the bot
+#     bot = TeleBot('.tokens/telegram.json')
 
-    # send the message
-    bot.send_message('ciao mamma')
+#     # send the message
+#     bot.send_message('ciao mamma')
