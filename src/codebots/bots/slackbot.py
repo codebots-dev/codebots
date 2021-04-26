@@ -1,9 +1,14 @@
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
+import os
+
+from codebots import TOKENS
 
 __all__ = [
     'SlackBot'
 ]
+
+SLACK_TOKEN = os.path.join(TOKENS, "slak.json")
 
 
 class SlackBot():
