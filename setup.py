@@ -37,6 +37,8 @@ setup(
     entry_points={
         "console_scripts": [
             "codebots=codebots.cli:main",
+            "slackbot=codebots.cli:slackbot",
+            "telebot=codebots.cli:telebot",
         ],
     },
     install_requires=requirements,

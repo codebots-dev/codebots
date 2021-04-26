@@ -35,6 +35,7 @@ css_html_js_minify
 yagmail
 slack_sdk
 gitpython
+paramiko
 Click>=7.0
 
 -e .

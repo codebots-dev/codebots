@@ -1,12 +1,17 @@
 import requests
-import json
+import os
+
+from codebots import TOKENS
+from codebots.bots._bot import BaseBot
 
 __all__ = [
     'TeleBot'
 ]
 
+TELE_TOKEN = os.path .join(TOKENS, "telegram.json")
 
-class TeleBot():
+
+class TeleBot(BaseBot):
     """Bot that automatically sends messages over telegram
 
     Parameters
@@ -15,26 +20,13 @@ class TeleBot():
         json file containing the bot_token and the bot_chatID
     """
 
-    def __init__(self, config_file) -> None:
+    def __init__(self, config_file=None) -> None:
+        self.__name__ = "telebot"
+        if not config_file:
+            config_file = TELE_TOKEN
+        super().__init__(config_file)
         self._credentials = self._get_token(config_file)
         self._url = self._compose_url()
-
-    def _get_token(self, config_file):
-        """read the access token form a json file.
-
-        Parameters
-        ----------
-        config_file : json
-            json file containing the bot_token and the bot_chatID
-
-        Returns
-        -------
-        dict
-            credential info
-        """
-        with open(config_file, "r") as f:
-            token = json.load(f)
-        return token
 
     def _compose_url(self):
         """compose the base url to send the message

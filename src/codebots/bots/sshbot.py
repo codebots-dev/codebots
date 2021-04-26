@@ -101,8 +101,7 @@ class sshBot():
         """
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        if self.pvtkey:
-            k = paramiko.RSAKey.from_private_key_file(self.pvtkey, password=self.password)
+        k = paramiko.RSAKey.from_private_key_file(self.pvtkey, password=self.password) if self.pvtkey else None
         ssh_client.connect(hostname=self.hostname, username=self.username, password=self.password, pkey=k)
         print("connected")
         return ssh_client
@@ -154,8 +153,7 @@ class sshBot():
             paramiko sfpt client object
         """
         transport = paramiko.Transport((self.hostname, 22))
-        if self.pvtkey:
-            k = paramiko.RSAKey.from_private_key_file(self.pvtkey, password=self.password)
+        k = paramiko.RSAKey.from_private_key_file(self.pvtkey, password=self.password) if self.pvtkey else None
         transport.connect(username=self.username, password=self.password, pkey=k)
         return paramiko.SFTPClient.from_transport(transport)
 
