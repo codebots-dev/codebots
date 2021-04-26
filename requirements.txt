@@ -1,3 +1,4 @@
 yagmail
 slack_sdk
+paramiko
 Click>=7.0
