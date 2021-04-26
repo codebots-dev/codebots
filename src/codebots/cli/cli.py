@@ -49,6 +49,22 @@ def slackbot():
 
 
 @slackbot.command()
+@click.argument('token')
+def set_token(token):
+    """create the token file with the credentials.\n
+
+    Parameters\n
+    ----------\n
+    token : str\n
+        token of the telegram bot.\n
+    chatid : str\n
+        chatID of the chat with the bot.\n
+    """
+    out = add_token("slack", bot_token=token)
+    click.echo(out)
+
+
+@slackbot.command()
 @click.option('--channel', default='general', help='')
 @click.argument('message', default='Ciao Mamma!')
 def send(message, channel):
@@ -56,12 +72,8 @@ def send(message, channel):
     message : txt\n
         the message you want to send to yo.ur slack channel, by default `Ciao Mamma!`
     """
-    # Create a bot: you need to specify the location of the access token file ".tokens/slack"
-    bot = SlackBot("~/Code/.tokens/slack")
-
-    # Ask the bot to send a test message to a the 'general' channel of your workspace
-    bot.send_message(channel=channel, message=message)
-    return 0
+    bot = SlackBot()
+    bot.send_message(channel, message)
 
 
 @click.group()

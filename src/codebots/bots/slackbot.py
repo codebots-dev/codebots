@@ -3,15 +3,16 @@ from slack_sdk.errors import SlackApiError
 import os
 
 from codebots import TOKENS
+from codebots.bots._bot import BaseBot
 
 __all__ = [
     'SlackBot'
 ]
 
-SLACK_TOKEN = os.path.join(TOKENS, "slak.json")
+SLACK_TOKEN = os.path.join(TOKENS, "slack.json")
 
 
-class SlackBot():
+class SlackBot(BaseBot):
     """Bot that automatically sends messages over slack
 
     Parameters
@@ -20,7 +21,11 @@ class SlackBot():
         file with the access token for the slack workspace.
     """
 
-    def __init__(self, config_file) -> None:
+    def __init__(self, config_file=None) -> None:
+        self.__name__ = "slackbot"
+        if not config_file:
+            config_file = SLACK_TOKEN
+        super().__init__(config_file)
         self._token = self._get_token(config_file)
         self._client = self.connect()
 
@@ -28,18 +33,6 @@ class SlackBot():
     def client(self):
         """class : slack `WebClient` class"""
         return self._client
-
-    def _get_token(self, config_file):
-        """read the access token form a file.
-
-        Returns
-        -------
-        str
-            access token
-        """
-        with open(config_file, "r") as f:
-            token = f.readline()
-        return token
 
     def connect(self):
         """connect to the slack webclient.
@@ -51,7 +44,7 @@ class SlackBot():
         """
         return WebClient(token=self._token)
 
-    def fetch_channel_id(self, channel, output=False, verbose=False):
+    def _fetch_channel_id(self, channel, output=False, verbose=False):
         """Retrive the channel ID from its name
 
         Parameters
@@ -99,7 +92,7 @@ class SlackBot():
         """
         message = kwargs.get('message', "Ciao! Your results are ready! :)")
         channel = kwargs.get('channel', "general")
-        channel_id = self.fetch_channel_id(channel)
+        channel_id = self._fetch_channel_id(channel)
         try:
             # Call the conversations.list method using the WebClient
             result = self._client.chat_postMessage(
