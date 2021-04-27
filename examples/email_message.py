@@ -1,16 +1,18 @@
 from codebots.bots import EmailBot
-from codebots.bots import Sender
-
-# initiate the Sender with some credentials:
-# - you can specify the location of the access config file ".tokens/email" (keep this secret!)
-# - or you can pass username and password on the fly (not a great idea...)
-sender = Sender.form_file(".tokens/email")
 
 # Crete the bot: not it can send emails on behalf of the Sender account
-bot = EmailBot(sender)
+bot = EmailBot()
+
+# # If you want send an email from another account, initiate a Sender
+# # with some credentials and feed it to the emailbot:
+# # - you can specify the location of the access config file ".tokens/email" (keep this secret!)
+# # - or you can pass username and password on the fly (not a great idea...)
+# from codebots.bots import Sender
+# sender = Sender.form_file(".tokens/email")
+# bot = EmailBot(sender)
 
 # set the email content
-receiver = "francesco.ranaudo@gmail.com"
+receiver = "receiver@email.com"
 subject = "message from bot"
 body = "This message was sent by a bot"
 
