@@ -9,7 +9,7 @@ __all__ = [
     'EmailBot'
 ]
 
-EMAIL_TOKEN = os.path.join(TOKENS, "slack.json")
+EMAIL_TOKEN = os.path.join(TOKENS, "email.json")
 
 
 class Sender():
@@ -101,11 +101,12 @@ class EmailBot(BaseBot):
 
         # Debug
 if __name__ == "__main__":
-    sender = Sender.form_file(".tokens/email")
+    # sender = Sender.form_file("C:/Users/franaudo/.tokens/email.json")
     receiver = "francesco.ranaudo@gmail.com"
     subject = "message from bot"
     body = "This message was sent by a bot"
     filename = "document.pdf"
 
-    bot = EmailBot(sender)
+    # bot = EmailBot(sender)
+    bot = EmailBot()
     bot.send_email(receiver, subject, body)

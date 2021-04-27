@@ -1,6 +1,7 @@
 """Console script for codebots."""
 import sys
 import click
+import codebots
 from codebots.bots import SlackBot
 from codebots.bots import TeleBot
 from codebots.bots import EmailBot
@@ -20,6 +21,19 @@ def one_o_one():
                "To use codebots directly from the command line, type the name of your bot followed by the action.\n"
                "For example, this command sends a message through slack:\n\n"
                "    slackbot --channel=random \"Hello from your slacbot!\"\n")
+
+
+@main.command()
+def get_tokens_path():
+    """Get the path to the tokens folder.\n
+
+    Return\n
+    ------\n
+    str\n
+        path to the folder containing the tokens or passwords for the codebots.\n
+    """
+    out = codebots.TOKENS
+    click.echo(out)
 
 
 @main.command()
