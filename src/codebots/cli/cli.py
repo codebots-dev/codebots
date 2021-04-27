@@ -114,7 +114,7 @@ def set_token(token, chatid):
 
 @click.group()
 def emailbot():
-    """bot to interact with telegram"""
+    """bot to send emails from the command line"""
     pass
 
 
@@ -122,8 +122,8 @@ def emailbot():
 @click.argument('receiver', default='mamma@email.com')
 @click.argument('subject', default='Ciao')
 @click.argument('body', default='Ciao Mamma!')
-@click.option('--attach',  type='path', help='path to any file you want to attach')
-def send(receiver, subject, body, attach):
+# @click.option('--attach',  type='path', help='path to any file you want to attach')
+def send(receiver, subject, body):
     """Send an email to an email address.\n
 
         Parameters\n
