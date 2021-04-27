@@ -39,6 +39,7 @@ setup(
             "codebots=codebots.cli:main",
             "slackbot=codebots.cli:slackbot",
             "telebot=codebots.cli:telebot",
+            "emailbot=codebots.cli:emailbot",
         ],
     },
     install_requires=requirements,

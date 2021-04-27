@@ -26,7 +26,7 @@ class SlackBot(BaseBot):
         if not config_file:
             config_file = SLACK_TOKEN
         super().__init__(config_file)
-        self._token = self._get_token(config_file)
+        self._token = self._get_token(config_file)["bot_token"]
         self._client = self.connect()
 
     @property

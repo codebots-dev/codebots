@@ -1,6 +1,6 @@
-=====
-Usage
-=====
+===============
+Getting Started
+===============
 
 A simple example of typical applicaiton can be to have a `bot` to send you a
 message (over email, slack, telegram, ...) once your code triggers an action.
@@ -29,6 +29,7 @@ Examples
    :titlesonly:
    :glob:
 
+   examples/cli.rst
    examples/slackbot.rst
    examples/emailbot.rst
    examples/telegrambot.rst

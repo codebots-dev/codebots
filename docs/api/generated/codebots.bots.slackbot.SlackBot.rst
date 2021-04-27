@@ -16,7 +16,6 @@
       :toctree: methods/
 
       SlackBot.connect
-      SlackBot.fetch_channel_id
       SlackBot.send_message
    
    
