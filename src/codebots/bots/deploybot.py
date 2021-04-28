@@ -1,5 +1,6 @@
 import os
 from git import Repo
+from pathlib import Path
 from codebots.bots import sshBot
 
 COMMITS_TO_PRINT = 5
@@ -15,8 +16,7 @@ class DeployBot():
         path to the local clone of the repository
     server_repo_path : str
         path to the server bare repository. If no repository is present
-        at the given location a bare new one is created. NOTE: the path must be
-        valid (only the repository folder will be created).
+        at the given location a bare new one is created.
     server_addres : str
         complete server address (username@host).
 
@@ -66,7 +66,7 @@ class DeployBot():
         print('deploy added to remotes')
         print('local repository configured!')
 
-    def configure_server(self, sshbot):
+    def configure_server(self, sshbot, os='linux'):
         """Configure the server side:
             - check if server has git repository folder;
             - if not create a bare repository;
@@ -84,9 +84,11 @@ class DeployBot():
         # check if folder exists:
         if std_dict["stdout"][0] != 'yes':
             try:
-                sshbot.execute_cmds(['mkdir {}'.format(self.server_repo_path),
+                cmd = 'mkdir' if os == 'windows' else 'mkdir -p'
+                sshbot.execute_cmds(['{} {}'.format(cmd, self.server_repo_path),
                                     'git --git-dir={} {}'.format(git_folder, 'init'),
                                      'git --git-dir={} {}'.format(git_folder, 'config receive.denyCurrentBranch updateInstead')], verbose=False)
+
             except:
                 raise Exception("Something went wrong!! Please make sure there the server path is valid and you have git\
                     on the server side.")
