@@ -16,6 +16,15 @@ For example::
 
     bot.send_message("your code is working!")
 
+or simply using a decorator::
+
+    import codebots
+
+    @codebots.telemonitor
+    def your_awesome_function(args, kwargs)
+        YOUR SUPER AWESOME CODE
+
+
 
 For more datiled examples of applicaitons, check the list below!
 
@@ -30,6 +39,7 @@ Examples
    :glob:
 
    examples/cli.rst
+   examples/decorators.rst
    examples/slackbot.rst
    examples/emailbot.rst
    examples/telegrambot.rst
