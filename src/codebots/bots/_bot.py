@@ -4,6 +4,8 @@ import json
 class BaseBot():
     def __init__(self, config_file) -> None:
         self._credentials = self._get_token(config_file)
+        for k, v in self._credentials.items():
+            self.__setattr__(k, v)
 
     def _get_token(self, config_file):
         """read the access token form a json file.

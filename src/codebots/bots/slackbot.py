@@ -2,14 +2,12 @@ from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 import os
 
-from codebots import TOKENS
-from codebots.bots._bot import BaseBot
+
+from ._bot import BaseBot
 
 __all__ = [
     'SlackBot'
 ]
-
-SLACK_TOKEN = os.path.join(TOKENS, "slack.json")
 
 
 class SlackBot(BaseBot):
@@ -21,11 +19,12 @@ class SlackBot(BaseBot):
         file with the access token for the slack workspace.
     """
 
-    def __init__(self, config_file=SLACK_TOKEN) -> None:
+    def __init__(self, config_file=None) -> None:
+        if not config_file:
+            from .. import TOKENS
+            config_file = os.path.join(TOKENS, "slack.json")
         self.__name__ = "slackbot"
         super().__init__(config_file)
-        for k, v in self._credentials.items():
-            self.__setattr__(k, v)
         self._client = self.connect()
 
     @property

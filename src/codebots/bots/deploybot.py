@@ -58,7 +58,7 @@ class DeployBot():
         self.local_repo = Repo(local_repo_path)
 
     def configure_local(self):
-        """configure the local repository to sync with the server.
+        """Configure the local repository to sync with the server.
         """
         if 'deploy' in self.local_repo.remotes:
             self.local_repo.delete_remote("deploy")
@@ -88,9 +88,8 @@ class DeployBot():
                 sshbot.execute_cmds(['{} {}'.format(cmd, self.server_repo_path),
                                     'git --git-dir={} {}'.format(git_folder, 'init'),
                                      'git --git-dir={} {}'.format(git_folder, 'config receive.denyCurrentBranch updateInstead')], verbose=False)
-
             except:
-                raise Exception("Something went wrong!! Please make sure there the server path is valid and you have git\
+                raise Exception("Something went wrong!! Please make sure that the server path is valid and you have git\
                     on the server side.")
         else:
             if std_dict["stdout"][1] != 'yes':
@@ -160,9 +159,9 @@ class DeployBot():
     #     print('Last commit for repo is {}.'.format(str(repo.head.commit.hexsha)))
 
 
-# if __name__ == "__main__":
-#     bot = DeployBot('/home/fr/Code/myRepos/rpc', '/home/franaudo/code/rpc', 'franaudo@nefcloud')
-#     sshbot = sshBot.from_credentials_file(".tokens/home.json")
-#     bot.configure_local()
-#     bot.configure_server(sshbot)
-#     bot.deploy_to_server(local_name="master")
+if __name__ == "__main__":
+    bot = DeployBot('/home/fr/Code/myRepos/rpc', '/home/franaudo/code/rpc', 'franaudo@nefcloud')
+    sshbot = sshBot.from_credentials_file(".tokens/home.json")
+    bot.configure_local()
+    bot.configure_server(sshbot)
+    bot.deploy_to_server(local_name="master")

@@ -2,14 +2,12 @@ import paramiko
 import os
 import socket
 
-from codebots import TOKENS
-from codebots.bots._bot import BaseBot
+
+from ._bot import BaseBot
 
 __all__ = [
     'sshBot'
 ]
-
-SSH_TOKEN = os.path .join(TOKENS, "ssh.json")
 
 
 class sshBot(BaseBot):
@@ -42,16 +40,19 @@ class sshBot(BaseBot):
         paramiko `SFTPClient` object, if a connection is active, otherwise None.
     """
 
-    def __init__(self, config_file=SSH_TOKEN, **kwargs) -> None:
+    def __init__(self, config_file='default', **kwargs) -> None:
 
         self.__name__ = "sshbot"
         if not config_file:
             self._credentials = kwargs
+            for k, v in self._credentials.items():
+                self.__setattr__(k, v)
+        elif config_file == 'default':
+            from .. import TOKENS
+            config_file = os.path .join(TOKENS, "ssh.json")
+            super().__init__(config_file)
         else:
-            super().__init__(SSH_TOKEN)
-
-        for k, v in self._credentials.items():
-            self.__setattr__(k, v)
+            super().__init__(config_file)
         # self.hostname = hostname
         # self.username = username
         # self.password = password
