@@ -20,12 +20,9 @@ class TeleBot(BaseBot):
         json file containing the bot_token and the bot_chatID
     """
 
-    def __init__(self, config_file=None) -> None:
+    def __init__(self, config_file=TELE_TOKEN) -> None:
         self.__name__ = "telebot"
-        if not config_file:
-            config_file = TELE_TOKEN
         super().__init__(config_file)
-        self._credentials = self._get_token(config_file)
         self._url = self._compose_url()
 
     def _compose_url(self):
@@ -55,10 +52,10 @@ class TeleBot(BaseBot):
         return response.json()
 
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
 
-#     # init the bot
-#     bot = TeleBot('.tokens/telegram.json')
+    # init the bot
+    bot = TeleBot()
 
-#     # send the message
-#     bot.send_message('ciao mamma')
+    # send the message
+    bot.send_message('ciao mamma')
