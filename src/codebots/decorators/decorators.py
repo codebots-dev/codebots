@@ -1,10 +1,16 @@
-from codebots.bots import TeleBot
+from importlib import import_module
 
 
-def telemonitor(function):
-    def wrapper(*args, **kwargs):
-        function(*args, **kwargs)
-        bot = TeleBot()
-        bot.send_message("{} is done!".format(str(function.__name__)))
+def monitor(bot_name, **dec_kwargs):
+    def decorator(function):
+        def wrapper(*args, **kwargs):
+            function(*args, **kwargs)
+            cls = getattr(import_module('codebots.bots.{}'.format(bot_name.lower())), bot_name)
+            bot = cls()
 
-    return wrapper
+            if 'message' not in dec_kwargs.keys():
+                dec_kwargs['message'] = "{} is done!".format(str(function.__name__))
+
+            bot.send_message(**dec_kwargs)
+        return wrapper
+    return decorator

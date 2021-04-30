@@ -1,13 +1,15 @@
 import codebots
 import time
-# from codebots.decorators import monitor
+
+# Simply add the `monitor` decorator before your funcion (Note the capital letters!)
 
 
-@codebots.telemonitor
+@codebots.monitor("SlackBot", channel="topopt")
+# @codebots.monitor("TeleBot", message="this is a personalized message")  # would send the message through slack instead
 def example_function(seconds):
-    print('hello, in {} seconds you will get a message on telegram'.format(str(seconds)))
+    print('hello, in {} second(s) you will get a message on telegram'.format(str(seconds)))
     time.sleep(seconds)
-    print("...ok...a bit more...!")
+    print("...ok...a bit more...! :)")
 
 
-example_function(2)
+example_function(3)

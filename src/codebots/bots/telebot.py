@@ -36,7 +36,7 @@ class TeleBot(BaseBot):
         """
         return 'https://api.telegram.org/bot' + self._credentials["bot_token"] + '/sendMessage?chat_id=' + self._credentials["bot_chatID"] + '&parse_mode=HTML&text='
 
-    def send_message(self, bot_message):
+    def send_message(self, message):
         """send the message over telegram
 
         Parameters
@@ -49,7 +49,7 @@ class TeleBot(BaseBot):
         json
             response from the server
         """
-        response = requests.get(self._url + bot_message)
+        response = requests.get(self._url + message)
         return response.json()
 
 
