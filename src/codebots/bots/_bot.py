@@ -2,6 +2,9 @@ import json
 
 
 class BaseBot():
+    """BaseBot class for the other bots.
+    """
+
     def __init__(self, config_file) -> None:
         self._credentials = self._get_token(config_file)
         for k, v in self._credentials.items():

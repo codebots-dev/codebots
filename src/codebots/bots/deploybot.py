@@ -1,6 +1,4 @@
-import os
 from git import Repo
-from pathlib import Path
 from codebots.bots import sshBot
 
 COMMITS_TO_PRINT = 5
