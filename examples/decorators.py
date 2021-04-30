@@ -2,6 +2,7 @@ import codebots
 import time
 
 # Simply add the `monitor` decorator before your funcion (Note the capital letters!)
+# currently only `SlakBot` and `TeleBot` are supported.
 
 
 @codebots.monitor("SlackBot", channel="topopt")

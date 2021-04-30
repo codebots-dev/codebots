@@ -53,10 +53,6 @@ class sshBot(BaseBot):
             super().__init__(config_file)
         else:
             super().__init__(config_file)
-        # self.hostname = hostname
-        # self.username = username
-        # self.password = password
-        # self.pvtkey = pvtkey
 
         self.host_address = self.hostname if '.' in self.hostname else socket.gethostbyname(self.hostname)
         self._ssh_client = None
@@ -220,4 +216,3 @@ if __name__ == '__main__':
     # print(bot.ssh_client)
     # bot.execute_cmds(commands=['ls -l'], close_connection=True)
     # print(bot.ssh_client)
-# C:\\Users\\franaudo\\.ssh\\pvtkey
