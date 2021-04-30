@@ -2,7 +2,7 @@
 Add a decorator to your code
 ********************************************************************************
 
-This example shows how simple it is to get a message on telegram whenever a function
+This example shows how simple it is to get a message whenever a function
 is complete.
 
 
