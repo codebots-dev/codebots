@@ -4,6 +4,18 @@ from codebots import SETTINGS, TOKENS
 
 
 def set_token_dir(path):
+    """Set the location where codebots looks for the bots credentials.
+
+    Parameters
+    ----------
+    path : str
+        path to the folder where the json files with credentials are stored.
+
+    Returns
+    -------
+    str
+        message
+    """
     path_dic = {}
     try:
         with open(SETTINGS, 'w') as f:
@@ -15,12 +27,19 @@ def set_token_dir(path):
 
 
 def reset_token_dir():
+    """Reset the credentials folder to default.
+
+    Returns
+    -------
+    str
+        message
+    """
     set_token_dir("None")
     return "tokens path resetted!"
 
 
 def add_token(bot, **kwargs):
-    """create a json file with the credential settings needed for the bot to
+    """Create a json file with the credential settings needed for the bot to
     operate.
 
     Parameters

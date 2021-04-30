@@ -1,4 +1,17 @@
-"""Console script for codebots."""
+"""Console script for codebots.
+
+You can get detaled information about each of the bots with the :code:`--help` option.
+
+.. code-block:: bash
+
+    codebots    --help
+    emailbot    --help
+    telebot     --help
+    slackbot    --help
+    sshkbot     --help
+
+
+"""
 import sys
 import os
 from pathlib import Path
@@ -14,6 +27,10 @@ from codebots.utilities.tokens import add_token, set_token_dir, reset_token_dir
 
 @click.group()
 def main():
+    """base bot to setup the common settings for all the other bots.
+
+    Run `codebots ono-o-one` for more info.
+    """
     pass
 
 

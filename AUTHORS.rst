@@ -5,7 +5,7 @@ Credits
 Development Lead
 ----------------
 
-* Francesco Ranaudo <ranaudo@arch.ethz.ch>
+* Francesco Ranaudo <francesco.ranaudo@gmail.com>
 
 Contributors
 ------------
