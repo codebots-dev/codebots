@@ -1,11 +1,14 @@
 """Console script for codebots."""
 import sys
+import os
+from pathlib import Path
 import click
 import codebots
 from codebots.bots import SlackBot
 from codebots.bots import TeleBot
 from codebots.bots import EmailBot
-from codebots.utilities.sshkey import gen_keypair
+from codebots.bots import sshBot
+from codebots.utilities.sshkey import gen_keypair, add_pubkey_to_server
 from codebots.utilities.tokens import add_token, set_token_dir, reset_token_dir
 
 
@@ -210,17 +213,37 @@ def set_token(hostname, username, password, pvtkey):
 
 
 @sshbot.command()
-@click.option('--ssh_folder', default=None, help='path where the key pair will be saved')
+@click.option('--ssh_folder', default=None, help='path where the key pair will be saved, by default None (the `USER/.ssh` folder will be used)')
+@click.option('--password', default=None, help='encrypt the private key with a password')
 def genkeys(ssh_folder):
-    """Create a set of public and private keys and save them in the given folder.\n
-
-    Parameters\n
-    ----------\n
-    ssh_folder : str\n
-        path where the key pair will be saved, by default None (the `USER/.ssh` folder will be used).\n
+    """Create a set of public and private keys and save them in the given folder.
     """
 
     out = gen_keypair(ssh_folder)
+    click.echo(out)
+
+
+@sshbot.command()
+@click.argument('hostname')
+@click.argument('username')
+@click.argument('password')
+@click.option('--ssh_folder', help='path where the key pair will be saved')
+def link_keys(hostname, username, password, ssh_folder):
+    """Adds the public key to the server's list.\n
+
+    Parameters\n
+    ----------\n
+    hostname : str\n
+        ip address of the server.\n
+    username : str\n
+        username on the server.\n
+    password : str\n
+        password on the server, by default empty.\n
+    """
+    bot = sshBot(config_file=None, hostname=hostname, username=username, password=password, pvtkey="")
+    out = add_pubkey_to_server(bot, ssh_folder)
+    click.echo(out)
+    out = add_token("ssh", hostname=hostname, username=username, password="", pvtkey=os.path.join(ssh_folder, 'id_rsa'))
     click.echo(out)
 
 

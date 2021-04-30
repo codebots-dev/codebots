@@ -21,12 +21,11 @@ class SlackBot(BaseBot):
         file with the access token for the slack workspace.
     """
 
-    def __init__(self, config_file=None) -> None:
+    def __init__(self, config_file=SLACK_TOKEN) -> None:
         self.__name__ = "slackbot"
-        if not config_file:
-            config_file = SLACK_TOKEN
         super().__init__(config_file)
-        self._token = self._get_token(config_file)["bot_token"]
+        for k, v in self._credentials.items():
+            self.__setattr__(k, v)
         self._client = self.connect()
 
     @property
@@ -42,7 +41,7 @@ class SlackBot(BaseBot):
         class
             slack WebClient class
         """
-        return WebClient(token=self._token)
+        return WebClient(token=self.bot_token)
 
     def _fetch_channel_id(self, channel, output=False, verbose=False):
         """Retrive the channel ID from its name
@@ -108,8 +107,8 @@ class SlackBot(BaseBot):
             print(f"Error: {e}")
 
 
-# # Debug
-# if __name__ == "__main__":
+# Debug
+if __name__ == "__main__":
 
-#     bot = SlackBot(".tokens/slack")
-#     bot.send_message(channel='topopt', message='test')
+    bot = SlackBot()
+    bot.send_message(channel='topopt', message='test')

@@ -13,29 +13,46 @@ def gen_keypair(ssh_folder=None, password=None):
     Parameters
     ----------
     ssh_folder : str
-        folder where the keys are saved
+        folder where the keys are saved.
+    password : str
+        encrypt the private key with a password.
     """
 
     if not ssh_folder:
         ssh_folder = os.path.join(Path.home(), '.ssh')
     key = paramiko.RSAKey.generate(4096)
-    with open(os.path.join(ssh_folder, "pubkey"), "w") as key_file:
-        key_file.write(key.get_base64())
-    with open(os.path.join(ssh_folder, "pvtkey"), "w") as key_file:
+    with open(os.path.join(ssh_folder, "id_rsa.pub"), "w") as key_file:
+        key_file.write("ssh-rsa {}".format(key.get_base64()))
+    with open(os.path.join(ssh_folder, "id_rsa"), "w") as key_file:
         key.write_private_key(key_file, password)
 
-
-def _copy_pubkey_to_server(host, password, path=None):
-    test = subprocess.Popen(["dir"])
-    return test
+    return "Key pair successfully generated in {}".format(ssh_folder)
 
 
-def _copy_pvtkey_to_default_location():
-    pass
+def add_pubkey_to_server(bot, ssh_folder, os_type='linux'):
+    """Adds the public key to the server's list.
 
+    Parameters
+    ----------
+    bot : obj
+        `sshBot` object to access the server.
+    ssh_folder : str
+        folder where the keys are stored.
 
-def setup_keys(host, password, pubkey, path=None):
-    pass
+    Warnings
+    --------
+    This works only on linux servers.
+    """
+    if not ssh_folder:
+        ssh_folder = os.path.join(str(Path.home()), '.ssh')
+    with open(os.path.join(ssh_folder, 'id_rsa.pub'), "r") as pubkey_file:
+        pubkey = pubkey_file.readline()
+    bot.execute_cmds(commands=['(umask 077 && test -d ~/.ssh || mkdir ~/.ssh)',
+                               '(umask 077 && touch ~/.ssh/authorized_keys)',
+                               'echo {} >>  ~/.ssh/authorized_keys'.format(pubkey)],
+                     close_connection=False,
+                     verbose=False)
+    return ("public key successfully added. Try to run `ssh hostname`")
 
     # def connect_with_pvtkey():
     #     k = paramiko.RSAKey.from_private_key_file("/home/fr/.ssh/id_rsa", password="Sxcdews23")
@@ -91,5 +108,6 @@ def setup_keys(host, password, pubkey, path=None):
 
 
 if __name__ == "__main__":
-    a = _copy_pubkey_to_server(1, 2)
-    print(a)
+    from codebots.bots import sshBot
+    bot = sshBot(config_file=None, hostname="192.168.0.199", username="franaudo", password="Sxcdews23", pvtkey="")
+    add_pubkey_to_server(bot, path_local="C:/Users/franaudo/.ssh/pubkey")

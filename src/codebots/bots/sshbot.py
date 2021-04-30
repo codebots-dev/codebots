@@ -1,9 +1,9 @@
 import paramiko
 import os
+import socket
 
 from codebots import TOKENS
 from codebots.bots._bot import BaseBot
-
 
 __all__ = [
     'sshBot'
@@ -56,6 +56,8 @@ class sshBot(BaseBot):
         # self.username = username
         # self.password = password
         # self.pvtkey = pvtkey
+
+        self.host_address = self.hostname if '.' in self.hostname else socket.gethostbyname(self.hostname)
         self._ssh_client = None
         self._sftp_client = None
 
@@ -106,7 +108,7 @@ class sshBot(BaseBot):
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         k = paramiko.RSAKey.from_private_key_file(self.pvtkey, password=self.password) if self.pvtkey else None
-        ssh_client.connect(hostname=self.hostname, username=self.username, password=self.password, pkey=k)
+        ssh_client.connect(hostname=self.host_address, username=self.username, password=self.password, pkey=k)
         print("\nconnected\n")
         return ssh_client
 
@@ -131,7 +133,8 @@ class sshBot(BaseBot):
         out_dict = {"stdout": [], "stderr": []}
 
         for command in commands:
-            print("Executing {}:\n".format(command))
+            if verbose:
+                print("Executing {}:\n".format(command))
             stdin, stdout, stderr = self._ssh_client.exec_command(command)
             out_dict["stdout"].append(stdout.read().rstrip().decode("utf-8"))
             out_dict["stderr"].append(stderr.read().rstrip().decode("utf-8"))
@@ -156,7 +159,7 @@ class sshBot(BaseBot):
         obj
             paramiko sfpt client object
         """
-        transport = paramiko.Transport((self.hostname, 22))
+        transport = paramiko.Transport((self.host_address, 22))
         k = paramiko.RSAKey.from_private_key_file(self.pvtkey, password=self.password) if self.pvtkey else None
         transport.connect(username=self.username, password=self.password, pkey=k)
         return paramiko.SFTPClient.from_transport(transport)
@@ -209,10 +212,10 @@ class sshBot(BaseBot):
 if __name__ == '__main__':
     pass
 
-    bot = sshBot(config_file=None, hostname="192.168.0.199", username="franaudo", password="Sxcdews23", pvtkey="")
-    # bot = sshBot()
+    # bot = sshBot(config_file=None, hostname="192.168.0.199", username="franaudo", password="Sxcdews23", pvtkey="")
+    bot = sshBot()
 
-    bot.execute_cmds(commands=['ls'], close_connection=False)
+    bot.execute_cmds(commands=['ls'], close_connection=True)
     # print(bot.ssh_client)
     # bot.execute_cmds(commands=['ls -l'], close_connection=True)
     # print(bot.ssh_client)
