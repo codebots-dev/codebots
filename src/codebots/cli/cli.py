@@ -5,6 +5,7 @@ import codebots
 from codebots.bots import SlackBot
 from codebots.bots import TeleBot
 from codebots.bots import EmailBot
+from codebots.utilities.sshkey import gen_keypair
 from codebots.utilities.tokens import add_token, set_token_dir, reset_token_dir
 
 
@@ -176,6 +177,50 @@ def set_token(username, password):
         chatID of the chat with the bot.\n
     """
     out = add_token("email", username=username, password=password)
+    click.echo(out)
+
+
+@click.group()
+def sshbot():
+    """bot to interact with telegram"""
+    pass
+
+
+@sshbot.command()
+@click.argument('hostname')
+@click.argument('username')
+@click.option('--password', default='', help='password to access the host or to decrypt the private key')
+@click.option('--pvtkey', default='', help='path to the private key')
+def set_token(hostname, username, password, pvtkey):
+    """create the token file with the credentials.\n
+
+    Parameters\n
+    ----------\n
+    hostname : str\n
+        ip address of the server.\n
+    username : str\n
+        username on the server.\n
+    password : str\n
+        password on the server, by default empty.\n
+    pvtkey : str\n
+        path to the private RSA key file, by default empty.\n
+    """
+    out = add_token("ssh", hostname=hostname, username=username, password=password, pvtkey=pvtkey)
+    click.echo(out)
+
+
+@sshbot.command()
+@click.option('--ssh_folder', default=None, help='path where the key pair will be saved')
+def genkeys(ssh_folder):
+    """Create a set of public and private keys and save them in the given folder.\n
+
+    Parameters\n
+    ----------\n
+    ssh_folder : str\n
+        path where the key pair will be saved, by default None (the `USER/.ssh` folder will be used).\n
+    """
+
+    out = gen_keypair(ssh_folder)
     click.echo(out)
 
 
