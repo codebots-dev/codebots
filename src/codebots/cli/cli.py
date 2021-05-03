@@ -246,7 +246,6 @@ def set_token(hostname, username, password, pvtkey):
 def genkeys(ssh_folder):
     """Create a set of public and private keys and save them in the given folder.
     """
-
     out = gen_keypair(ssh_folder)
     click.echo(out)
 
@@ -284,11 +283,11 @@ def deploybot():
 
 @deploybot.command()
 @click.argument('project')
+@click.argument('address')
 @click.argument('local')
 @click.argument('server')
-@click.argument('address')
 @click.option('--sshbot', default=None, help='instance of an `sshBot` with access to the server.')
-def configure(project, local, server, address):
+def configure(project, address, local, server, sshbot):
     """Configure a local repository to sync with a server.\n
 
     Parameters\n
@@ -298,12 +297,10 @@ def configure(project, local, server, address):
     server : str\n
         path to the server bare repository. If no repository is present\n
         at the given location a bare new one is created.\n
-    addres : str\n
-        complete server address (username@host).\n
     """
-    out = add_token(project, local_repo_path=local, server_repo_path=server, server_addres=address)
+    out = add_token(bot=project, server_address=address, local_repo_path=local, server_repo_path=server)
     click.echo(out)
-    bot = DeployBot()
+    bot = DeployBot(project)
     out = configure_local(bot.local_repo, bot.server_complete_path)
     click.echo(out)
     out = configure_server(bot.server_repo_path, sshbot)

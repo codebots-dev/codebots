@@ -1,9 +1,7 @@
 import paramiko
 import os
-import sys
 from pathlib import Path
 # from io import StringIO
-import subprocess
 
 
 def gen_keypair(ssh_folder=None, password=None):

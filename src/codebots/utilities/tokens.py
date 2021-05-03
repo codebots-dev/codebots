@@ -1,6 +1,6 @@
 import json
 import os
-from codebots import SETTINGS, TOKENS
+from .. import SETTINGS, TOKENS
 
 
 def set_token_dir(path):

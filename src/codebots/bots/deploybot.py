@@ -1,7 +1,6 @@
 import os
 from git import Repo
-from codebots.bots._bot import BaseBot
-from codebots.bots import sshBot
+from ._bot import BaseBot
 
 COMMITS_TO_PRINT = 5
 
