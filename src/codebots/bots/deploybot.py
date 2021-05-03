@@ -1,22 +1,31 @@
+import os
 from git import Repo
+from codebots.bots._bot import BaseBot
 from codebots.bots import sshBot
 
 COMMITS_TO_PRINT = 5
 
 
-class DeployBot():
+class DeployBot(BaseBot):
     """Bot to help with the deployment of code on a server. It uses a `sshBot` in
     the background.
 
     Parameters
     ----------
-    local_repo_path : str
-        path to the local clone of the repository
-    server_repo_path : str
-        path to the server bare repository. If no repository is present
-        at the given location a bare new one is created.
-    server_addres : str
-        complete server address (username@host).
+    project : str
+        project name. It is used to find the configuration file associated to it.
+    config_file : json
+        path to a json file containing the required info. You can use the command
+        line to create one or manually configure a json file following this
+        template:
+
+            .. code-block:: json
+
+                {
+                    "local_repo_path" :  "_______",
+                    "server_repo_path" : "_______",
+                    "server_addres" :    "_______",
+                }
 
     Attributes
     ----------
@@ -26,7 +35,7 @@ class DeployBot():
         path to the server bare repository.
     server_addres : str
         complete server address (*username@host*).
-    server_complete_address : str
+    server_complete_path : str
         complete path to the server repository (*username@host:pat/to/server/repository*)
     local_repo : obj
         gitpython Repo object pointing to the local repository.
@@ -35,12 +44,7 @@ class DeployBot():
     --------
     .. code-block:: python
 
-        bot = DeployBot('/path/to/local/repo', '/path/to/server/repo', 'username@host')
-        sshbot = sshBot.from_credentials_file(".tokens/ssh.json")
-        # initial configuration (first time only)
-        bot.configure_local()
-        bot.configure_server(sshbot)
-        # deployment
+        bot = DeployBot('my_project')
         bot.deploy_to_server()
 
     Warnings
@@ -48,55 +52,16 @@ class DeployBot():
     I still need to figure out how to avoid the use of sshkeys for the pushing part
     """
 
-    def __init__(self, local_repo_path, server_repo_path, server_address) -> None:
-        self.local_repo_path = local_repo_path
-        self.server_repo_path = server_repo_path
-        self.server_address = server_address
-        self.server_complete_path = server_address+":"+server_repo_path
-        self.local_repo = Repo(local_repo_path)
-
-    def configure_local(self):
-        """Configure the local repository to sync with the server.
-        """
-        if 'deploy' in self.local_repo.remotes:
-            self.local_repo.delete_remote("deploy")
-        self.local_repo.create_remote("deploy", self.server_complete_path)
-        print('deploy added to remotes')
-        print('local repository configured!')
-
-    def configure_server(self, sshbot, os='linux'):
-        """Configure the server side:
-            - check if server has git repository folder;
-            - if not create a bare repository;
-            - configure the server repository to sync with the local.
-
-        Parameters
-        ----------
-        sshbot : obj
-            instance of an `sshBot` with access to the server.
-        """
-        git_folder = os.path.join(self.server_repo_path, '.git')
-
-        std_dict = sshbot.execute_cmds(["if test -d {}; then echo {}; fi".format(self.server_repo_path, "yes"),
-                                        "if test -d {}; then echo {}; fi".format(git_folder, "yes")], False, False)
-        # check if folder exists:
-        if std_dict["stdout"][0] != 'yes':
-            try:
-                cmd = 'mkdir' if os == 'windows' else 'mkdir -p'
-                sshbot.execute_cmds(['{} {}'.format(cmd, self.server_repo_path),
-                                    'git --git-dir={} {}'.format(git_folder, 'init'),
-                                     'git --git-dir={} {}'.format(git_folder, 'config receive.denyCurrentBranch updateInstead')], verbose=False)
-            except:
-                raise Exception("Something went wrong!! Please make sure that the server path is valid and you have git\
-                    on the server side.")
-        else:
-            if std_dict["stdout"][1] != 'yes':
-                sshbot.execute_cmds(['git --git-dir={} {}'.format(git_folder, 'init'),
-                                     'git --git-dir={} {}'.format(git_folder, 'config receive.denyCurrentBranch updateInstead')], verbose=False)
-            else:
-                sshbot.execute_cmds(['git --git-dir={} {}'.format(git_folder,
-                                                                  'config receive.denyCurrentBranch updateInstead')], verbose=False)
-        print('server repository configured!')
+    def __init__(self, project=None, config_file=None) -> None:
+        self.__name__ = "deploybot"
+        if not config_file:
+            if not project:
+                raise ValueError("Either a project name or a config_file must be passed")
+            from .. import TOKENS
+            config_file = os.path .join(TOKENS, "{}.json".format(project))
+        super().__init__(config_file)
+        self.server_complete_path = self.server_address+":"+self.server_repo_path
+        self.local_repo = Repo(self.local_repo_path)
 
     def deploy_to_server(self, remote_name="deploy", local_name="master", commit_message="deployed"):
         """Deploy the changes to the server.
@@ -133,7 +98,7 @@ class DeployBot():
         # if self.local_repo.index.diff(None) or self.local_repo.untracked_files:
 
         self.local_repo.git.add(A=True)
-        self.local_repo.git.commit(m='msg')
+        self.local_repo.git.commit(m=commit_message)
         self.local_repo.git.push('--set-upstream', remote_name, local_name)
         print('local deployed to server')
         # else:
@@ -158,8 +123,5 @@ class DeployBot():
 
 
 if __name__ == "__main__":
-    bot = DeployBot('/home/fr/Code/myRepos/rpc', '/home/franaudo/code/rpc', 'franaudo@nefcloud')
-    sshbot = sshBot.from_credentials_file(".tokens/home.json")
-    bot.configure_local()
-    bot.configure_server(sshbot)
+    bot = DeployBot('my_project')
     bot.deploy_to_server(local_name="master")

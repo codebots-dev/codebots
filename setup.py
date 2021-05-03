@@ -41,6 +41,7 @@ setup(
             "telebot=codebots.cli:telebot",
             "emailbot=codebots.cli:emailbot",
             "sshbot=codebots.cli:sshbot",
+            "deploybot=codebots.cli:deploybot",
         ],
     },
     install_requires=requirements,

@@ -8,7 +8,8 @@ You can get detaled information about each of the bots with the :code:`--help` o
     emailbot    --help
     telebot     --help
     slackbot    --help
-    sshkbot     --help
+    sshbot      --help
+    deploybot   --help
 
 
 """
@@ -21,10 +22,13 @@ from codebots.bots import SlackBot
 from codebots.bots import TeleBot
 from codebots.bots import EmailBot
 from codebots.bots import sshBot
-from codebots.utilities.sshkey import gen_keypair, add_pubkey_to_server
+from codebots.bots.deploybot import DeployBot
+from codebots.utilities.ssh import gen_keypair, add_pubkey_to_server
 from codebots.utilities.tokens import add_token, set_token_dir, reset_token_dir
+from codebots.utilities.deploy import configure_local, configure_server
 
 
+### -------------------------------- MAIN ----------------------------------###
 @click.group()
 def main():
     """base bot to setup the common settings for all the other bots.
@@ -77,6 +81,8 @@ def reset_tokens_path():
     out = reset_token_dir()
     click.echo(out)
 
+### -------------------------------- SLACK ----------------------------------###
+
 
 @click.group()
 def slackbot():
@@ -110,6 +116,8 @@ def send(message, channel):
     """
     bot = SlackBot()
     bot.send_message(channel, message)
+
+### ----------------------------- TELEGRAM ----------------------------------###
 
 
 @click.group()
@@ -145,6 +153,8 @@ def set_token(token, chatid):
     """
     out = add_token("telegram", bot_token=token, bot_chatID=chatid)
     click.echo(out)
+
+### -------------------------------- EMAIL ----------------------------------###
 
 
 @click.group()
@@ -200,6 +210,7 @@ def set_token(username, password):
     click.echo(out)
 
 
+### --------------------------------- SSH -----------------------------------###
 @click.group()
 def sshbot():
     """bot to interact with telegram"""
@@ -264,5 +275,41 @@ def link_keys(hostname, username, password, ssh_folder):
     click.echo(out)
 
 
+### ------------------------------- DEPLOY ----------------------------------###
+@click.group()
+def deploybot():
+    """bot to deploy projects to a server"""
+    pass
+
+
+@deploybot.command()
+@click.argument('project')
+@click.argument('local')
+@click.argument('server')
+@click.argument('address')
+@click.option('--sshbot', default=None, help='instance of an `sshBot` with access to the server.')
+def configure(project, local, server, address):
+    """Configure a local repository to sync with a server.\n
+
+    Parameters\n
+    ----------\n
+    local : str\n
+        path to the local clone of the repository\n
+    server : str\n
+        path to the server bare repository. If no repository is present\n
+        at the given location a bare new one is created.\n
+    addres : str\n
+        complete server address (username@host).\n
+    """
+    out = add_token(project, local_repo_path=local, server_repo_path=server, server_addres=address)
+    click.echo(out)
+    bot = DeployBot()
+    out = configure_local(bot.local_repo, bot.server_complete_path)
+    click.echo(out)
+    out = configure_server(bot.server_repo_path, sshbot)
+    click.echo(out)
+
+
+### -------------------------------- DEBUG ----------------------------------###
 if __name__ == "__main__":
     sys.exit(main())  # pragma: no cover
