@@ -15,8 +15,6 @@
    .. autosummary::
       :toctree: methods/
 
-      DeployBot.configure_local
-      DeployBot.configure_server
       DeployBot.deploy_to_server
    
    

@@ -16,10 +16,21 @@ tokens
    add_token
 
 
+message
+-------
+
+.. currentmodule:: codebots.utilities.message
+
+.. autosummary::
+   :toctree: generated
+
+   format_message
+
+
 ssh
 ---
 
-.. currentmodule:: codebots.utilities.sshkey
+.. currentmodule:: codebots.utilities.ssh
 
 .. autosummary::
    :toctree: generated
@@ -27,3 +38,14 @@ ssh
    gen_keypair
    add_pubkey_to_server
 
+
+deploy
+------
+
+.. currentmodule:: codebots.utilities.deploy
+
+.. autosummary::
+   :toctree: generated
+
+   configure_local
+   configutre_server

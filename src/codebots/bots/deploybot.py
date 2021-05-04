@@ -1,7 +1,6 @@
 import os
 from git import Repo
 from ._bot import BaseBot
-from pathlib import Path
 
 COMMITS_TO_PRINT = 5
 
@@ -9,6 +8,11 @@ COMMITS_TO_PRINT = 5
 class DeployBot(BaseBot):
     """Bot to help with the deployment of code on a server. It uses a `sshBot` in
     the background.
+
+    Warnings
+    --------
+    * You need to have an sshbot settings configured to grant access to the server.
+    * You must have :code:git>=2.25 on the server side.
 
     Parameters
     ----------
@@ -49,7 +53,7 @@ class DeployBot(BaseBot):
 
     Warnings
     --------
-    I still need to figure out how to avoid the use of sshkeys for the pushing part
+    You need to have an sshbot settings configured to grant access to the server.
     """
 
     def __init__(self, project=None, config_file=None) -> None:
@@ -60,8 +64,6 @@ class DeployBot(BaseBot):
             from .. import TOKENS
             config_file = os.path .join(TOKENS, "{}.json".format(project))
         super().__init__(config_file)
-        # self.local_repo_path = Path(self.local_repo_path)
-        # self.server_repo_path = Path(self.server_repo_path)
         self.server_complete_path = "{}:{}".format(self.server_address, self.server_repo_path)
         self.local_repo = Repo(self.local_repo_path)
 
