@@ -35,8 +35,8 @@ def configure_server(server_repo_path, branch='main', sshbot=None, os_type='linu
         instance of an `sshBot` with access to the server, by default None.
     """
 
-    git_folder = Path(server_repo_path).joinpath('.git')
-    git_folder = server_repo_path+'/.git'
+    # git_folder = Path(server_repo_path).joinpath('.git')
+    git_folder = server_repo_path + '/.git'
     if not sshbot:
         sshbot = sshBot()
 

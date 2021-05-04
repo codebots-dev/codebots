@@ -22,7 +22,7 @@ def set_token_dir(path):
             path_dic["tokens_path"] = path
             json.dump(path_dic, f)
         return "tokens path updated!"
-    except:
+    except Exception:
         return "something went wrong!"
 
 
@@ -59,5 +59,5 @@ def add_token(bot, **kwargs):
         with open(config_file, "w") as f:
             json.dump(config_dict, f)
             return "tokens file for {} updated!".format(bot)
-    except:
+    except Exception:
         return "something went wrong!"

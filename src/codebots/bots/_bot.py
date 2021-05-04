@@ -27,7 +27,7 @@ class BaseBot():
             with open(config_file, "r") as f:
                 token = json.load(f)
             return token
-        except:
+        except FileNotFoundError:
             raise FileNotFoundError("there is no token for this bot in the tokens folder.\n\n\
 please provide one by running in the command line the following command:\n\
 `{} set-token` and provide the required information\n\n\

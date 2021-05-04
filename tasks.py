@@ -130,7 +130,7 @@ def lint(ctx):
     """Check the consistency of coding style."""
     log.write('Running flake8 python linter...')
     opts = 'E501,F401,F403'
-    ctx.run('flake8 src/codebots --ignore={}'.format(opts))
+    ctx.run('python -m flake8 src/codebots --ignore={}'.format(opts))
 
 
 @task()

@@ -95,7 +95,6 @@ class EmailBot(BaseBot):
         )
 
 
-        # Debug
 if __name__ == "__main__":
     # sender = Sender.form_file("C:/Users/franaudo/.tokens/email.json")
     receiver = "francesco.ranaudo@gmail.com"

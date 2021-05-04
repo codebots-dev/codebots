@@ -28,7 +28,7 @@ from codebots.utilities.tokens import add_token, set_token_dir, reset_token_dir
 from codebots.utilities.deploy import configure_local, configure_server
 
 
-### -------------------------------- MAIN ----------------------------------###
+# -------------------------------- MAIN ----------------------------------#
 @click.group()
 def main():
     """base bot to setup the common settings for all the other bots.
@@ -81,7 +81,7 @@ def reset_tokens_path():
     out = reset_token_dir()
     click.echo(out)
 
-### -------------------------------- SLACK ----------------------------------###
+# -------------------------------- SLACK ----------------------------------#
 
 
 @click.group()
@@ -117,7 +117,7 @@ def send(message, channel):
     bot = SlackBot()
     bot.send_message(channel, message)
 
-### ----------------------------- TELEGRAM ----------------------------------###
+# ----------------------------- TELEGRAM ----------------------------------#
 
 
 @click.group()
@@ -154,7 +154,7 @@ def set_token(token, chatid):
     out = add_token("telegram", bot_token=token, bot_chatID=chatid)
     click.echo(out)
 
-### -------------------------------- EMAIL ----------------------------------###
+# -------------------------------- EMAIL ----------------------------------#
 
 
 @click.group()
@@ -187,7 +187,7 @@ def send(receiver, subject, body):
     receiver = "francesco.ranaudo@gmail.com"
     subject = "message from bot"
     body = "This message was sent by a bot"
-    attach = "document.pdf"
+    # attach = "document.pdf"
 
     bot = EmailBot()
     bot.send_email(receiver, subject, body)
@@ -210,7 +210,7 @@ def set_token(username, password):
     click.echo(out)
 
 
-### --------------------------------- SSH -----------------------------------###
+# --------------------------------- SSH -----------------------------------#
 @click.group()
 def sshbot():
     """bot to interact with telegram"""
@@ -274,7 +274,7 @@ def link_keys(hostname, username, password, ssh_folder):
     click.echo(out)
 
 
-### ------------------------------- DEPLOY ----------------------------------###
+# ------------------------------- DEPLOY ----------------------------------#
 @click.group()
 def deploybot():
     """bot to deploy projects to a server"""
@@ -351,6 +351,6 @@ def configure_remote(project, branch, sshbot):
     click.echo(out)
 
 
-### -------------------------------- DEBUG ----------------------------------###
+# -------------------------------- DEBUG ----------------------------------#
 if __name__ == "__main__":
     sys.exit(main())  # pragma: no cover
