@@ -1,14 +1,12 @@
 import requests
 import os
 
-from codebots import TOKENS
-from codebots.bots._bot import BaseBot
+
+from ._bot import BaseBot
 
 __all__ = [
     'TeleBot'
 ]
-
-TELE_TOKEN = os.path .join(TOKENS, "telegram.json")
 
 
 class TeleBot(BaseBot):
@@ -23,9 +21,9 @@ class TeleBot(BaseBot):
     def __init__(self, config_file=None) -> None:
         self.__name__ = "telebot"
         if not config_file:
-            config_file = TELE_TOKEN
+            from .. import TOKENS
+            config_file = os.path .join(TOKENS, "telegram.json")
         super().__init__(config_file)
-        self._credentials = self._get_token(config_file)
         self._url = self._compose_url()
 
     def _compose_url(self):
@@ -36,9 +34,9 @@ class TeleBot(BaseBot):
         str
             base url
         """
-        return 'https://api.telegram.org/bot' + self._credentials["bot_token"] + '/sendMessage?chat_id=' + self._credentials["bot_chatID"] + '&parse_mode=Markdown&text='
+        return 'https://api.telegram.org/bot' + self._credentials["bot_token"] + '/sendMessage?chat_id=' + self._credentials["bot_chatID"] + '&parse_mode=HTML&text='
 
-    def send_message(self, bot_message):
+    def send_message(self, message):
         """send the message over telegram
 
         Parameters
@@ -51,14 +49,14 @@ class TeleBot(BaseBot):
         json
             response from the server
         """
-        response = requests.get(self._url + bot_message)
+        response = requests.get(self._url + message)
         return response.json()
 
 
 if __name__ == '__main__':
 
     # init the bot
-    bot = TeleBot('.tokens/telegram.json')
+    bot = TeleBot()
 
     # send the message
     bot.send_message('ciao mamma')

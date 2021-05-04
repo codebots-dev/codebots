@@ -10,7 +10,7 @@ with open("README.rst") as readme_file:
 with open("CHANGELOG.rst") as history_file:
     history = history_file.read()
 
-requirements = ["Click>=7.0", "slack_sdk", "yagmail"]
+requirements = ["Click>=7.0", "slack_sdk", "yagmail", "gitpython"]
 
 setup_requirements = ["pytest-runner", ]
 
@@ -40,6 +40,8 @@ setup(
             "slackbot=codebots.cli:slackbot",
             "telebot=codebots.cli:telebot",
             "emailbot=codebots.cli:emailbot",
+            "sshbot=codebots.cli:sshbot",
+            "deploybot=codebots.cli:deploybot",
         ],
     },
     install_requires=requirements,

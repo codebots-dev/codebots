@@ -1,4 +1,5 @@
 yagmail
 slack_sdk
+gitpython
 paramiko
 Click>=7.0

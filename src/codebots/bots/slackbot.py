@@ -2,14 +2,12 @@ from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 import os
 
-from codebots import TOKENS
-from codebots.bots._bot import BaseBot
+
+from ._bot import BaseBot
 
 __all__ = [
     'SlackBot'
 ]
-
-SLACK_TOKEN = os.path.join(TOKENS, "slack.json")
 
 
 class SlackBot(BaseBot):
@@ -22,11 +20,11 @@ class SlackBot(BaseBot):
     """
 
     def __init__(self, config_file=None) -> None:
-        self.__name__ = "slackbot"
         if not config_file:
-            config_file = SLACK_TOKEN
+            from .. import TOKENS
+            config_file = os.path.join(TOKENS, "slack.json")
+        self.__name__ = "slackbot"
         super().__init__(config_file)
-        self._token = self._get_token(config_file)["bot_token"]
         self._client = self.connect()
 
     @property
@@ -42,7 +40,7 @@ class SlackBot(BaseBot):
         class
             slack WebClient class
         """
-        return WebClient(token=self._token)
+        return WebClient(token=self.bot_token)
 
     def _fetch_channel_id(self, channel, output=False, verbose=False):
         """Retrive the channel ID from its name
@@ -111,5 +109,5 @@ class SlackBot(BaseBot):
 # Debug
 if __name__ == "__main__":
 
-    bot = SlackBot(".tokens/slack")
+    bot = SlackBot()
     bot.send_message(channel='topopt', message='test')

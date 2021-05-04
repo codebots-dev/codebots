@@ -1,0 +1,45 @@
+********************************************************************************
+Create a bot to operate on a server using SSH [WIP]
+********************************************************************************
+
+This example shows how to set-up a SSH bot to ease operations with a server.
+
+
+Store your credentials
+----------------------
+
+Create a json file in a secret location with the access credentials for the server,
+using the template below:
+
+.. literalinclude:: ./templates/ssh.json
+  :language: JSON
+
+.. note:: about keypairing
+
+    You can choose to connect either using *username* and *password* (less secure)
+    or using a SSH key. If you opt for the first approach, than leave blank the
+    *pvtkey* field (`""`).
+
+    If you don't have a set of SSH key pairs or you don't know how to create one,
+    ask the bot! ;)
+
+    .. code-block:: python
+
+       from codebots import sshBot
+       bot = sshBot.gen_keypair(ssh_folder="/home/fr/.ssh")
+
+    After running the code there will be a set of private and public keys in the
+    give folder that you can use to set-up your connection.
+
+.. note:: password key
+
+    the password key in the json file is either the password used to login to the
+    server, or the password to decrypt the private SSH key (leave blank if not encrypted).
+
+In action
+---------
+
+this is an example implementation:
+
+.. literalinclude:: /../examples/sshbot.py
+    :language: python

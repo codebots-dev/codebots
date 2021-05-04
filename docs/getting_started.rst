@@ -16,21 +16,53 @@ For example::
 
     bot.send_message("your code is working!")
 
+or simply using a decorator::
 
-For more datiled examples of applicaitons, check the list below!
+    import codebots
+
+    @codebots.monitor("TeleBot")
+    def your_awesome_function(args, kwargs)
+        YOUR SUPER AWESOME CODE
+
+
+
+For more datiled examples of applications, check the links below!
 
 
 ********************************************************************************
 Examples
 ********************************************************************************
 
-.. toctree::
-    :maxdepth: 2
-    :titlesonly:
-    :glob:
+basics
+======
 
-    examples/cli.rst
-    examples/slackbot.rst
-    examples/emailbot.rst
-    examples/telegrambot.rst
-    examples/sshbot.rst
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :glob:
+
+   examples/cli.rst
+   examples/decorators.rst
+
+notifications
+=============
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :glob:
+
+   examples/slackbot.rst
+   examples/telegrambot.rst
+   examples/emailbot.rst
+
+ssh and deploybot
+=================
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :glob:
+
+   examples/sshbot.rst
+   examples/deploybot.rst

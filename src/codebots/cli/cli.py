@@ -1,15 +1,40 @@
-"""Console script for codebots."""
+"""Console script for codebots.
+
+You can get detaled information about each of the bots with the :code:`--help` option.
+
+.. code-block:: bash
+
+    codebots    --help
+    emailbot    --help
+    telebot     --help
+    slackbot    --help
+    sshbot      --help
+    deploybot   --help
+
+
+"""
 import sys
+import os
+from pathlib import Path
 import click
 import codebots
 from codebots.bots import SlackBot
 from codebots.bots import TeleBot
 from codebots.bots import EmailBot
+from codebots.bots import sshBot
+from codebots.bots.deploybot import DeployBot
+from codebots.utilities.ssh import gen_keypair, add_pubkey_to_server
 from codebots.utilities.tokens import add_token, set_token_dir, reset_token_dir
+from codebots.utilities.deploy import configure_local, configure_server
 
 
+### -------------------------------- MAIN ----------------------------------###
 @click.group()
 def main():
+    """base bot to setup the common settings for all the other bots.
+
+    Run `codebots ono-o-one` for more info.
+    """
     pass
 
 
@@ -56,6 +81,8 @@ def reset_tokens_path():
     out = reset_token_dir()
     click.echo(out)
 
+### -------------------------------- SLACK ----------------------------------###
+
 
 @click.group()
 def slackbot():
@@ -89,6 +116,8 @@ def send(message, channel):
     """
     bot = SlackBot()
     bot.send_message(channel, message)
+
+### ----------------------------- TELEGRAM ----------------------------------###
 
 
 @click.group()
@@ -124,6 +153,8 @@ def set_token(token, chatid):
     """
     out = add_token("telegram", bot_token=token, bot_chatID=chatid)
     click.echo(out)
+
+### -------------------------------- EMAIL ----------------------------------###
 
 
 @click.group()
@@ -179,5 +210,147 @@ def set_token(username, password):
     click.echo(out)
 
 
+### --------------------------------- SSH -----------------------------------###
+@click.group()
+def sshbot():
+    """bot to interact with telegram"""
+    pass
+
+
+@sshbot.command()
+@click.argument('hostname')
+@click.argument('username')
+@click.option('--password', default='', help='password to access the host or to decrypt the private key')
+@click.option('--pvtkey', default='', help='path to the private key')
+def set_token(hostname, username, password, pvtkey):
+    """create the token file with the credentials.\n
+
+    Parameters\n
+    ----------\n
+    hostname : str\n
+        ip address of the server.\n
+    username : str\n
+        username on the server.\n
+    password : str\n
+        password on the server, by default empty.\n
+    pvtkey : str\n
+        path to the private RSA key file, by default empty.\n
+    """
+    out = add_token("ssh", hostname=hostname, username=username, password=password, pvtkey=pvtkey)
+    click.echo(out)
+
+
+@sshbot.command()
+@click.option('--ssh_folder', default=None, help='path where the key pair will be saved, by default None (the `USER/.ssh` folder will be used)')
+@click.option('--password', default=None, help='encrypt the private key with a password')
+def genkeys(ssh_folder):
+    """Create a set of public and private keys and save them in the given folder.
+    """
+    out = gen_keypair(ssh_folder)
+    click.echo(out)
+
+
+@sshbot.command()
+@click.argument('hostname')
+@click.argument('username')
+@click.argument('password')
+@click.option('--ssh_folder', help='path where the key pair will be saved')
+def link_keys(hostname, username, password, ssh_folder):
+    """Adds the public key to the server's list.\n
+
+    Parameters\n
+    ----------\n
+    hostname : str\n
+        ip address of the server.\n
+    username : str\n
+        username on the server.\n
+    password : str\n
+        password on the server, by default empty.\n
+    """
+    bot = sshBot(config_file=None, hostname=hostname, username=username, password=password, pvtkey="")
+    out = add_pubkey_to_server(bot, ssh_folder)
+    click.echo(out)
+    out = add_token("ssh", hostname=hostname, username=username, password="", pvtkey=os.path.join(ssh_folder, 'id_rsa'))
+    click.echo(out)
+
+
+### ------------------------------- DEPLOY ----------------------------------###
+@click.group()
+def deploybot():
+    """bot to deploy projects to a server"""
+    pass
+
+
+@deploybot.command()
+@click.argument('project')
+@click.argument('address')
+@click.argument('local')
+@click.argument('server')
+@click.option('--branch', default='main', help='branch to push to.')
+@click.option('--sshbot', default=None, help='instance of an `sshBot` with access to the server.')
+def configure(project, address, local, server, branch, sshbot):
+    """Configure a local repository to sync with a server.\n
+
+    Parameters\n
+    ----------\n
+    project : str\n
+        name of the project for the setting file.\n
+    address : str\n
+        server address (username@host).\n
+    local : str\n
+        path to the local clone of the repository.\n
+    server : str\n
+        path to the server bare repository. If no repository is present\n
+        at the given location a bare new one is created.\n
+    """
+    out = add_token(bot=project, server_address=address, local_repo_path=local, server_repo_path=server)
+    click.echo(out)
+    bot = DeployBot(project)
+    out = configure_local(bot.local_repo, bot.server_complete_path)
+    click.echo(out)
+    out = configure_server(bot.server_repo_path, branch, sshbot)
+    click.echo(out)
+
+
+@deploybot.command()
+@click.argument('project')
+def configure_local(project):
+    """Configure a local repository to sync with a server.\n
+
+    Parameters\n
+    ----------\n
+    project : str\n
+        name of the project for the setting file.\n
+    """
+    bot = DeployBot(project)
+    out = configure_local(bot.local_repo, bot.server_complete_path)
+    click.echo(out)
+
+
+@deploybot.command()
+@click.argument('project')
+@click.option('--branch', default='main', help='branch to push to.')
+@click.option('--sshbot', default=None, help='instance of an `sshBot` with access to the server.')
+def configure_remote(project, branch, sshbot):
+    """Configure a local repository to sync with a server.\n
+
+    Parameters\n
+    ----------\n
+    project : str\n
+        name of the project for the setting file.\n
+    address : str\n
+        server address (username@host).\n
+    local : str\n
+        path to the local clone of the repository.\n
+    server : str\n
+        path to the server bare repository. If no repository is present\n
+        at the given location a bare new one is created.\n
+    """
+    bot = DeployBot(project)
+    out = configure_server(bot.server_repo_path, branch, sshbot)
+    click.echo(out)
+
+
+### -------------------------------- DEBUG ----------------------------------###
 if __name__ == "__main__":
     sys.exit(main())  # pragma: no cover

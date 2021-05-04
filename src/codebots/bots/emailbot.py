@@ -1,15 +1,13 @@
 import yagmail
 import json
 import os
-from codebots import TOKENS
-from codebots.bots._bot import BaseBot
+
+from ._bot import BaseBot
 
 __all__ = [
     'Sender',
     'EmailBot'
 ]
-
-EMAIL_TOKEN = os.path.join(TOKENS, "email.json")
 
 
 class Sender():
@@ -63,14 +61,12 @@ class EmailBot(BaseBot):
     """
 
     def __init__(self, config_file=None, sender=None) -> None:
-
         self.__name__ = "emailbot"
         if not sender:
             if not config_file:
-                config_file = EMAIL_TOKEN
+                from .. import TOKENS
+                config_file = os.path.join(TOKENS, "email.json")
             super().__init__(config_file)
-            self._credentials = self._get_token(config_file)
-            self.sender = Sender(self._credentials["username"], self._credentials["password"])
         else:
             if not isinstance(sender, Sender):
                 raise ValueError("the sender is not valid")

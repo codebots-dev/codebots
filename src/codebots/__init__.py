@@ -3,8 +3,11 @@ __email__ = 'francesco.ranaudo@gmail.com'
 __version__ = '0.6.0'
 
 import os
+import json
 from pathlib import Path
 import json
+from .decorators import *
+
 
 home = str(Path.home())
 
@@ -15,6 +18,7 @@ DATA = os.path.abspath(os.path.join(HOME, 'data'))
 DOCS = os.path.abspath(os.path.join(HOME, 'docs'))
 TEMP = os.path.abspath(os.path.join(HOME, 'temp'))
 SETTINGS = os.path.join(HERE, './settings.json')
+
 
 with open(SETTINGS, 'r') as f:
     path = json.load(f)["tokens_path"]

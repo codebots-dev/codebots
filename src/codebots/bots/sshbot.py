@@ -1,17 +1,16 @@
 import paramiko
 import os
-import json
+import socket
 
-import sys
-# import subprocess
-# import argparse
+
+from ._bot import BaseBot
 
 __all__ = [
     'sshBot'
 ]
 
 
-class sshBot():
+class sshBot(BaseBot):
     """sshBot to help with ssh connections to a server.
 
     Parameters
@@ -41,57 +40,59 @@ class sshBot():
         paramiko `SFTPClient` object, if a connection is active, otherwise None.
     """
 
-    def __init__(self, hostname=None, username=None, password=None, pvtkey=None) -> None:
+    def __init__(self, config_file='default', **kwargs) -> None:
 
-        self.hostname = hostname
-        self.username = username
-        self.password = password
-        self.pvtkey = pvtkey
-        self.ssh_client = None
-        self.sftp_client = None
+        self.__name__ = "sshbot"
+        if not config_file:
+            self._credentials = kwargs
+            for k, v in self._credentials.items():
+                self.__setattr__(k, v)
+        elif config_file == 'default':
+            from .. import TOKENS
+            config_file = os.path .join(TOKENS, "ssh.json")
+            super().__init__(config_file)
+        else:
+            super().__init__(config_file)
 
-    @classmethod
-    def from_credentials_file(cls, json_file):
-        """Get credentials from json file
+        self.host_address = self.hostname if '.' in self.hostname else socket.gethostbyname(self.hostname)
+        self._ssh_client = None
+        self._sftp_client = None
 
-        Parameters
-        ----------
-        json_file : str
-            path to the json file with the credentials for the server.
-            it should have the following structure:
+    # @classmethod
+    # def from_credentials_file(cls, json_file):
+    #     """Get credentials from json file
 
-            .. code-block:: json
+    #     Parameters
+    #     ----------
+    #     json_file : str
+    #         path to the json file with the credentials for the server.
+    #         it should have the following structure:
 
-                {
-                    "hostname" : "_______",
-                    "username" : "_______",
-                    "password" : "_______",
-                    "pvtkey"   : "_______"
-                }
+    #         .. code-block:: json
 
-        Returns
-        -------
-        cls
-            sshBot
-        """
-        with open(json_file, 'r') as f:
-            credentials = json.load(f)
-        return cls(**credentials)
+    #             {
+    #                 "hostname" : "_______",
+    #                 "username" : "_______",
+    #                 "password" : "_______",
+    #                 "pvtkey"   : "_______"
+    #             }
 
-    def gen_keypair(self, ssh_folder):
-        """Create a set of public and private keys and save them in the given
-        folder.
+    #     Returns
+    #     -------
+    #     cls
+    #         sshBot
+    #     """
+    #     with open(json_file, 'r') as f:
+    #         credentials = json.load(f)
+    #     return cls(**credentials)
 
-        Parameters
-        ----------
-        ssh_folder : str
-            folder where the keys are saved
-        """
-        key = paramiko.RSAKey.generate(4096)
-        with open(os.path.join(ssh_folder, "pubkey"), "w") as key_file:
-            key_file.write(key.get_base64())
-        with open(os.path.join(ssh_folder, "pvtkey"), "w") as key_file:
-            key_file.write(key.write_private_key(sys.stdout))
+    @property
+    def ssh_client(self):
+        return self._ssh_client
+
+    @property
+    def sfpt_client(self):
+        return self._sfpt_client
 
     def connect_ssh_client(self):
         """Establish the ssh connection
@@ -104,11 +105,11 @@ class sshBot():
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         k = paramiko.RSAKey.from_private_key_file(self.pvtkey, password=self.password) if self.pvtkey else None
-        ssh_client.connect(hostname=self.hostname, username=self.username, password=self.password, pkey=k)
-        print("connected")
+        ssh_client.connect(hostname=self.host_address, username=self.username, password=self.password, pkey=k)
+        print("\nconnected\n")
         return ssh_client
 
-    def execute_cmds(self, commands, close_connection=True):
+    def execute_cmds(self, commands, close_connection=True, verbose=True):
         """Execute general command on the server side
 
         Parameters
@@ -123,21 +124,29 @@ class sshBot():
         -------
         None
         """
-        if not self.ssh_client:
-            self.ssh_client = self.connect_ssh_client()
+        if not self._ssh_client:
+            self._ssh_client = self.connect_ssh_client()
 
-        # commands = [ "/home/ubuntu/firstscript.sh", "/home/ubuntu/secondscript.sh" ]
+        out_dict = {"stdout": [], "stderr": []}
+
         for command in commands:
-            print("Executing {}".format(command))
-            stdin, stdout, stderr = self.ssh_client.exec_command(command)
-            print(stdout.read())
-            print("Errors")
-            print(stderr.read())
+            if verbose:
+                print("Executing {}:\n".format(command))
+            stdin, stdout, stderr = self._ssh_client.exec_command(command)
+            out_dict["stdout"].append(stdout.read().rstrip().decode("utf-8"))
+            out_dict["stderr"].append(stderr.read().rstrip().decode("utf-8"))
+
+            if verbose:
+                print(out_dict["stdout"][-1])
+                print("\nErrors (if any):")
+                print(out_dict["stderr"][-1])
 
         # close the connection
         if close_connection:
-            self.ssh_client.close()
-            self.ssh_client = None
+            self._ssh_client.close()
+            self._ssh_client = None
+
+        return out_dict
 
     def connect_sftp_client(self):
         """Connect to the server through SFPT on port 22.
@@ -147,7 +156,7 @@ class sshBot():
         obj
             paramiko sfpt client object
         """
-        transport = paramiko.Transport((self.hostname, 22))
+        transport = paramiko.Transport((self.host_address, 22))
         k = paramiko.RSAKey.from_private_key_file(self.pvtkey, password=self.password) if self.pvtkey else None
         transport.connect(username=self.username, password=self.password, pkey=k)
         return paramiko.SFTPClient.from_transport(transport)
@@ -174,34 +183,36 @@ class sshBot():
         """
 
         # connect to the server through SFPT
-        if not self.sftp_client:
-            self.sftp_client = self.connect_sftp_client()
+        if not self._sftp_client:
+            self._sftp_client = self.connect_sftp_client()
             print("connection enstablished")
 
-        for item in self.sftp_client.listdir(path):
+        for item in self._sftp_client.listdir(path):
             remotefile = os.path.join(path, str(item))
             if not os.path.isdir(dest):
                 os.mkdir(dest)
             localfilepath = os.path.join(dest, str(item))
             # check if it is a folder (note file w/o ext will thorw an exception!)
             if '.' in item:
-                self.sftp_client.get(remotefile, localfilepath)
+                self._sftp_client.get(remotefile, localfilepath)
             else:
                 if recursive:
-                    self.get_folder_from_server(self.sftp_client, remotefile, localfilepath)
+                    self.get_folder_from_server(self._sftp_client, remotefile, localfilepath)
         print("files tranferred!")
         # close the connection
         if close_connection:
-            self.sftp_client.close()
-            self.sftp_client = None
+            self._sftp_client.close()
+            self._sftp_client = None
             print("connection closed")
 
 
 if __name__ == '__main__':
+    pass
 
-    bot = sshBot.from_credentials_file(".tokens/home.json")
+    # bot = sshBot(config_file=None, hostname="192.168.0.199", username="franaudo", password="Sxcdews23", pvtkey="")
+    bot = sshBot()
 
-    bot.execute_cmds(commands=['ls'], close_connection=False)
-    print(bot.ssh_client)
-    bot.execute_cmds(commands=['ls -l'], close_connection=True)
-    print(bot.ssh_client)
+    bot.execute_cmds(commands=['ls'], close_connection=True)
+    # print(bot.ssh_client)
+    # bot.execute_cmds(commands=['ls -l'], close_connection=True)
+    # print(bot.ssh_client)
