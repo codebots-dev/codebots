@@ -246,8 +246,8 @@
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../../../usage.html">
-            Usage
+           <a class="md-nav__link" href="../../../getting_started.html">
+            Getting Started
            </a>
           </li>
           <li class="md-nav__item">
@@ -298,6 +298,10 @@
        <div class="highlight">
         <pre>
 <span></span><span class="kn">import</span> <span class="nn">yagmail</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">._bot</span> <span class="kn">import</span> <span class="n">BaseBot</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">'Sender'</span><span class="p">,</span>
@@ -339,14 +343,14 @@
 <span class="sd">        str</span>
 <span class="sd">            access token</span>
 <span class="sd">        """</span>
+
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-            <span class="n">username</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-            <span class="n">password</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-        <span class="n">user</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">)</span>
+            <span class="n">credentials</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">credentials</span><span class="p">[</span><span class="s2">"username"</span><span class="p">],</span> <span class="n">password</span><span class="o">=</span><span class="n">credentials</span><span class="p">[</span><span class="s2">"password"</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">user</span></div></div>
 
 
-<div class="viewcode-block" id="EmailBot"><a class="viewcode-back" href="../../../api/generated/codebots.bots.emailbot.EmailBot.html#codebots.bots.emailbot.EmailBot">[docs]</a><span class="k">class</span> <span class="nc">EmailBot</span><span class="p">:</span>
+<div class="viewcode-block" id="EmailBot"><a class="viewcode-back" href="../../../api/generated/codebots.bots.emailbot.EmailBot.html#codebots.bots.emailbot.EmailBot">[docs]</a><span class="k">class</span> <span class="nc">EmailBot</span><span class="p">(</span><span class="n">BaseBot</span><span class="p">):</span>
     <span class="sd">"""EmailBot.</span>
 
 <span class="sd">    Parameters</span>
@@ -355,8 +359,17 @@
 <span class="sd">        Sender object configured with sender account credentials.</span>
 <span class="sd">    """</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sender</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sender</span> <span class="o">=</span> <span class="n">sender</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="s2">"emailbot"</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">sender</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">config_file</span><span class="p">:</span>
+                <span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">TOKENS</span>
+                <span class="n">config_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TOKENS</span><span class="p">,</span> <span class="s2">"email.json"</span><span class="p">)</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">Sender</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"the sender is not valid"</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">sender</span> <span class="o">=</span> <span class="n">sender</span>
 
 <div class="viewcode-block" id="EmailBot.send_email"><a class="viewcode-back" href="../../../api/generated/methods/codebots.bots.emailbot.EmailBot.send_email.html#codebots.bots.emailbot.EmailBot.send_email">[docs]</a>    <span class="k">def</span> <span class="nf">send_email</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">receiver</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">attachment</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">"""Send an email to an email address.</span>
@@ -367,7 +380,7 @@
 <span class="sd">            email address of the receiver</span>
 <span class="sd">        subject : str</span>
 <span class="sd">            subject of the email</span>
-<span class="sd">        body : [type]</span>
+<span class="sd">        body : str</span>
 <span class="sd">            body text of the email</span>
 <span class="sd">        attachment : str, optional</span>
 <span class="sd">            path to the file to attach, by default None</span>
@@ -381,15 +394,15 @@
         <span class="p">)</span></div></div>
 
 
-<span class="c1"># Debug</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-    <span class="n">sender</span> <span class="o">=</span> <span class="n">Sender</span><span class="o">.</span><span class="n">form_file</span><span class="p">(</span><span class="s2">".tokens/email"</span><span class="p">)</span>
+    <span class="c1"># sender = Sender.form_file("C:/Users/franaudo/.tokens/email.json")</span>
     <span class="n">receiver</span> <span class="o">=</span> <span class="s2">"francesco.ranaudo@gmail.com"</span>
     <span class="n">subject</span> <span class="o">=</span> <span class="s2">"message from bot"</span>
     <span class="n">body</span> <span class="o">=</span> <span class="s2">"This message was sent by a bot"</span>
     <span class="n">filename</span> <span class="o">=</span> <span class="s2">"document.pdf"</span>
 
-    <span class="n">bot</span> <span class="o">=</span> <span class="n">EmailBot</span><span class="p">(</span><span class="n">sender</span><span class="p">)</span>
+    <span class="c1"># bot = EmailBot(sender)</span>
+    <span class="n">bot</span> <span class="o">=</span> <span class="n">EmailBot</span><span class="p">()</span>
     <span class="n">bot</span><span class="o">.</span><span class="n">send_email</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
 </pre>
        </div>
@@ -410,7 +423,7 @@
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              Apr 16, 2021.
+              May 04, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">

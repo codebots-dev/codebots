@@ -241,8 +241,8 @@
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../../../usage.html">
-            Usage
+           <a class="md-nav__link" href="../../../getting_started.html">
+            Getting Started
            </a>
           </li>
           <li class="md-nav__item">
@@ -298,6 +298,174 @@
          Method
         </strong>
        </p>
+       <dl class="py method">
+        <dt id="codebots.bots.sshbot.sshBot.get_folder_from_server">
+         <code class="sig-prename descclassname">
+          <span class="pre">
+           sshBot.
+          </span>
+         </code>
+         <code class="sig-name descname">
+          <span class="pre">
+           get_folder_from_server
+          </span>
+         </code>
+         <span class="sig-paren">
+          (
+         </span>
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            path
+           </span>
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            dest
+           </span>
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            recursive
+           </span>
+          </span>
+          <span class="o">
+           <span class="pre">
+            =
+           </span>
+          </span>
+          <span class="default_value">
+           <span class="pre">
+            True
+           </span>
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           <span class="pre">
+            close_connection
+           </span>
+          </span>
+          <span class="o">
+           <span class="pre">
+            =
+           </span>
+          </span>
+          <span class="default_value">
+           <span class="pre">
+            True
+           </span>
+          </span>
+         </em>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="reference internal" href="../../../_modules/codebots/bots/sshbot.html#sshBot.get_folder_from_server">
+          <span class="viewcode-link">
+           <span class="pre">
+            [source]
+           </span>
+          </span>
+         </a>
+         <a class="headerlink" href="#codebots.bots.sshbot.sshBot.get_folder_from_server" title="Permalink to this definition">
+          ¶
+         </a>
+        </dt>
+        <dd>
+         <p>
+          Retrieve the content of a folder from the server.
+         </p>
+         <dl class="field-list simple">
+          <dt class="field-odd">
+           Parameters
+          </dt>
+          <dd class="field-odd">
+           <dl class="simple">
+            <dt>
+             <strong>
+              sftp_client
+             </strong>
+             <span class="classifier">
+              obj
+             </span>
+            </dt>
+            <dd>
+             <p>
+              paramiko sftp client object
+             </p>
+            </dd>
+            <dt>
+             <strong>
+              path
+             </strong>
+             <span class="classifier">
+              str
+             </span>
+            </dt>
+            <dd>
+             <p>
+              path to the folder on the server
+             </p>
+            </dd>
+            <dt>
+             <strong>
+              dest
+             </strong>
+             <span class="classifier">
+              str
+             </span>
+            </dt>
+            <dd>
+             <p>
+              path to the folder on the client (local)
+             </p>
+            </dd>
+            <dt>
+             <strong>
+              recursive
+             </strong>
+             <span class="classifier">
+              bool (optional)
+             </span>
+            </dt>
+            <dd>
+             <p>
+              if true get subfolders content, by default
+             </p>
+            </dd>
+            <dt>
+             <strong>
+              close_connection
+             </strong>
+             <span class="classifier">
+              bool (optional)
+             </span>
+            </dt>
+            <dd>
+             <p>
+              if true close the ssh connection, by default True. Leave the connection open if you plan to run several commands.
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <div class="admonition warning">
+          <p class="admonition-title">
+           Warning
+          </p>
+          <p>
+           If in any folder there are files without extensions, the code will fail!
+          </p>
+         </div>
+        </dd>
+       </dl>
       </article>
      </div>
     </div>
@@ -315,7 +483,7 @@
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              Apr 16, 2021.
+              May 04, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">

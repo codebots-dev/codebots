@@ -47,7 +47,7 @@
   </script>
   <link href="../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
-   Create a bot to operate on a server using SSH — codebots
+   Create a bot to deploy your application to the server using SSH — codebots
   </title>
   <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="../_static/material.css" rel="stylesheet" type="text/css"/>
@@ -68,8 +68,8 @@
   </script>
   <link href="../genindex.html" rel="index" title="Index"/>
   <link href="../search.html" rel="search" title="Search"/>
-  <link href="../api.html" rel="next" title="API Reference"/>
-  <link href="telegrambot.html" rel="prev" title="Get notified on telegram"/>
+  <link href="deploybot.html" rel="next" title="Create a bot to operate on a server using SSH [WIP]"/>
+  <link href="emailbot.html" rel="prev" title="Get notified via email"/>
   <link href="../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
  </head>
  <body data-md-color-accent="cyan" data-md-color-primary="blue" dir="ltr">
@@ -108,7 +108,7 @@
         codebots
        </span>
        <span class="md-header-nav__topic">
-        Create a bot to operate on a server using SSH
+        Create a bot to deploy your application to the server using SSH
        </span>
       </div>
      </div>
@@ -193,8 +193,8 @@
        </a>
       </li>
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="../usage.html">
-        Usage
+       <a class="md-tabs__link" href="../getting_started.html">
+        Getting Started
        </a>
       </li>
      </ul>
@@ -248,12 +248,12 @@
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../usage.html">
-            Usage
+           <a class="md-nav__link" href="../getting_started.html">
+            Getting Started
            </a>
            <ul class="md-nav__list">
             <li class="md-nav__item">
-             <a class="md-nav__link" href="../usage.html#examples">
+             <a class="md-nav__link" href="../getting_started.html#examples">
               Examples
              </a>
             </li>
@@ -299,13 +299,13 @@
          <ul class="md-nav__list" data-md-scrollfix="">
           <li class="md-nav__item">
            <a class="md-nav__link" href="#examples-sshbot--page-root">
-            Create a bot to operate on a server using SSH
+            Create a bot to deploy your application to the server using SSH
            </a>
            <nav class="md-nav">
             <ul class="md-nav__list">
              <li class="md-nav__item">
-              <a class="md-nav__link" href="#store-your-credentials">
-               Store your credentials
+              <a class="md-nav__link" href="#configuration">
+               Configuration
               </a>
              </li>
              <li class="md-nav__item">
@@ -324,90 +324,31 @@
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
        <h1 id="examples-sshbot--page-root">
-        Create a bot to operate on a server using SSH
+        Create a bot to deploy your application to the server using SSH
         <a class="headerlink" href="#examples-sshbot--page-root" title="Permalink to this headline">
          ¶
         </a>
        </h1>
        <p>
-        This example shows how to set-up a SSH bot to ease operations with a server.
+        This example shows how to set-up a bot to ease deploy your application on the
+server. It can also be configured to automatically create git hooks for
+continuous development
        </p>
-       <h2 id="store-your-credentials">
-        Store your credentials
-        <a class="headerlink" href="#store-your-credentials" title="Permalink to this headline">
+       <h2 id="configuration">
+        Configuration
+        <a class="headerlink" href="#configuration" title="Permalink to this headline">
          ¶
         </a>
        </h2>
        <p>
-        Create a json file in a secret location with the access credentials for the server,
-using the template below:
+        First, you need to configure your local and server sides. These are  one-time-only
+operations to do every time you start a new project. Once things are configured,
+then you will be able to deploy with just one line of code ;)
        </p>
-       <div class="highlight-JSON notranslate">
-        <div class="highlight">
-         <pre><span></span><span class="p">{</span>
-    <span class="nt">"hostname"</span><span class="p">:</span> <span class="s2">"_____________"</span><span class="p">,</span>
-    <span class="nt">"username"</span><span class="p">:</span> <span class="s2">"_____________"</span><span class="p">,</span>
-    <span class="nt">"password"</span><span class="p">:</span> <span class="s2">"_____________"</span><span class="p">,</span>
-    <span class="nt">"pvtkey"</span><span class="p">:</span> <span class="s2">"_____________"</span>
-<span class="p">}</span>
-</pre>
-        </div>
-       </div>
-       <div class="admonition note">
-        <p class="admonition-title">
-         Note
-        </p>
-        <p>
-         about keypairing
-        </p>
-        <p>
-         You can choose to connect either using
-         <em>
-          username
-         </em>
-         and
-         <em>
-          password
-         </em>
-         (less secure)
-or using a SSH key. If you opt for the first approach, than leave blank the
-         <em>
-          pvtkey
-         </em>
-         field (
-         <cite>
-          “”
-         </cite>
-         ).
-        </p>
-        <p>
-         If you don’t have a set of SSH key pairs or you don’t know how to create one,
-ask the bot! ;)
-        </p>
-        <div class="highlight-python notranslate">
-         <div class="highlight">
-          <pre><span></span><span class="kn">from</span> <span class="nn">codebots</span> <span class="kn">import</span> <span class="n">sshBot</span>
-<span class="n">bot</span> <span class="o">=</span> <span class="n">sshBot</span><span class="o">.</span><span class="n">gen_keypair</span><span class="p">(</span><span class="n">ssh_folder</span><span class="o">=</span><span class="s2">"/home/fr/.ssh"</span><span class="p">)</span>
-</pre>
-         </div>
-        </div>
-        <p>
-         After running the code there will be a set of private and public keys in the
-give folder that you can use to set-up your connection.
-        </p>
-       </div>
-       <div class="admonition note">
-        <p class="admonition-title">
-         Note
-        </p>
-        <p>
-         password key
-        </p>
-        <p>
-         the password key in the json file is either the password used to login to the
-server, or the password to decrypt the private SSH key (leave blank if not encrypted).
-        </p>
-       </div>
+       <p>
+        You are also goind to need to access the server through SSH: fortunately we have
+a bot for it (!) but you can also set things manually if you know what to do.
+       </p>
        <h2 id="in-action">
         In action
         <a class="headerlink" href="#in-action" title="Permalink to this headline">
@@ -422,7 +363,7 @@ server, or the password to decrypt the private SSH key (leave blank if not encry
          <pre><span></span><span class="kn">from</span> <span class="nn">codebots.bots</span> <span class="kn">import</span> <span class="n">sshBot</span>
 
 <span class="c1"># execute command on the server</span>
-<span class="n">bot</span> <span class="o">=</span> <span class="n">sshBot</span><span class="o">.</span><span class="n">from_credentials_file</span><span class="p">(</span><span class="s2">".tokens/home.json"</span><span class="p">)</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">sshBot</span><span class="p">()</span>
 <span class="n">bot</span><span class="o">.</span><span class="n">exectute_cmds</span><span class="p">(</span><span class="n">commands</span><span class="o">=</span><span class="p">[</span><span class="s1">'ls'</span><span class="p">])</span>  <span class="c1"># note: the imput is a list!</span>
 
 <span class="c1"># get folder content</span>
@@ -440,7 +381,7 @@ server, or the password to decrypt the private SSH key (leave blank if not encry
   <footer class="md-footer">
    <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="telegrambot.html" rel="prev" title="Get notified on telegram">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="emailbot.html" rel="prev" title="Get notified via email">
       <div class="md-flex__cell md-flex__cell--shrink">
        <i class="md-icon md-icon--arrow-back md-footer-nav__button">
        </i>
@@ -450,17 +391,17 @@ server, or the password to decrypt the private SSH key (leave blank if not encry
         <span class="md-footer-nav__direction">
          Previous
         </span>
-        Get notified on telegram
+        Get notified via email
        </span>
       </div>
      </a>
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="../api.html" rel="next" title="API Reference">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="deploybot.html" rel="next" title="Create a bot to operate on a server using SSH [WIP]">
       <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
        <span class="md-flex__ellipsis">
         <span class="md-footer-nav__direction">
          Next
         </span>
-        API Reference
+        Create a bot to operate on a server using SSH [WIP]
        </span>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -477,7 +418,7 @@ server, or the password to decrypt the private SSH key (leave blank if not encry
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              Apr 16, 2021.
+              May 04, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">

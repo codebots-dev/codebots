@@ -246,8 +246,8 @@
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../../../usage.html">
-            Usage
+           <a class="md-nav__link" href="../../../getting_started.html">
+            Getting Started
            </a>
           </li>
           <li class="md-nav__item">
@@ -299,13 +299,17 @@
         <pre>
 <span></span><span class="kn">from</span> <span class="nn">slack_sdk</span> <span class="kn">import</span> <span class="n">WebClient</span>
 <span class="kn">from</span> <span class="nn">slack_sdk.errors</span> <span class="kn">import</span> <span class="n">SlackApiError</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<span class="kn">from</span> <span class="nn">._bot</span> <span class="kn">import</span> <span class="n">BaseBot</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">'SlackBot'</span>
 <span class="p">]</span>
 
 
-<div class="viewcode-block" id="SlackBot"><a class="viewcode-back" href="../../../api/generated/codebots.bots.slackbot.SlackBot.html#codebots.bots.slackbot.SlackBot">[docs]</a><span class="k">class</span> <span class="nc">SlackBot</span><span class="p">():</span>
+<div class="viewcode-block" id="SlackBot"><a class="viewcode-back" href="../../../api/generated/codebots.bots.slackbot.SlackBot.html#codebots.bots.slackbot.SlackBot">[docs]</a><span class="k">class</span> <span class="nc">SlackBot</span><span class="p">(</span><span class="n">BaseBot</span><span class="p">):</span>
     <span class="sd">"""Bot that automatically sends messages over slack</span>
 
 <span class="sd">    Parameters</span>
@@ -314,26 +318,18 @@
 <span class="sd">        file with the access token for the slack workspace.</span>
 <span class="sd">    """</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_token</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_token</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config_file</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">TOKENS</span>
+            <span class="n">config_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TOKENS</span><span class="p">,</span> <span class="s2">"slack.json"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="s2">"slackbot"</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">client</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""class : slack `WebClient` class"""</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span>
-
-    <span class="k">def</span> <span class="nf">_get_token</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
-        <span class="sd">"""read the access token form a file.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        str</span>
-<span class="sd">            access token</span>
-<span class="sd">        """</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-            <span class="n">token</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">token</span>
 
 <div class="viewcode-block" id="SlackBot.connect"><a class="viewcode-back" href="../../../api/generated/methods/codebots.bots.slackbot.SlackBot.connect.html#codebots.bots.slackbot.SlackBot.connect">[docs]</a>    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">"""connect to the slack webclient.</span>
@@ -343,9 +339,9 @@
 <span class="sd">        class</span>
 <span class="sd">            slack WebClient class</span>
 <span class="sd">        """</span>
-        <span class="k">return</span> <span class="n">WebClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_token</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">WebClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">bot_token</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="SlackBot.fetch_channel_id"><a class="viewcode-back" href="../../../api/generated/methods/codebots.bots.slackbot.SlackBot.fetch_channel_id.html#codebots.bots.slackbot.SlackBot.fetch_channel_id">[docs]</a>    <span class="k">def</span> <span class="nf">fetch_channel_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_fetch_channel_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">"""Retrive the channel ID from its name</span>
 
 <span class="sd">        Parameters</span>
@@ -372,7 +368,7 @@
                 <span class="k">if</span> <span class="n">output</span><span class="p">:</span>
                     <span class="k">return</span> <span class="n">conversation_id</span>
                 <span class="k">break</span>
-        <span class="k">return</span> <span class="n">conversation_id</span></div>
+        <span class="k">return</span> <span class="n">conversation_id</span>
 
 <div class="viewcode-block" id="SlackBot.send_message"><a class="viewcode-back" href="../../../api/generated/methods/codebots.bots.slackbot.SlackBot.send_message.html#codebots.bots.slackbot.SlackBot.send_message">[docs]</a>    <span class="k">def</span> <span class="nf">send_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">"""Send a message to a channel.</span>
@@ -393,7 +389,7 @@
 <span class="sd">        """</span>
         <span class="n">message</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'message'</span><span class="p">,</span> <span class="s2">"Ciao! Your results are ready! :)"</span><span class="p">)</span>
         <span class="n">channel</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'channel'</span><span class="p">,</span> <span class="s2">"general"</span><span class="p">)</span>
-        <span class="n">channel_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fetch_channel_id</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
+        <span class="n">channel_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fetch_channel_id</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># Call the conversations.list method using the WebClient</span>
             <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">chat_postMessage</span><span class="p">(</span>
@@ -412,7 +408,7 @@
 <span class="c1"># Debug</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
 
-    <span class="n">bot</span> <span class="o">=</span> <span class="n">SlackBot</span><span class="p">(</span><span class="s2">".tokens/slack"</span><span class="p">)</span>
+    <span class="n">bot</span> <span class="o">=</span> <span class="n">SlackBot</span><span class="p">()</span>
     <span class="n">bot</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s1">'topopt'</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s1">'test'</span><span class="p">)</span>
 </pre>
        </div>
@@ -433,7 +429,7 @@
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              Apr 16, 2021.
+              May 04, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">

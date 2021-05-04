@@ -19,7 +19,7 @@ Welcome to codebots's documentation!
 
    info
    installation
-   usage
+   getting_started
    api
    contributing
    authors

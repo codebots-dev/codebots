@@ -68,8 +68,8 @@
   </script>
   <link href="../genindex.html" rel="index" title="Index"/>
   <link href="../search.html" rel="search" title="Search"/>
-  <link href="sshbot.html" rel="next" title="Create a bot to operate on a server using SSH"/>
-  <link href="emailbot.html" rel="prev" title="Get notified via email"/>
+  <link href="emailbot.html" rel="next" title="Get notified via email"/>
+  <link href="slackbot.html" rel="prev" title="Get notified on slack"/>
   <link href="../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
  </head>
  <body data-md-color-accent="cyan" data-md-color-primary="blue" dir="ltr">
@@ -193,8 +193,8 @@
        </a>
       </li>
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="../usage.html">
-        Usage
+       <a class="md-tabs__link" href="../getting_started.html">
+        Getting Started
        </a>
       </li>
      </ul>
@@ -248,12 +248,12 @@
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../usage.html">
-            Usage
+           <a class="md-nav__link" href="../getting_started.html">
+            Getting Started
            </a>
            <ul class="md-nav__list">
             <li class="md-nav__item">
-             <a class="md-nav__link" href="../usage.html#examples">
+             <a class="md-nav__link" href="../getting_started.html#examples">
               Examples
              </a>
             </li>
@@ -479,8 +479,12 @@ using the template below:
         <div class="highlight">
          <pre><span></span><span class="kn">from</span> <span class="nn">codebots.bots</span> <span class="kn">import</span> <span class="n">TeleBot</span>
 
-<span class="c1"># Create a bot: you need to specify the location of the access token file ".tokens/telegram.json"</span>
-<span class="n">bot</span> <span class="o">=</span> <span class="n">TeleBot</span><span class="p">(</span><span class="s1">'.tokens/telegram.json'</span><span class="p">)</span>
+<span class="c1"># Create a TeleBot instance from the credentials that you have set-up before</span>
+<span class="c1"># (if you don't know how, check the documentation page)</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">TeleBot</span><span class="p">()</span>
+
+<span class="c1"># # or create a bot an access token file ".tokens/telegram.json"</span>
+<span class="c1"># bot = TeleBot('.tokens/telegram.json')</span>
 
 <span class="c1"># Ask the bot to send a test message</span>
 <span class="n">bot</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="s1">'ciao mamma'</span><span class="p">)</span>
@@ -495,7 +499,7 @@ using the template below:
   <footer class="md-footer">
    <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="emailbot.html" rel="prev" title="Get notified via email">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="slackbot.html" rel="prev" title="Get notified on slack">
       <div class="md-flex__cell md-flex__cell--shrink">
        <i class="md-icon md-icon--arrow-back md-footer-nav__button">
        </i>
@@ -505,17 +509,17 @@ using the template below:
         <span class="md-footer-nav__direction">
          Previous
         </span>
-        Get notified via email
+        Get notified on slack
        </span>
       </div>
      </a>
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="sshbot.html" rel="next" title="Create a bot to operate on a server using SSH">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="emailbot.html" rel="next" title="Get notified via email">
       <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
        <span class="md-flex__ellipsis">
         <span class="md-footer-nav__direction">
          Next
         </span>
-        Create a bot to operate on a server using SSH
+        Get notified via email
        </span>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -532,7 +536,7 @@ using the template below:
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              Apr 16, 2021.
+              May 04, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">

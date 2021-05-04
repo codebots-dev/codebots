@@ -68,8 +68,8 @@
   </script>
   <link href="../genindex.html" rel="index" title="Index"/>
   <link href="../search.html" rel="search" title="Search"/>
-  <link href="telegrambot.html" rel="next" title="Get notified on telegram"/>
-  <link href="slackbot.html" rel="prev" title="Get notified on slack"/>
+  <link href="sshbot.html" rel="next" title="Create a bot to deploy your application to the server using SSH"/>
+  <link href="telegrambot.html" rel="prev" title="Get notified on telegram"/>
   <link href="../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
  </head>
  <body data-md-color-accent="cyan" data-md-color-primary="blue" dir="ltr">
@@ -193,8 +193,8 @@
        </a>
       </li>
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="../usage.html">
-        Usage
+       <a class="md-tabs__link" href="../getting_started.html">
+        Getting Started
        </a>
       </li>
      </ul>
@@ -248,12 +248,12 @@
            </a>
           </li>
           <li class="md-nav__item">
-           <a class="md-nav__link" href="../usage.html">
-            Usage
+           <a class="md-nav__link" href="../getting_started.html">
+            Getting Started
            </a>
            <ul class="md-nav__list">
             <li class="md-nav__item">
-             <a class="md-nav__link" href="../usage.html#examples">
+             <a class="md-nav__link" href="../getting_started.html#examples">
               Examples
              </a>
             </li>
@@ -330,15 +330,50 @@ You will have to save the login credentials on your system, which is a huge
 security issue!
         </p>
        </div>
+       <div class="admonition note">
+        <p class="admonition-title">
+         Note
+        </p>
+        <p>
+         Allow ‘less secure app access’
+        </p>
+        <p>
+         in order for the bot to be able to send messages, you have to turn on the
+         <strong>
+          less secure app acces
+         </strong>
+         option in the gmail security settings.
+        </p>
+       </div>
        <p>
-        Create a secret file (no extension needed) somewhere hidden on your system with
-the username in the first line and the password in the line below. it should look
-like this:
+        Now you have to register your credentials. You can simply do it from the command
+line (obviously change the placeholders with your credentials):
        </p>
-       <div class="highlight-default notranslate">
+       <div class="highlight-bash notranslate">
         <div class="highlight">
-         <pre><span></span>username@gmail.com
-PaSsWoRd!
+         <pre><span></span>$ emailbot set-token <span class="s2">"username@gmail.com"</span> <span class="s2">"PaSsWoRd!"</span>
+</pre>
+        </div>
+       </div>
+       <p>
+        Alternatively, manually create a secret json file somewhere hidden on your
+system with the username and the password. Then run the following command:
+       </p>
+       <div class="highlight-bash notranslate">
+        <div class="highlight">
+         <pre><span></span>$ codebots set-tokens-path <span class="s2">"path=to-the-folder-where-the-json-file-is-saved"</span>
+</pre>
+        </div>
+       </div>
+       <p>
+        The json file should look like this:
+       </p>
+       <div class="highlight-json notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="p">{</span>
+    <span class="nt">"username"</span><span class="p">:</span> <span class="nt">"username@gmail.com"</span>
+    <span class="nt">"password"</span><span class="p">:</span> <span class="s2">"PaSsWoRd!"</span>
+<span class="p">}</span>
 </pre>
         </div>
        </div>
@@ -348,18 +383,20 @@ PaSsWoRd!
        <div class="highlight-python notranslate">
         <div class="highlight">
          <pre><span></span><span class="kn">from</span> <span class="nn">codebots.bots</span> <span class="kn">import</span> <span class="n">EmailBot</span>
-<span class="kn">from</span> <span class="nn">codebots.bots</span> <span class="kn">import</span> <span class="n">Sender</span>
-
-<span class="c1"># initiate the Sender with some credentials:</span>
-<span class="c1"># - you can specify the location of the access config file ".tokens/email" (keep this secret!)</span>
-<span class="c1"># - or you can pass username and password on the fly (not a great idea...)</span>
-<span class="n">sender</span> <span class="o">=</span> <span class="n">Sender</span><span class="o">.</span><span class="n">form_file</span><span class="p">(</span><span class="s2">".tokens/email"</span><span class="p">)</span>
 
 <span class="c1"># Crete the bot: not it can send emails on behalf of the Sender account</span>
-<span class="n">bot</span> <span class="o">=</span> <span class="n">EmailBot</span><span class="p">(</span><span class="n">sender</span><span class="p">)</span>
+<span class="n">bot</span> <span class="o">=</span> <span class="n">EmailBot</span><span class="p">()</span>
+
+<span class="c1"># # If you want send an email from another account, initiate a Sender</span>
+<span class="c1"># # with some credentials and feed it to the emailbot:</span>
+<span class="c1"># # - you can specify the location of the access config file ".tokens/email" (keep this secret!)</span>
+<span class="c1"># # - or you can pass username and password on the fly (not a great idea...)</span>
+<span class="c1"># from codebots.bots import Sender</span>
+<span class="c1"># sender = Sender.form_file(".tokens/email")</span>
+<span class="c1"># bot = EmailBot(sender)</span>
 
 <span class="c1"># set the email content</span>
-<span class="n">receiver</span> <span class="o">=</span> <span class="s2">"francesco.ranaudo@gmail.com"</span>
+<span class="n">receiver</span> <span class="o">=</span> <span class="s2">"receiver@email.com"</span>
 <span class="n">subject</span> <span class="o">=</span> <span class="s2">"message from bot"</span>
 <span class="n">body</span> <span class="o">=</span> <span class="s2">"This message was sent by a bot"</span>
 
@@ -376,7 +413,7 @@ PaSsWoRd!
   <footer class="md-footer">
    <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="slackbot.html" rel="prev" title="Get notified on slack">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="telegrambot.html" rel="prev" title="Get notified on telegram">
       <div class="md-flex__cell md-flex__cell--shrink">
        <i class="md-icon md-icon--arrow-back md-footer-nav__button">
        </i>
@@ -386,17 +423,17 @@ PaSsWoRd!
         <span class="md-footer-nav__direction">
          Previous
         </span>
-        Get notified on slack
+        Get notified on telegram
        </span>
       </div>
      </a>
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="telegrambot.html" rel="next" title="Get notified on telegram">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="sshbot.html" rel="next" title="Create a bot to deploy your application to the server using SSH">
       <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
        <span class="md-flex__ellipsis">
         <span class="md-footer-nav__direction">
          Next
         </span>
-        Get notified on telegram
+        Create a bot to deploy your application to the server using SSH
        </span>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -413,7 +450,7 @@ PaSsWoRd!
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              Apr 16, 2021.
+              May 04, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
