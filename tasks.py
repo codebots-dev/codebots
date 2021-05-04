@@ -129,7 +129,7 @@ def docs(ctx, doctest=False, rebuild=False, check_links=False):
 def lint(ctx):
     """Check the consistency of coding style."""
     log.write('Running flake8 python linter...')
-    opts = 'E501,F401,F403'
+    opts = 'E501,F401,F403,F811'
     ctx.run('python -m flake8 src/codebots --ignore={}'.format(opts))
 
 
