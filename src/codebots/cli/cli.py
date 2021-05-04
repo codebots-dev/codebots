@@ -286,14 +286,19 @@ def deploybot():
 @click.argument('address')
 @click.argument('local')
 @click.argument('server')
+@click.option('--branch', default='main', help='branch to push to.')
 @click.option('--sshbot', default=None, help='instance of an `sshBot` with access to the server.')
-def configure(project, address, local, server, sshbot):
+def configure(project, address, local, server, branch, sshbot):
     """Configure a local repository to sync with a server.\n
 
     Parameters\n
     ----------\n
+    project : str\n
+        name of the project for the setting file.\n
+    address : str\n
+        server address (username@host).\n
     local : str\n
-        path to the local clone of the repository\n
+        path to the local clone of the repository.\n
     server : str\n
         path to the server bare repository. If no repository is present\n
         at the given location a bare new one is created.\n
@@ -303,7 +308,7 @@ def configure(project, address, local, server, sshbot):
     bot = DeployBot(project)
     out = configure_local(bot.local_repo, bot.server_complete_path)
     click.echo(out)
-    out = configure_server(bot.server_repo_path, sshbot)
+    out = configure_server(bot.server_repo_path, branch, sshbot)
     click.echo(out)
 
 

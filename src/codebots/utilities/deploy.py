@@ -1,5 +1,6 @@
 import os
 from ..bots import sshBot
+from pathlib import Path
 
 
 def configure_local(local_repo, server_complete_path):
@@ -20,7 +21,7 @@ def configure_local(local_repo, server_complete_path):
         local repository configured!"""
 
 
-def configure_server(server_repo_path, sshbot=None, os_type='linux'):
+def configure_server(server_repo_path, branch='main', sshbot=None, os_type='linux'):
     """Configure the server side:
         - check if server has git repository folder;
         - if not create a bare repository;
@@ -33,27 +34,31 @@ def configure_server(server_repo_path, sshbot=None, os_type='linux'):
     sshbot : obj, optional
         instance of an `sshBot` with access to the server, by default None.
     """
-    git_folder = os.path.join(server_repo_path, '.git')
 
+    git_folder = Path(server_repo_path).joinpath('.git')
+    git_folder = server_repo_path+'/.git'
     if not sshbot:
         sshbot = sshBot()
-    std_dict = sshbot.execute_cmds(["if test -d {}; then echo {}; fi".format(server_repo_path, "yes"),
-                                    "if test -d {}; then echo {}; fi".format(git_folder, "yes")], False, False)
-    # check if folder exists:
+
+    # check if server folder exists and if it is a git repository
+    tests = ["if test -d {}; then echo {}; fi".format(x, "yes") for x in [server_repo_path, git_folder]]
+    std_dict = sshbot.execute_cmds(tests, False, False)
+
+    cmds = ['{} {}'.format('mkdir' if os_type == 'windows' else 'mkdir -p', server_repo_path),
+            'git --git-dir={} init -b {}'.format(git_folder, branch),
+            'git --git-dir={} config receive.denyCurrentBranch updateInstead'.format(git_folder)]
+
     if std_dict["stdout"][0] != 'yes':
-        try:
-            cmd = 'mkdir' if os == 'windows' else 'mkdir -p'
-            sshbot.execute_cmds(['{} {}'.format(cmd, server_repo_path),
-                                'git --git-dir={} {}'.format(git_folder, 'init'),
-                                 'git --git-dir={} {}'.format(git_folder, 'config receive.denyCurrentBranch updateInstead')], verbose=False)
-        except:
-            raise Exception("Something went wrong!! Please make sure that the server path is valid and you have git\
-                on the server side.")
+        cmd = cmds
     else:
-        if std_dict["stdout"][1] != 'yes':
-            sshbot.execute_cmds(['git --git-dir={} {}'.format(git_folder, 'init'),
-                                 'git --git-dir={} {}'.format(git_folder, 'config receive.denyCurrentBranch updateInstead')], verbose=False)
-        else:
-            sshbot.execute_cmds(['git --git-dir={} {}'.format(git_folder,
-                                                              'config receive.denyCurrentBranch updateInstead')], verbose=False)
+        cmd = cmds[1:] if std_dict["stdout"][1] != 'yes' else [cmds[-1]]
+    out = sshbot.execute_cmds(cmd, verbose=False)
+
+    for x in out["stdout"]:
+        if x != '':
+            print(x)
+
+    for x in out["stderr"]:
+        if x != '':
+            return x
     return 'server repository configured!'

@@ -1,6 +1,7 @@
 import os
 from git import Repo
 from ._bot import BaseBot
+from pathlib import Path
 
 COMMITS_TO_PRINT = 5
 
@@ -59,7 +60,9 @@ class DeployBot(BaseBot):
             from .. import TOKENS
             config_file = os.path .join(TOKENS, "{}.json".format(project))
         super().__init__(config_file)
-        self.server_complete_path = self.server_address+":"+self.server_repo_path
+        # self.local_repo_path = Path(self.local_repo_path)
+        # self.server_repo_path = Path(self.server_repo_path)
+        self.server_complete_path = "{}:{}".format(self.server_address, self.server_repo_path)
         self.local_repo = Repo(self.local_repo_path)
 
     def deploy_to_server(self, remote_name="deploy", local_name="master", commit_message="deployed"):
@@ -81,7 +84,7 @@ class DeployBot(BaseBot):
     def _git_hooks(self):
         raise NotImplementedError()
 
-    def _git_push(self, commit_message, remote_name, local_name):
+    def _git_push(self, commit_message, remote_name, local_name, commit=True):
         """Push the local repo to the server
 
         Parameters
@@ -92,16 +95,19 @@ class DeployBot(BaseBot):
             name of the git remote.
         local_name : str, optional
             name of the local branch to push.
+        commit : bool, optional
+            add untracked files and commit changes, by default True.
         """
 
-        # if self.local_repo.index.diff(None) or self.local_repo.untracked_files:
-
-        self.local_repo.git.add(A=True)
-        self.local_repo.git.commit(m=commit_message)
-        self.local_repo.git.push('--set-upstream', remote_name, local_name)
+        # avoid the case that there is nothing to commit
+        if (self.local_repo.index.diff(None) or self.local_repo.untracked_files) and commit:
+            self.local_repo.git.add(A=True)
+            self.local_repo.git.commit(m=commit_message)
+            print('changes committed')
+        else:
+            print('no changes to commit')
         print('local deployed to server')
-        # else:
-        #     print('no changes')
+        self.local_repo.git.push('--set-upstream', remote_name, local_name)
 
     # def print_commit(commit):
     #     print('----')
@@ -123,4 +129,4 @@ class DeployBot(BaseBot):
 
 if __name__ == "__main__":
     bot = DeployBot('my_project')
-    bot.deploy_to_server(local_name="master")
+    bot.deploy_to_server(local_name="main")

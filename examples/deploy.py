@@ -4,4 +4,4 @@ from codebots.bots import DeployBot
 bot = DeployBot('my_project')
 
 # deployment -> push the repo to the server
-bot.deploy_to_server()
+bot.deploy_to_server(local_name="main")
