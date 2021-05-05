@@ -27,13 +27,6 @@ Currently supported bots:
 
 Full documentation: https://franaudo.github.io/codebots/latest/.
 
-.. note::
-
-    This pacakge is a WIP! Expect things to be very different among versions. However,
-    the stable releases will always work and pass all the tests.
-
-    If you want to access the latest functionalities, clone the GitHub repo and switch
-    to the `develop` branch, although it is very likely that things won't work! :)
 
 Features
 --------

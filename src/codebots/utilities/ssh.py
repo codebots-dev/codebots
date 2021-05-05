@@ -41,8 +41,6 @@ def add_pubkey_to_server(bot, ssh_folder, os_type='linux'):
     --------
     This works only on linux servers.
     """
-    if not ssh_folder:
-        ssh_folder = os.path.join(str(Path.home()), '.ssh')
     with open(os.path.join(ssh_folder, 'id_rsa.pub'), "r") as pubkey_file:
         pubkey = pubkey_file.readline()
     bot.execute_cmds(commands=['(umask 077 && test -d ~/.ssh || mkdir ~/.ssh)',
