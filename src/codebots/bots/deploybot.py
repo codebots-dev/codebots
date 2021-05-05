@@ -50,10 +50,6 @@ class DeployBot(BaseBot):
 
         bot = DeployBot('my_project')
         bot.deploy_to_server()
-
-    Warnings
-    --------
-    You need to have an sshbot settings configured to grant access to the server.
     """
 
     def __init__(self, project=None, config_file=None) -> None:

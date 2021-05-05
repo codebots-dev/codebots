@@ -24,7 +24,7 @@ from codebots.bots import EmailBot
 from codebots.bots import sshBot
 from codebots.bots.deploybot import DeployBot
 from codebots.utilities.ssh import gen_keypair, add_pubkey_to_server
-from codebots.utilities.tokens import add_token, set_token_dir, reset_token_dir
+from codebots.utilities.tokens import add_token, get_telegram_chatid, set_token_dir, reset_token_dir
 from codebots.utilities.deploy import configure_local, configure_server
 
 
@@ -140,8 +140,7 @@ def send(message):
 
 @telebot.command()
 @click.argument('token')
-@click.argument('chatid')
-def set_token(token, chatid):
+def set_token(token):
     """create the token file with the credentials.\n
 
     Parameters\n
@@ -151,7 +150,11 @@ def set_token(token, chatid):
     chatid : str\n
         chatID of the chat with the bot.\n
     """
-    out = add_token("telegram", bot_token=token, bot_chatID=chatid)
+    try:
+        chatid = get_telegram_chatid(token)
+    except Exception:
+        raise ConnectionError("Something went wrong! Did you start a chat with your bot on telegram?")
+    out = add_token("telegram", bot_token=token, bot_chatID=str(chatid))
     click.echo(out)
 
 # -------------------------------- EMAIL ----------------------------------#

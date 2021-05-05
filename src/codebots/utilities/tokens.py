@@ -1,5 +1,6 @@
 import json
 import os
+import requests
 from .. import SETTINGS, TOKENS
 
 
@@ -61,3 +62,8 @@ def add_token(bot, **kwargs):
             return "tokens file for {} updated!".format(bot)
     except Exception:
         return "something went wrong!"
+
+
+def get_telegram_chatid(token):
+    response = requests.get("https://api.telegram.org/bot{}/getUpdates".format(token))
+    return response.json()['result'][0]['message']['chat']['id']
