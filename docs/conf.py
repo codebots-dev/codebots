@@ -116,7 +116,6 @@
 # ]
 
 
-
 # # napoleon options
 # napoleon_google_docstring = False
 # napoleon_numpy_docstring = True
@@ -459,6 +458,8 @@ autosummary_generate = True
 autoclass_content = "class"
 
 # Enable eval_rst in markdown
+
+
 def setup(app):
     app.add_config_value(
         "recommonmark_config",
@@ -472,5 +473,3 @@ def setup(app):
         objname="configuration value",
         indextemplate="pair: %s; configuration value",
     )
-
-
