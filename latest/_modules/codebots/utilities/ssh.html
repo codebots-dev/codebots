@@ -340,8 +340,6 @@
 <span class="sd">    --------</span>
 <span class="sd">    This works only on linux servers.</span>
 <span class="sd">    """</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">ssh_folder</span><span class="p">:</span>
-        <span class="n">ssh_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()),</span> <span class="s1">'.ssh'</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ssh_folder</span><span class="p">,</span> <span class="s1">'id_rsa.pub'</span><span class="p">),</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">pubkey_file</span><span class="p">:</span>
         <span class="n">pubkey</span> <span class="o">=</span> <span class="n">pubkey_file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
     <span class="n">bot</span><span class="o">.</span><span class="n">execute_cmds</span><span class="p">(</span><span class="n">commands</span><span class="o">=</span><span class="p">[</span><span class="s1">'(umask 077 &amp;&amp; test -d ~/.ssh || mkdir ~/.ssh)'</span><span class="p">,</span>
