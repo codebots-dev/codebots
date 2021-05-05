@@ -357,34 +357,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_ssh_client</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sftp_client</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="c1"># @classmethod</span>
-    <span class="c1"># def from_credentials_file(cls, json_file):</span>
-    <span class="c1">#     """Get credentials from json file</span>
-
-    <span class="c1">#     Parameters</span>
-    <span class="c1">#     ----------</span>
-    <span class="c1">#     json_file : str</span>
-    <span class="c1">#         path to the json file with the credentials for the server.</span>
-    <span class="c1">#         it should have the following structure:</span>
-
-    <span class="c1">#         .. code-block:: json</span>
-
-    <span class="c1">#             {</span>
-    <span class="c1">#                 "hostname" : "_______",</span>
-    <span class="c1">#                 "username" : "_______",</span>
-    <span class="c1">#                 "password" : "_______",</span>
-    <span class="c1">#                 "pvtkey"   : "_______"</span>
-    <span class="c1">#             }</span>
-
-    <span class="c1">#     Returns</span>
-    <span class="c1">#     -------</span>
-    <span class="c1">#     cls</span>
-    <span class="c1">#         sshBot</span>
-    <span class="c1">#     """</span>
-    <span class="c1">#     with open(json_file, 'r') as f:</span>
-    <span class="c1">#         credentials = json.load(f)</span>
-    <span class="c1">#     return cls(**credentials)</span>
-
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">ssh_client</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ssh_client</span>
@@ -503,18 +475,6 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_sftp_client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_sftp_client</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">"connection closed"</span><span class="p">)</span></div></div>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
-    <span class="k">pass</span>
-
-    <span class="c1"># bot = sshBot(config_file=None, hostname="192.168.0.199", username="franaudo", password="Sxcdews23", pvtkey="")</span>
-    <span class="n">bot</span> <span class="o">=</span> <span class="n">sshBot</span><span class="p">()</span>
-
-    <span class="n">bot</span><span class="o">.</span><span class="n">execute_cmds</span><span class="p">(</span><span class="n">commands</span><span class="o">=</span><span class="p">[</span><span class="s1">'ls'</span><span class="p">],</span> <span class="n">close_connection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="c1"># print(bot.ssh_client)</span>
-    <span class="c1"># bot.execute_cmds(commands=['ls -l'], close_connection=True)</span>
-    <span class="c1"># print(bot.ssh_client)</span>
 </pre>
        </div>
       </article>

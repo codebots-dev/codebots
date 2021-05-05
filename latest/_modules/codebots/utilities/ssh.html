@@ -300,7 +300,6 @@
 <span></span><span class="kn">import</span> <span class="nn">paramiko</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="c1"># from io import StringIO</span>
 
 
 <div class="viewcode-block" id="gen_keypair"><a class="viewcode-back" href="../../../api/generated/codebots.utilities.ssh.gen_keypair.html#codebots.utilities.ssh.gen_keypair">[docs]</a><span class="k">def</span> <span class="nf">gen_keypair</span><span class="p">(</span><span class="n">ssh_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -348,64 +347,6 @@
                      <span class="n">close_connection</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                      <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="s2">"public key successfully added. Try to run `ssh hostname`"</span><span class="p">)</span></div>
-
-    <span class="c1"># def connect_with_pvtkey():</span>
-    <span class="c1">#     k = paramiko.RSAKey.from_private_key_file("/home/fr/.ssh/id_rsa", password="Sxcdews23")</span>
-    <span class="c1">#     c = paramiko.SSHClient()</span>
-    <span class="c1">#     c.set_missing_host_key_policy(paramiko.AutoAddPolicy())</span>
-    <span class="c1">#     print("connecting")</span>
-    <span class="c1">#     c.connect(hostname="192.168.0.199", username="franaudo", pkey=k)</span>
-    <span class="c1">#     print("connected")</span>
-    <span class="c1">#     # commands = [ "/home/ubuntu/firstscript.sh", "/home/ubuntu/secondscript.sh" ]</span>
-    <span class="c1">#     # for command in commands:</span>
-    <span class="c1">#     # 	print "Executing {}".format( command )</span>
-    <span class="c1">#     # 	stdin , stdout, stderr = c.exec_command(command)</span>
-    <span class="c1">#     # 	print stdout.read()</span>
-    <span class="c1">#     # 	print( "Errors")</span>
-    <span class="c1">#     # 	print stderr.read()</span>
-    <span class="c1">#     # c.close()</span>
-
-    <span class="c1"># # def ssh_key_gen(length=2048, type='rsa', password=None, username='jumpserver', hostname=None):</span>
-    <span class="c1"># #     """Generate user ssh private and public key</span>
-
-    <span class="c1"># #     Use paramiko RSAKey generate it.</span>
-    <span class="c1"># #     :return private key str and public key str</span>
-    <span class="c1"># #     """</span>
-
-    <span class="c1"># #     if hostname is None:</span>
-    <span class="c1"># #         hostname = os.uname()[1]</span>
-
-    <span class="c1"># #     f = StringIO()</span>
-    <span class="c1"># #     try:</span>
-    <span class="c1"># #         if type == 'rsa':</span>
-    <span class="c1"># #             private_key_obj = paramiko.RSAKey.generate(length)</span>
-    <span class="c1"># #         elif type == 'dsa':</span>
-    <span class="c1"># #             private_key_obj = paramiko.DSSKey.generate(length)</span>
-    <span class="c1"># #         else:</span>
-    <span class="c1"># #             raise IOError('SSH private key must be `rsa` or `dsa`')</span>
-    <span class="c1"># #         private_key_obj.write_private_key(f, password=password)</span>
-    <span class="c1"># #         private_key = f.getvalue()</span>
-    <span class="c1"># #         public_key = ssh_pubkey_gen(private_key_obj, username=username, hostname=hostname)</span>
-    <span class="c1"># #         return private_key, public_key</span>
-    <span class="c1"># #     except IOError:</span>
-    <span class="c1"># #         raise IOError('These is error when generate ssh key.')</span>
-
-    <span class="c1"># def create_keypair():</span>
-
-    <span class="c1">#     key = paramiko.RSAKey.generate(4096)</span>
-    <span class="c1">#     print(key.get_base64())  # print public key</span>
-    <span class="c1">#     key.write_private_key(sys.stdout)  # print private key</span>
-
-    <span class="c1">#     with open("/home/fr/.ssh/pubkey", "w") as key_file:</span>
-    <span class="c1">#         key_file.write(key.get_base64())</span>
-
-    <span class="c1">#     key.write_private_key("/home/fr/.ssh/pvtkey")</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">codebots.bots</span> <span class="kn">import</span> <span class="n">sshBot</span>
-    <span class="n">bot</span> <span class="o">=</span> <span class="n">sshBot</span><span class="p">(</span><span class="n">config_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hostname</span><span class="o">=</span><span class="s2">"192.168.0.199"</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">"franaudo"</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">"Sxcdews23"</span><span class="p">,</span> <span class="n">pvtkey</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
-    <span class="n">add_pubkey_to_server</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">path_local</span><span class="o">=</span><span class="s2">"C:/Users/franaudo/.ssh/pubkey"</span><span class="p">)</span>
 </pre>
        </div>
       </article>
