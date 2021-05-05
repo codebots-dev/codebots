@@ -110,4 +110,4 @@ class SlackBot(BaseBot):
 if __name__ == "__main__":
 
     bot = SlackBot()
-    bot.send_message(channel='topopt', message='test')
+    bot.send_message(channel='general', message='test')

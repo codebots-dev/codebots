@@ -93,15 +93,3 @@ class EmailBot(BaseBot):
             contents=body,
             attachments=attachment,
         )
-
-
-if __name__ == "__main__":
-    # sender = Sender.form_file("C:/Users/franaudo/.tokens/email.json")
-    receiver = "francesco.ranaudo@gmail.com"
-    subject = "message from bot"
-    body = "This message was sent by a bot"
-    filename = "document.pdf"
-
-    # bot = EmailBot(sender)
-    bot = EmailBot()
-    bot.send_email(receiver, subject, body)

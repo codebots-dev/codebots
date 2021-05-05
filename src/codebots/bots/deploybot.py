@@ -123,8 +123,3 @@ class DeployBot(BaseBot):
     #     for remote in repo.remotes:
     #         print('Remote named "{}" with URL "{}"'.format(remote, remote.url))
     #     print('Last commit for repo is {}.'.format(str(repo.head.commit.hexsha)))
-
-
-if __name__ == "__main__":
-    bot = DeployBot('my_project')
-    bot.deploy_to_server(local_name="main")

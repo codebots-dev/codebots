@@ -58,34 +58,6 @@ class sshBot(BaseBot):
         self._ssh_client = None
         self._sftp_client = None
 
-    # @classmethod
-    # def from_credentials_file(cls, json_file):
-    #     """Get credentials from json file
-
-    #     Parameters
-    #     ----------
-    #     json_file : str
-    #         path to the json file with the credentials for the server.
-    #         it should have the following structure:
-
-    #         .. code-block:: json
-
-    #             {
-    #                 "hostname" : "_______",
-    #                 "username" : "_______",
-    #                 "password" : "_______",
-    #                 "pvtkey"   : "_______"
-    #             }
-
-    #     Returns
-    #     -------
-    #     cls
-    #         sshBot
-    #     """
-    #     with open(json_file, 'r') as f:
-    #         credentials = json.load(f)
-    #     return cls(**credentials)
-
     @property
     def ssh_client(self):
         return self._ssh_client
@@ -204,15 +176,3 @@ class sshBot(BaseBot):
             self._sftp_client.close()
             self._sftp_client = None
             print("connection closed")
-
-
-if __name__ == '__main__':
-    pass
-
-    # bot = sshBot(config_file=None, hostname="192.168.0.199", username="franaudo", password="Sxcdews23", pvtkey="")
-    bot = sshBot()
-
-    bot.execute_cmds(commands=['ls'], close_connection=True)
-    # print(bot.ssh_client)
-    # bot.execute_cmds(commands=['ls -l'], close_connection=True)
-    # print(bot.ssh_client)

@@ -51,12 +51,3 @@ class TeleBot(BaseBot):
         """
         response = requests.get(self._url + message)
         return response.json()
-
-
-if __name__ == '__main__':
-
-    # init the bot
-    bot = TeleBot()
-
-    # send the message
-    bot.send_message('ciao mamma')

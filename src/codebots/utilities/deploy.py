@@ -1,4 +1,3 @@
-import os
 from ..bots import sshBot
 from pathlib import Path
 
