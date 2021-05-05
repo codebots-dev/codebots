@@ -18,7 +18,7 @@ test_requirements = ["pytest>=3", ]
 
 setup(
     name="codebots",
-    version="0.8.0",
+    version="0.8.1",
     author="Francesco Ranaudo",
     author_email="ranaudo@arch.ethz.ch",
     python_requires=">=3.5",
