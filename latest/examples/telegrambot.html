@@ -309,13 +309,13 @@
               </a>
              </li>
              <li class="md-nav__item">
-              <a class="md-nav__link" href="#getting-your-chatid">
-               Getting your ChatID
-              </a>
-             </li>
-             <li class="md-nav__item">
-              <a class="md-nav__link" href="#store-your-credentials">
-               Store your credentials
+              <a class="md-nav__link" href="#set-up-a-telebot">
+               Set-up a
+               <code class="code docutils literal notranslate">
+                <span class="pre">
+                 TeleBot
+                </span>
+               </code>
               </a>
              </li>
              <li class="md-nav__item">
@@ -352,117 +352,106 @@
         <li>
          <p>
           On Telegram, search
-          <cite>
-           @ BotFather
-          </cite>
-          , send him a “/start” message;
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            @
+           </span>
+           <span class="pre">
+            BotFather
+           </span>
+          </code>
+          and send him a
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            /start
+           </span>
+          </code>
+          message;
          </p>
         </li>
         <li>
          <p>
-          Using the “/newbot” message, BotFather will guide you through the creation of a new bot;
+          Type
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            /newbot
+           </span>
+          </code>
+          and BotFather will guide you through the creation of a new bot;
          </p>
         </li>
         <li>
          <p>
-          Your bot is now ready: annotate your API token!
+          Your bot is now ready:
+          <strong>
+           annotate your API token
+          </strong>
+          !
+         </p>
+        </li>
+        <li>
+         <p>
+          On Telegram, search your bot (by the username you just created), and send a
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            /start
+           </span>
+          </code>
+          message
          </p>
         </li>
        </ol>
-       <h2 id="getting-your-chatid">
-        Getting your ChatID
-        <a class="headerlink" href="#getting-your-chatid" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <ol class="arabic simple">
-        <li>
-         <p>
-          On Telegram, search your bot (by the username you just created), and send a “/start” message
-         </p>
-        </li>
-        <li>
-         <p>
-          Open a new tab with your browser, enter
-          <cite>
-           https://api.telegram.org/bot&lt;yourtoken&gt;/getUpdates
-          </cite>
-          , replace
-          <cite>
-           &lt;yourtoken&gt;
-          </cite>
-          with your API token, press enter and you should see something like this:
-         </p>
-        </li>
-       </ol>
-       <div class="highlight-JSON notranslate">
-        <div class="highlight">
-         <pre><span></span><span class="p">{</span>
-<span class="nt">"ok"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-<span class="nt">"result"</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-    <span class="nt">"update_id"</span><span class="p">:</span> <span class="mi">4871110</span><span class="p">,</span>
-    <span class="nt">"message"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">"message_id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nt">"from"</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">"id"</span><span class="p">:</span> <span class="mi">171111114</span><span class="p">,</span>
-            <span class="nt">"is_bot"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-            <span class="nt">"first_name"</span><span class="p">:</span> <span class="s2">"frankie"</span><span class="p">,</span>
-            <span class="nt">"language_code"</span><span class="p">:</span> <span class="s2">"en"</span>
-        <span class="p">},</span>
-        <span class="nt">"chat"</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">"id"</span><span class="p">:</span> <span class="mi">171111114</span><span class="p">,</span>
-            <span class="nt">"first_name"</span><span class="p">:</span> <span class="s2">"frankie"</span><span class="p">,</span>
-            <span class="nt">"type"</span><span class="p">:</span> <span class="s2">"private"</span>
-        <span class="p">},</span>
-        <span class="nt">"date"</span><span class="p">:</span> <span class="mi">1618152626</span><span class="p">,</span>
-        <span class="nt">"text"</span><span class="p">:</span> <span class="s2">"36380"</span>
-    <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">]</span>
-<span class="p">}</span>
-</pre>
-        </div>
-       </div>
-       <ol class="arabic simple" start="3">
-        <li>
-         <p>
-          Look for
-          <cite>
-           id
-          </cite>
-          under
-          <cite>
-           chat
-          </cite>
-          and annotate it.
-         </p>
-        </li>
-       </ol>
-       <h2 id="store-your-credentials">
-        Store your credentials
-        <a class="headerlink" href="#store-your-credentials" title="Permalink to this headline">
+       <h2 id="set-up-a-telebot">
+        Set-up a
+        <code class="code docutils literal notranslate">
+         <span class="pre">
+          TeleBot
+         </span>
+        </code>
+        <a class="headerlink" href="#set-up-a-telebot" title="Permalink to this headline">
          ¶
         </a>
        </h2>
        <p>
-        Almost there! :) Now that you have what you need, create a json file in a secret location and paste the
-        <cite>
-         bot_token
-        </cite>
-        and the
-        <cite>
-         chatID
-        </cite>
-        in it
-using the template below:
+        Now that your bot is ready, you need to store your token on your machine and link
+it to
+        <code class="code docutils literal notranslate">
+         <span class="pre">
+          codebots
+         </span>
+        </code>
+        . Piece of cake… ;)
        </p>
-       <div class="highlight-JSON notranslate">
+       <ol class="arabic simple">
+        <li>
+         <p>
+          Open your Terminal and type (make sure to remove the
+          <cite>
+           &lt;
+          </cite>
+          <cite>
+           &gt;
+          </cite>
+          when pasting your token:
+         </p>
+        </li>
+       </ol>
+       <div class="highlight-bash notranslate">
         <div class="highlight">
-         <pre><span></span><span class="p">{</span>
-    <span class="nt">"bot_token"</span> <span class="p">:</span> <span class="s2">"1698XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXBu-I"</span><span class="p">,</span>
-    <span class="nt">"bot_chatID"</span> <span class="p">:</span> <span class="s2">"17XXXXXXX4"</span>
-<span class="p">}</span>
+         <pre><span></span>telebot set-token &lt;paste-your-token-here&gt;
+</pre>
+        </div>
+       </div>
+       <ol class="arabic simple" start="2">
+        <li>
+         <p>
+          DONE! if everything went smooth, you should be able to send messages over slack. Try it:
+         </p>
+        </li>
+       </ol>
+       <div class="highlight-bash notranslate">
+        <div class="highlight">
+         <pre><span></span>telebot send <span class="s2">"ciao mamma!"</span>
 </pre>
         </div>
        </div>
@@ -473,7 +462,14 @@ using the template below:
         </a>
        </h2>
        <p>
-        this is an example implementation:
+        This type of bot is most useful inside scripts (for example to send a message at
+some function completion). This is an example implementation (but check the
+        <code class="code docutils literal notranslate">
+         <span class="pre">
+          decorator
+         </span>
+        </code>
+        section):
        </p>
        <div class="highlight-python notranslate">
         <div class="highlight">

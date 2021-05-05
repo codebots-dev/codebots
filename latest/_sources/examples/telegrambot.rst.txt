@@ -7,61 +7,36 @@ This example shows how to set-up a telegram bot. First, you need to setup things
 Create your own bot
 -------------------
 
-1. On Telegram, search `@ BotFather`, send him a “/start” message;
-2. Using the “/newbot” message, BotFather will guide you through the creation of a new bot;
-3. Your bot is now ready: annotate your API token!
+1. On Telegram, search :code:`@ BotFather` and send him a :code:`/start` message;
+2. Type :code:`/newbot` and BotFather will guide you through the creation of a new bot;
+3. Your bot is now ready: **annotate your API token**!
+4. On Telegram, search your bot (by the username you just created), and send a :code:`/start` message
 
+Set-up a :code:`TeleBot`
+------------------------
 
-Getting your ChatID
---------------------
+Now that your bot is ready, you need to store your token on your machine and link
+it to :code:`codebots`. Piece of cake... ;)
 
-1. On Telegram, search your bot (by the username you just created), and send a “/start” message
-2. Open a new tab with your browser, enter `https://api.telegram.org/bot<yourtoken>/getUpdates` , replace `<yourtoken>` with your API token, press enter and you should see something like this:
+1. Open your Terminal and type (make sure to remove the `<` `>` when pasting your token:
 
-.. code-block:: JSON
+.. code-block:: bash
 
-    {
-    "ok": true,
-    "result": [
-        {
-        "update_id": 4871110,
-        "message": {
-            "message_id": 2,
-            "from": {
-                "id": 171111114,
-                "is_bot": false,
-                "first_name": "frankie",
-                "language_code": "en"
-            },
-            "chat": {
-                "id": 171111114,
-                "first_name": "frankie",
-                "type": "private"
-            },
-            "date": 1618152626,
-            "text": "36380"
-        }
-        }
-    ]
-    }
+    telebot set-token <paste-your-token-here>
 
-3. Look for `id` under `chat` and annotate it.
+2. DONE! if everything went smooth, you should be able to send messages over slack. Try it:
 
+.. code-block:: bash
 
-Store your credentials
-----------------------
-
-Almost there! :) Now that you have what you need, create a json file in a secret location and paste the `bot_token` and the `chatID` in it
-using the template below:
-
-.. literalinclude:: ./templates/telegram.json
-  :language: JSON
+    telebot send "ciao mamma!"
 
 
 In action
 ---------
 
-this is an example implementation:
+This type of bot is most useful inside scripts (for example to send a message at
+some function completion). This is an example implementation (but check the
+:code:`decorator` section):
 
 .. literalinclude:: /../examples/telegram_message.py
     :language: python
