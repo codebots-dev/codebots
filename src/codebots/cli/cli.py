@@ -147,8 +147,6 @@ def set_token(token):
     ----------\n
     token : str\n
         token of the telegram bot.\n
-    chatid : str\n
-        chatID of the chat with the bot.\n
     """
     try:
         chatid = get_telegram_chatid(token)
