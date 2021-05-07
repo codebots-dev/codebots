@@ -232,10 +232,6 @@ def set_token(hostname, username, password, pvtkey):
         ip address of the server.\n
     username : str\n
         username on the server.\n
-    password : str\n
-        password on the server, by default empty.\n
-    pvtkey : str\n
-        path to the private RSA key file, by default empty.\n
     """
     out = add_token("ssh", hostname=hostname, username=username, password=password, pvtkey=pvtkey)
     click.echo(out)
