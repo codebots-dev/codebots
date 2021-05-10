@@ -1,5 +1,5 @@
 ********************************************************************************
-Create a bot to deploy your application to the server using SSH
+Create a bot to deploy your application to a server using git
 ********************************************************************************
 
 This example shows how to set-up a bot to ease deploy your application on the

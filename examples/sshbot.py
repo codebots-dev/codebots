@@ -1,7 +1,7 @@
 from codebots.bots import sshBot
 
 # execute command on the server
-bot = sshBot()
+bot = sshBot('username@host')
 bot.execute_cmds(commands=['ls'])  # note: the imput is a list!
 
 # get folder content

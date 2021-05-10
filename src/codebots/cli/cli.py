@@ -214,7 +214,7 @@ def set_token(username, password):
 # --------------------------------- SSH -----------------------------------#
 @click.group()
 def sshbot():
-    """bot to interact with telegram"""
+    """bot to remotely operate on a (linux) server"""
     pass
 
 

@@ -2,8 +2,8 @@
 Use :code:`codebots` from the command line
 ********************************************************************************
 
-:code:`codebots` ships with a command line interface. This can be used for setting
-up things or to directly use the bots from the shell.
+:code:`codebots` ships with a command line interface. This can (and should)be
+used for setting up things or to directly use the bots from the shell.
 
 For detailed information about the different comands, type the name of the bot
 followed by :code:`--help`, like:
