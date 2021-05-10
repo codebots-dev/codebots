@@ -225,6 +225,7 @@ def sshbot():
 @click.option('--pvtkey', default='', help='path to the private key')
 def set_token(hostname, username, password, pvtkey):
     """create the token file with the credentials.\n
+    NOTE: to be useful either the password or the ssh private key must be passed.
 
     Parameters\n
     ----------\n
@@ -233,7 +234,8 @@ def set_token(hostname, username, password, pvtkey):
     username : str\n
         username on the server.\n
     """
-    out = add_token("ssh", hostname=hostname, username=username, password=password, pvtkey=pvtkey)
+    out = add_token(alias=f"{username}@{hostname}", hostname=hostname,
+                    username=username, password=password, pvtkey=pvtkey)
     click.echo(out)
 
 
@@ -269,7 +271,8 @@ def link_keys(hostname, username, password, ssh_folder):
         ssh_folder = os.path.join(str(Path.home()), '.ssh')
     out = add_pubkey_to_server(bot, ssh_folder)
     click.echo(out)
-    out = add_token("ssh", hostname=hostname, username=username, password="", pvtkey=os.path.join(ssh_folder, 'id_rsa'))
+    out = add_token(f"{username}@{hostname}", hostname=hostname, username=username,
+                    password="", pvtkey=os.path.join(ssh_folder, 'id_rsa'))
     click.echo(out)
 
 

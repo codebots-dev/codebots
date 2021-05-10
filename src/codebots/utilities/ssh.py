@@ -47,4 +47,4 @@ def add_pubkey_to_server(bot, ssh_folder, os_type='linux'):
                                'echo {} >>  ~/.ssh/authorized_keys'.format(pubkey)],
                      close_connection=False,
                      verbose=False)
-    return ("public key successfully added. Try to run `ssh hostname`")
+    return (f"public key successfully added. Try to run `ssh {bot.username}@{bot.hostname}`\n")

@@ -40,17 +40,20 @@ class sshBot(BaseBot):
         paramiko `SFTPClient` object, if a connection is active, otherwise None.
     """
 
-    def __init__(self, config_file='default', **kwargs) -> None:
+    def __init__(self, alias=None, config_file=None, **kwargs) -> None:
 
         self.__name__ = "sshbot"
         if not config_file:
-            self._credentials = kwargs
-            for k, v in self._credentials.items():
-                self.__setattr__(k, v)
-        elif config_file == 'default':
-            from .. import TOKENS
-            config_file = os.path .join(TOKENS, "ssh.json")
-            super().__init__(config_file)
+            if not alias:
+                if not kwargs:
+                    raise ValueError("Either an existing config_file or the credentials must be passed")
+                self._credentials = kwargs
+                for k, v in self._credentials.items():
+                    self.__setattr__(k, v)
+            else:
+                from .. import TOKENS
+                config_file = os.path .join(TOKENS, f"{alias}.json")
+                super().__init__(config_file)
         else:
             super().__init__(config_file)
 

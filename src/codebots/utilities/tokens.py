@@ -39,14 +39,14 @@ def reset_token_dir():
     return "tokens path resetted!"
 
 
-def add_token(bot, **kwargs):
+def add_token(alias, **kwargs):
     """Create a json file with the credential settings needed for the bot to
     operate.
 
     Parameters
     ----------
-    bot : str
-        name of the bot to configure.
+    alias : str
+        name of the bot/project/server to configure.
 
     Examples
     --------
@@ -54,14 +54,15 @@ def add_token(bot, **kwargs):
     """
 
     config_dict = {k: v for k, v in kwargs.items()}
-    config_file = os.path.join(TOKENS, "{}.json".format(bot))
+    config_file = os.path.join(TOKENS, "{}.json".format(alias))
+    msg = "tokens file for {} {}!".format(alias, 'created' if not os.path.isfile(config_file) else 'updated')
 
     try:
         with open(config_file, "w") as f:
             json.dump(config_dict, f)
-            return "tokens file for {} updated!".format(bot)
+            return msg
     except Exception:
-        return "something went wrong!"
+        return "something went wrong saving the file!"
 
 
 def get_telegram_chatid(token):
