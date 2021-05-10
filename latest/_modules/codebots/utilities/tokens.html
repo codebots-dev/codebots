@@ -338,14 +338,14 @@
     <span class="k">return</span> <span class="s2">"tokens path resetted!"</span></div>
 
 
-<div class="viewcode-block" id="add_token"><a class="viewcode-back" href="../../../api/generated/codebots.utilities.tokens.add_token.html#codebots.utilities.tokens.add_token">[docs]</a><span class="k">def</span> <span class="nf">add_token</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="add_token"><a class="viewcode-back" href="../../../api/generated/codebots.utilities.tokens.add_token.html#codebots.utilities.tokens.add_token">[docs]</a><span class="k">def</span> <span class="nf">add_token</span><span class="p">(</span><span class="n">alias</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">"""Create a json file with the credential settings needed for the bot to</span>
 <span class="sd">    operate.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    bot : str</span>
-<span class="sd">        name of the bot to configure.</span>
+<span class="sd">    alias : str</span>
+<span class="sd">        name of the bot/project/server to configure.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -353,14 +353,15 @@
 <span class="sd">    """</span>
 
     <span class="n">config_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
-    <span class="n">config_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TOKENS</span><span class="p">,</span> <span class="s2">"</span><span class="si">{}</span><span class="s2">.json"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bot</span><span class="p">))</span>
+    <span class="n">config_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TOKENS</span><span class="p">,</span> <span class="s2">"</span><span class="si">{}</span><span class="s2">.json"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alias</span><span class="p">))</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s2">"tokens file for </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">!"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alias</span><span class="p">,</span> <span class="s1">'created'</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span> <span class="k">else</span> <span class="s1">'updated'</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">config_dict</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
-            <span class="k">return</span> <span class="s2">"tokens file for </span><span class="si">{}</span><span class="s2"> updated!"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">msg</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">"something went wrong!"</span></div>
+        <span class="k">return</span> <span class="s2">"something went wrong saving the file!"</span></div>
 
 
 <span class="k">def</span> <span class="nf">get_telegram_chatid</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
@@ -385,13 +386,13 @@
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              May 05, 2021.
+              May 10, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.5.4.
+      4.0.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

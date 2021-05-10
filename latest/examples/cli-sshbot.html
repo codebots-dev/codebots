@@ -48,7 +48,7 @@
   </script>
   <link href="../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
-   codebots.cli — codebots
+   set-up sshbot — codebots
   </title>
   <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
   <link href="../_static/material.css" rel="stylesheet" type="text/css"/>
@@ -69,8 +69,8 @@
   </script>
   <link href="../genindex.html" rel="index" title="Index"/>
   <link href="../search.html" rel="search" title="Search"/>
-  <link href="codebots.utilities.html" rel="next" title="codebots.utilities"/>
-  <link href="generated/codebots.bots.deploybot.DeployBot.html" rel="prev" title="codebots.bots.deploybot.DeployBot"/>
+  <link href="decorators.html" rel="next" title="Add a decorator to your code"/>
+  <link href="cli-codebots.html" rel="prev" title="Use codebots from the command line"/>
   <link href="../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
  </head>
  <body data-md-color-accent="cyan" data-md-color-primary="blue" dir="ltr">
@@ -86,7 +86,7 @@
   <input class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
   <label class="md-overlay" data-md-component="overlay" for="__drawer">
   </label>
-  <a class="md-skip" href="#api/codebots.cli" tabindex="1">
+  <a class="md-skip" href="#examples/cli-sshbot" tabindex="1">
    Skip to content
   </a>
   <header class="md-header" data-md-component="header">
@@ -109,7 +109,7 @@
         codebots
        </span>
        <span class="md-header-nav__topic">
-        codebots.cli
+        set-up sshbot
        </span>
       </div>
      </div>
@@ -194,13 +194,8 @@
        </a>
       </li>
       <li class="md-tabs__item">
-       <a class="md-tabs__link" href="../api.html">
-        API Reference
-       </a>
-      </li>
-      <li class="md-tabs__item">
-       <a class="md-tabs__link" href="codebots.html">
-        codebots
+       <a class="md-tabs__link" href="../getting_started.html">
+        Getting Started
        </a>
       </li>
      </ul>
@@ -257,18 +252,18 @@
            <a class="md-nav__link" href="../getting_started.html">
             Getting Started
            </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../getting_started.html#examples">
+              Examples
+             </a>
+            </li>
+           </ul>
           </li>
           <li class="md-nav__item">
            <a class="md-nav__link" href="../api.html">
             API Reference
            </a>
-           <ul class="md-nav__list">
-            <li class="md-nav__item">
-             <a class="md-nav__link" href="codebots.html">
-              codebots
-             </a>
-            </li>
-           </ul>
           </li>
           <li class="md-nav__item">
            <a class="md-nav__link" href="../contributing.html">
@@ -299,7 +294,53 @@
       <div class="md-sidebar__scrollwrap">
        <div class="md-sidebar__inner">
         <nav class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          Contents
+         </label>
          <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#examples-cli-sshbot--page-root">
+            set-up
+            <code class="code docutils literal notranslate">
+             <span class="pre">
+              sshbot
+             </span>
+            </code>
+           </a>
+           <nav class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#basics">
+               Basics
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#setting-the-credentials">
+               Setting the credentials
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#using-a-password">
+                  Using a password
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#using-ssh-keys">
+                  Using ssh keys
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#using-the-credentials">
+               Using the credentials
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
          </ul>
         </nav>
        </div>
@@ -307,38 +348,236 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <section id="module-codebots.cli.cli">
-        <span id="codebots-cli">
-        </span>
-        <h1 id="api-codebots-cli--page-root">
-         codebots.cli
-         <a class="headerlink" href="#api-codebots-cli--page-root" title="Permalink to this headline">
+       <section id="set-up-sshbot">
+        <h1 id="examples-cli-sshbot--page-root">
+         set-up
+         <code class="code docutils literal notranslate">
+          <span class="pre">
+           sshbot
+          </span>
+         </code>
+         <a class="headerlink" href="#examples-cli-sshbot--page-root" title="Permalink to this headline">
           ¶
          </a>
         </h1>
         <p>
-         Console script for codebots.
-        </p>
-        <p>
-         You can get detaled information about each of the bots with the
          <code class="code docutils literal notranslate">
           <span class="pre">
-           --help
+           sshbot
           </span>
          </code>
-         option.
+         helps you to set-up a connection with a (linux) server and run
+commands on it directly from your app. However, we need to first store the
+credentials that
+         <code class="code docutils literal notranslate">
+          <span class="pre">
+           sshbot
+          </span>
+         </code>
+         will use for the connection. This section explains
+how.
         </p>
-        <div class="highlight-bash notranslate">
-         <div class="highlight">
-          <pre><span></span>codebots    --help
-emailbot    --help
-telebot     --help
-slackbot    --help
-sshbot      --help
-deploybot   --help
+        <section id="basics">
+         <h2 id="basics">
+          Basics
+          <a class="headerlink" href="#basics" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          For detailed information about the different comands, type
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            sshbot
+           </span>
+           <span class="pre">
+            --help
+           </span>
+          </code>
+          :
+         </p>
+         <div class="highlight-bash notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="hll">&gt;&gt;&gt; sshbot --help
+</span>
+Usage: sshbot [OPTIONS] COMMAND [ARGS]...
+
+bot to remotely operate on a (linux) server
+
+Options:
+--help  Show this message and exit.
+
+Commands:
+genkeys    Create a set of public and private keys and save them in the...
+link-keys  Adds the public key to the server's list.
+set-token  create the token file with the credentials.
 </pre>
+          </div>
          </div>
-        </div>
+        </section>
+        <section id="setting-the-credentials">
+         <h2 id="setting-the-credentials">
+          Setting the credentials
+          <a class="headerlink" href="#setting-the-credentials" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            codebots
+           </span>
+          </code>
+          reads the credential information from a
+          <cite>
+           .json
+          </cite>
+          file stored on
+your local machine. It can either connect to the server using a password (not
+super safe) or using a ssh-key pair (better!).
+         </p>
+         <p>
+          Here it is explained how to do both.
+         </p>
+         <section id="using-a-password">
+          <h3 id="using-a-password">
+           Using a password
+           <a class="headerlink" href="#using-a-password" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <p>
+           Run the following command:
+          </p>
+          <div class="highlight-bash notranslate">
+           <div class="highlight">
+            <pre><span></span><span class="hll">&gt;&gt;&gt; sshbot set-token myhost myusername --password mySECRETEpassword
+</span></pre>
+           </div>
+          </div>
+         </section>
+         <section id="using-ssh-keys">
+          <h3 id="using-ssh-keys">
+           Using ssh keys
+           <a class="headerlink" href="#using-ssh-keys" title="Permalink to this headline">
+            ¶
+           </a>
+          </h3>
+          <p>
+           If you already have a pair of private and public ssh keys, you can skip the first
+part.
+          </p>
+          <p>
+           Running the following command:
+          </p>
+          <div class="highlight-bash notranslate">
+           <div class="highlight">
+            <pre><span></span><span class="hll">&gt;&gt;&gt; sshbot genkeys
+</span>
+Key pair successfully generated <span class="k">in</span> ~<span class="se">\u</span>sername<span class="se">\.</span>ssh
+</pre>
+           </div>
+          </div>
+          <p>
+           will generate in the user
+           <cite>
+            .ssh
+           </cite>
+           folder a pair of ssh keys.
+          </p>
+          <div class="admonition note">
+           <p class="admonition-title">
+            Note
+           </p>
+           <p>
+            if you want to use already existings keys, make sure that they have the
+standard names
+            <strong>
+             id_rsa
+            </strong>
+            and
+            <strong>
+             id_rsa.pub
+            </strong>
+            . They can be saved in any location
+on your machine, but if it is not the standard
+            <cite>
+             ssh
+            </cite>
+            folder, you need to pass
+the optional argument
+            <code class="code docutils literal notranslate">
+             <span class="pre">
+              --ssh_folder
+             </span>
+            </code>
+            to the command below.
+           </p>
+          </div>
+          <p>
+           You now need to link the two keys (basically, add the public key to the list of
+keys acceppted by the server). This can be automatically done with:
+          </p>
+          <div class="highlight-bash notranslate">
+           <div class="highlight">
+            <pre><span></span><span class="hll">&gt;&gt;&gt; sshbot link-keys myhost myusername mySECRETEpassword
+</span>
+connected
+
+public key successfully added. Try to run <span class="sb">`</span>ssh myusername@nefcmyhostloud<span class="sb">`</span>
+
+tokens file <span class="k">for</span> myusername@nefcmyhostloud created!
+</pre>
+           </div>
+          </div>
+          <p>
+           To check that everything is working, try to connect to the server:
+          </p>
+          <div class="highlight-bash notranslate">
+           <div class="highlight">
+            <pre><span></span>&gt;&gt;&gt; ssh myusername@myhost
+</pre>
+           </div>
+          </div>
+         </section>
+        </section>
+        <section id="using-the-credentials">
+         <h2 id="using-the-credentials">
+          Using the credentials
+          <a class="headerlink" href="#using-the-credentials" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          Both procedures will generate a
+          <cite>
+           myusername@myhost.json
+          </cite>
+          file in the default
+location with the given information. You can use the
+          <cite>
+           alias
+          </cite>
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            myusername@myhost
+           </span>
+          </code>
+          when you create an
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            sshBot
+           </span>
+          </code>
+          (check the other examples).
+         </p>
+         <div class="highlight-python notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="n">bot</span> <span class="o">=</span> <span class="n">sshBot</span><span class="p">(</span><span class="s1">'myusername@myhost'</span><span class="p">)</span>
+</pre>
+          </div>
+         </div>
+        </section>
        </section>
       </article>
      </div>
@@ -348,7 +587,7 @@ deploybot   --help
   <footer class="md-footer">
    <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="generated/codebots.bots.deploybot.DeployBot.html" rel="prev" title="codebots.bots.deploybot.DeployBot">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="cli-codebots.html" rel="prev" title="Use codebots from the command line">
       <div class="md-flex__cell md-flex__cell--shrink">
        <i class="md-icon md-icon--arrow-back md-footer-nav__button">
        </i>
@@ -358,17 +597,23 @@ deploybot   --help
         <span class="md-footer-nav__direction">
          Previous
         </span>
-        codebots.bots.deploybot.DeployBot
+        Use
+        <code class="code docutils literal notranslate">
+         <span class="pre">
+          codebots
+         </span>
+        </code>
+        from the command line
        </span>
       </div>
      </a>
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="codebots.utilities.html" rel="next" title="codebots.utilities">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="decorators.html" rel="next" title="Add a decorator to your code">
       <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
        <span class="md-flex__ellipsis">
         <span class="md-footer-nav__direction">
          Next
         </span>
-        codebots.utilities
+        Add a decorator to your code
        </span>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">

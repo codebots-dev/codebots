@@ -3,6 +3,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -353,113 +354,126 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <h1 id="installation--page-root">
-        Installation
-        <a class="headerlink" href="#installation--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <h2 id="stable-release">
-        Stable release
-        <a class="headerlink" href="#stable-release" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <p>
-        To install codebots, run this command in your terminal:
-       </p>
-       <div class="highlight-console notranslate">
-        <div class="highlight">
-         <pre><span></span><span class="gp">$ </span>pip install codebots
+       <section id="installation">
+        <h1 id="installation--page-root">
+         Installation
+         <a class="headerlink" href="#installation--page-root" title="Permalink to this headline">
+          ¶
+         </a>
+        </h1>
+        <section id="stable-release">
+         <h2 id="stable-release">
+          Stable release
+          <a class="headerlink" href="#stable-release" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          To install
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            codebots
+           </span>
+          </code>
+          , run this command in your terminal:
+         </p>
+         <div class="highlight-console notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="gp">$ </span>pip install codebots
 </pre>
-        </div>
-       </div>
-       <p>
-        This is the preferred method to install codebots, as it will always install the most recent stable release.
-       </p>
-       <p>
-        If you don’t have
-        <a class="reference external" href="https://pip.pypa.io">
-         pip
-        </a>
-        installed, this
-        <a class="reference external" href="http://docs.python-guide.org/en/latest/starting/installation/">
-         Python installation guide
-        </a>
-        can guide
+          </div>
+         </div>
+         <p>
+          This is the preferred method to install
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            codebots
+           </span>
+          </code>
+          , as it will always install the most recent stable release.
+         </p>
+         <p>
+          If you don’t have
+          <a class="reference external" href="https://pip.pypa.io">
+           pip
+          </a>
+          installed, this
+          <a class="reference external" href="http://docs.python-guide.org/en/latest/starting/installation/">
+           Python installation guide
+          </a>
+          can guide
 you through the process.
-       </p>
-       <h2 id="from-sources">
-        From sources
-        <a class="headerlink" href="#from-sources" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <p>
-        The sources for codebots can be downloaded from the
-        <a class="reference external" href="https://github.com/franaudo/codebots">
-         Github repo
-        </a>
-        .
-       </p>
-       <p>
-        Execute the following in your terminal:
-       </p>
-       <div class="highlight-console notranslate">
-        <div class="highlight">
-         <pre><span></span><span class="go">pip install git+git://github.com/franaudo/codebots</span>
+         </p>
+        </section>
+        <section id="from-sources">
+         <h2 id="from-sources">
+          From sources
+          <a class="headerlink" href="#from-sources" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          The sources for
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            codebots
+           </span>
+          </code>
+          can be downloaded from the
+          <a class="reference external" href="https://github.com/franaudo/codebots">
+           Github repo
+          </a>
+          .
+         </p>
+         <p>
+          Execute the following in your terminal:
+         </p>
+         <div class="highlight-console notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="go">pip install git+git://github.com/franaudo/codebots</span>
 </pre>
-        </div>
-       </div>
-       <p>
-        Alternatively, you can either clone the public repository:
-       </p>
-       <div class="highlight-console notranslate">
-        <div class="highlight">
-         <pre><span></span><span class="gp">$ </span>git clone git://github.com/franaudo/codebots
+          </div>
+         </div>
+         <p>
+          Alternatively, you can either clone the public repository:
+         </p>
+         <div class="highlight-console notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="gp">$ </span>git clone git://github.com/franaudo/codebots
 </pre>
-        </div>
-       </div>
-       <p>
-        Or download the
-        <a class="reference external" href="https://github.com/franaudo/codebots/tarball/master">
-         tarball
-        </a>
-        :
-       </p>
-       <div class="highlight-console notranslate">
-        <div class="highlight">
-         <pre><span></span><span class="gp">$ </span>curl -OJL https://github.com/franaudo/codebots/tarball/master
+          </div>
+         </div>
+         <p>
+          Once you have a copy of the source, you can install it with:
+         </p>
+         <div class="highlight-console notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="gp">$ </span>python setup.py install
 </pre>
-        </div>
-       </div>
-       <p>
-        Once you have a copy of the source, you can install it with:
-       </p>
-       <div class="highlight-console notranslate">
-        <div class="highlight">
-         <pre><span></span><span class="gp">$ </span>python setup.py install
-</pre>
-        </div>
-       </div>
-       <p>
-        If you want to develop
-        <cite>
-         codebots
-        </cite>
-        , then install it in
-        <cite>
-         edit
-        </cite>
-        mode. From the folder
+          </div>
+         </div>
+         <p>
+          If you want to develop
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            codebots
+           </span>
+          </code>
+          , then install it in
+          <cite>
+           edit
+          </cite>
+          mode. From the folder
 containing the source code, run:
-       </p>
-       <div class="highlight-console notranslate">
-        <div class="highlight">
-         <pre><span></span><span class="gp">$ </span>pip install -e .
+         </p>
+         <div class="highlight-console notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="gp">$ </span>pip install -e .
 </pre>
-        </div>
-       </div>
+          </div>
+         </div>
+        </section>
+       </section>
       </article>
      </div>
     </div>
@@ -505,13 +519,13 @@ containing the source code, run:
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              May 05, 2021.
+              May 10, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.5.4.
+      4.0.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

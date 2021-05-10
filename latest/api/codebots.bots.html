@@ -3,6 +3,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -343,199 +344,211 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <h1 id="api-codebots-bots--page-root">
-        codebots.bots
-        <a class="headerlink" href="#api-codebots-bots--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <p>
-        Bots collection for tasks automation.
-       </p>
-       <h2 id="email">
-        Email
-        <a class="headerlink" href="#email" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <table class="longtable docutils align-default">
-        <colgroup>
-         <col style="width: 10%"/>
-         <col style="width: 90%"/>
-        </colgroup>
-        <tbody>
-         <tr class="row-odd">
-          <td>
-           <p>
-            <a class="reference internal" href="generated/codebots.bots.emailbot.Sender.html#codebots.bots.emailbot.Sender" title="codebots.bots.emailbot.Sender">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               Sender
-              </span>
-             </code>
-            </a>
-            (username, password)
-           </p>
-          </td>
-          <td>
-           <p>
-            Sender class to manage the sender email settings.
-           </p>
-          </td>
-         </tr>
-         <tr class="row-even">
-          <td>
-           <p>
-            <a class="reference internal" href="generated/codebots.bots.emailbot.EmailBot.html#codebots.bots.emailbot.EmailBot" title="codebots.bots.emailbot.EmailBot">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               EmailBot
-              </span>
-             </code>
-            </a>
-            ([config_file, sender])
-           </p>
-          </td>
-          <td>
-           <p>
-            EmailBot.
-           </p>
-          </td>
-         </tr>
-        </tbody>
-       </table>
-       <h2 id="slack">
-        Slack
-        <a class="headerlink" href="#slack" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <table class="longtable docutils align-default">
-        <colgroup>
-         <col style="width: 10%"/>
-         <col style="width: 90%"/>
-        </colgroup>
-        <tbody>
-         <tr class="row-odd">
-          <td>
-           <p>
-            <a class="reference internal" href="generated/codebots.bots.slackbot.SlackBot.html#codebots.bots.slackbot.SlackBot" title="codebots.bots.slackbot.SlackBot">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               SlackBot
-              </span>
-             </code>
-            </a>
-            ([config_file])
-           </p>
-          </td>
-          <td>
-           <p>
-            Bot that automatically sends messages over slack
-           </p>
-          </td>
-         </tr>
-        </tbody>
-       </table>
-       <h2 id="telegram">
-        Telegram
-        <a class="headerlink" href="#telegram" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <table class="longtable docutils align-default">
-        <colgroup>
-         <col style="width: 10%"/>
-         <col style="width: 90%"/>
-        </colgroup>
-        <tbody>
-         <tr class="row-odd">
-          <td>
-           <p>
-            <a class="reference internal" href="generated/codebots.bots.telebot.TeleBot.html#codebots.bots.telebot.TeleBot" title="codebots.bots.telebot.TeleBot">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               TeleBot
-              </span>
-             </code>
-            </a>
-            ([config_file])
-           </p>
-          </td>
-          <td>
-           <p>
-            Bot that automatically sends messages over telegram
-           </p>
-          </td>
-         </tr>
-        </tbody>
-       </table>
-       <h2 id="ssh">
-        SSH
-        <a class="headerlink" href="#ssh" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <table class="longtable docutils align-default">
-        <colgroup>
-         <col style="width: 10%"/>
-         <col style="width: 90%"/>
-        </colgroup>
-        <tbody>
-         <tr class="row-odd">
-          <td>
-           <p>
-            <a class="reference internal" href="generated/codebots.bots.sshbot.sshBot.html#codebots.bots.sshbot.sshBot" title="codebots.bots.sshbot.sshBot">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               sshBot
-              </span>
-             </code>
-            </a>
-            ([config_file])
-           </p>
-          </td>
-          <td>
-           <p>
-            sshBot to help with ssh connections to a server.
-           </p>
-          </td>
-         </tr>
-        </tbody>
-       </table>
-       <h2 id="deployment">
-        Deployment
-        <a class="headerlink" href="#deployment" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <table class="longtable docutils align-default">
-        <colgroup>
-         <col style="width: 10%"/>
-         <col style="width: 90%"/>
-        </colgroup>
-        <tbody>
-         <tr class="row-odd">
-          <td>
-           <p>
-            <a class="reference internal" href="generated/codebots.bots.deploybot.DeployBot.html#codebots.bots.deploybot.DeployBot" title="codebots.bots.deploybot.DeployBot">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               DeployBot
-              </span>
-             </code>
-            </a>
-            ([project, config_file])
-           </p>
-          </td>
-          <td>
-           <p>
-            Bot to help with the deployment of code on a server.
-           </p>
-          </td>
-         </tr>
-        </tbody>
-       </table>
+       <section id="codebots-bots">
+        <h1 id="api-codebots-bots--page-root">
+         codebots.bots
+         <a class="headerlink" href="#api-codebots-bots--page-root" title="Permalink to this headline">
+          ¶
+         </a>
+        </h1>
+        <p>
+         Bots collection for tasks automation.
+        </p>
+        <section id="email">
+         <h2 id="email">
+          Email
+          <a class="headerlink" href="#email" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.bots.emailbot.Sender.html#codebots.bots.emailbot.Sender" title="codebots.bots.emailbot.Sender">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 Sender
+                </span>
+               </code>
+              </a>
+              (username, password)
+             </p>
+            </td>
+            <td>
+             <p>
+              Sender class to manage the sender email settings.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.bots.emailbot.EmailBot.html#codebots.bots.emailbot.EmailBot" title="codebots.bots.emailbot.EmailBot">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 EmailBot
+                </span>
+               </code>
+              </a>
+              ([config_file, sender])
+             </p>
+            </td>
+            <td>
+             <p>
+              EmailBot.
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </section>
+        <section id="slack">
+         <h2 id="slack">
+          Slack
+          <a class="headerlink" href="#slack" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.bots.slackbot.SlackBot.html#codebots.bots.slackbot.SlackBot" title="codebots.bots.slackbot.SlackBot">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 SlackBot
+                </span>
+               </code>
+              </a>
+              ([config_file])
+             </p>
+            </td>
+            <td>
+             <p>
+              Bot that automatically sends messages over slack
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </section>
+        <section id="telegram">
+         <h2 id="telegram">
+          Telegram
+          <a class="headerlink" href="#telegram" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.bots.telebot.TeleBot.html#codebots.bots.telebot.TeleBot" title="codebots.bots.telebot.TeleBot">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 TeleBot
+                </span>
+               </code>
+              </a>
+              ([config_file])
+             </p>
+            </td>
+            <td>
+             <p>
+              Bot that automatically sends messages over telegram
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </section>
+        <section id="ssh">
+         <h2 id="ssh">
+          SSH
+          <a class="headerlink" href="#ssh" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.bots.sshbot.sshBot.html#codebots.bots.sshbot.sshBot" title="codebots.bots.sshbot.sshBot">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 sshBot
+                </span>
+               </code>
+              </a>
+              ([alias, config_file])
+             </p>
+            </td>
+            <td>
+             <p>
+              sshBot to help with ssh connections to a server.
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </section>
+        <section id="deployment">
+         <h2 id="deployment">
+          Deployment
+          <a class="headerlink" href="#deployment" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.bots.deploybot.DeployBot.html#codebots.bots.deploybot.DeployBot" title="codebots.bots.deploybot.DeployBot">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 DeployBot
+                </span>
+               </code>
+              </a>
+              ([project, config_file])
+             </p>
+            </td>
+            <td>
+             <p>
+              Bot to help with the deployment of code on a server.
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </section>
+       </section>
       </article>
      </div>
     </div>
@@ -581,13 +594,13 @@
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              May 05, 2021.
+              May 10, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.5.4.
+      4.0.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

@@ -3,6 +3,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -333,147 +334,153 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <h1 id="examples-telegrambot--page-root">
-        Get notified on telegram
-        <a class="headerlink" href="#examples-telegrambot--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <p>
-        This example shows how to set-up a telegram bot. First, you need to setup things in telegram.
-       </p>
-       <h2 id="create-your-own-bot">
-        Create your own bot
-        <a class="headerlink" href="#create-your-own-bot" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <ol class="arabic simple">
-        <li>
-         <p>
-          On Telegram, search
+       <section id="get-notified-on-telegram">
+        <h1 id="examples-telegrambot--page-root">
+         Get notified on telegram
+         <a class="headerlink" href="#examples-telegrambot--page-root" title="Permalink to this headline">
+          ¶
+         </a>
+        </h1>
+        <p>
+         This example shows how to set-up a telegram bot. First, you need to setup things in telegram.
+        </p>
+        <section id="create-your-own-bot">
+         <h2 id="create-your-own-bot">
+          Create your own bot
+          <a class="headerlink" href="#create-your-own-bot" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <ol class="arabic simple">
+          <li>
+           <p>
+            On Telegram, search
+            <code class="code docutils literal notranslate">
+             <span class="pre">
+              @
+             </span>
+             <span class="pre">
+              BotFather
+             </span>
+            </code>
+            and send him a
+            <code class="code docutils literal notranslate">
+             <span class="pre">
+              /start
+             </span>
+            </code>
+            message;
+           </p>
+          </li>
+          <li>
+           <p>
+            Type
+            <code class="code docutils literal notranslate">
+             <span class="pre">
+              /newbot
+             </span>
+            </code>
+            and BotFather will guide you through the creation of a new bot;
+           </p>
+          </li>
+          <li>
+           <p>
+            Your bot is now ready:
+            <strong>
+             annotate your API token
+            </strong>
+            !
+           </p>
+          </li>
+          <li>
+           <p>
+            On Telegram, search your bot (by the username you just created), and send a
+            <code class="code docutils literal notranslate">
+             <span class="pre">
+              /start
+             </span>
+            </code>
+            message
+           </p>
+          </li>
+         </ol>
+        </section>
+        <section id="set-up-a-telebot">
+         <h2 id="set-up-a-telebot">
+          Set-up a
           <code class="code docutils literal notranslate">
            <span class="pre">
-            @
-           </span>
-           <span class="pre">
-            BotFather
+            TeleBot
            </span>
           </code>
-          and send him a
-          <code class="code docutils literal notranslate">
-           <span class="pre">
-            /start
-           </span>
-          </code>
-          message;
-         </p>
-        </li>
-        <li>
+          <a class="headerlink" href="#set-up-a-telebot" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
          <p>
-          Type
-          <code class="code docutils literal notranslate">
-           <span class="pre">
-            /newbot
-           </span>
-          </code>
-          and BotFather will guide you through the creation of a new bot;
-         </p>
-        </li>
-        <li>
-         <p>
-          Your bot is now ready:
-          <strong>
-           annotate your API token
-          </strong>
-          !
-         </p>
-        </li>
-        <li>
-         <p>
-          On Telegram, search your bot (by the username you just created), and send a
-          <code class="code docutils literal notranslate">
-           <span class="pre">
-            /start
-           </span>
-          </code>
-          message
-         </p>
-        </li>
-       </ol>
-       <h2 id="set-up-a-telebot">
-        Set-up a
-        <code class="code docutils literal notranslate">
-         <span class="pre">
-          TeleBot
-         </span>
-        </code>
-        <a class="headerlink" href="#set-up-a-telebot" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <p>
-        Now that your bot is ready, you need to store your token on your machine and link
+          Now that your bot is ready, you need to store your token on your machine and link
 it to
-        <code class="code docutils literal notranslate">
-         <span class="pre">
-          codebots
-         </span>
-        </code>
-        . Piece of cake… ;)
-       </p>
-       <ol class="arabic simple">
-        <li>
-         <p>
-          Open your Terminal and type (make sure to remove the
-          <cite>
-           &lt;
-          </cite>
-          <cite>
-           &gt;
-          </cite>
-          when pasting your token:
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            codebots
+           </span>
+          </code>
+          . Piece of cake… ;)
          </p>
-        </li>
-       </ol>
-       <div class="highlight-bash notranslate">
-        <div class="highlight">
-         <pre><span></span>telebot set-token &lt;paste-your-token-here&gt;
+         <ol class="arabic simple">
+          <li>
+           <p>
+            Open your Terminal and type (make sure to remove the
+            <cite>
+             &lt;
+            </cite>
+            <cite>
+             &gt;
+            </cite>
+            when pasting your token:
+           </p>
+          </li>
+         </ol>
+         <div class="highlight-bash notranslate">
+          <div class="highlight">
+           <pre><span></span>telebot set-token &lt;paste-your-token-here&gt;
 </pre>
-        </div>
-       </div>
-       <ol class="arabic simple" start="2">
-        <li>
+          </div>
+         </div>
+         <ol class="arabic simple" start="2">
+          <li>
+           <p>
+            DONE! if everything went smooth, you should be able to send messages over slack. Try it:
+           </p>
+          </li>
+         </ol>
+         <div class="highlight-bash notranslate">
+          <div class="highlight">
+           <pre><span></span>telebot send <span class="s2">"ciao mamma!"</span>
+</pre>
+          </div>
+         </div>
+        </section>
+        <section id="in-action">
+         <h2 id="in-action">
+          In action
+          <a class="headerlink" href="#in-action" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
          <p>
-          DONE! if everything went smooth, you should be able to send messages over slack. Try it:
-         </p>
-        </li>
-       </ol>
-       <div class="highlight-bash notranslate">
-        <div class="highlight">
-         <pre><span></span>telebot send <span class="s2">"ciao mamma!"</span>
-</pre>
-        </div>
-       </div>
-       <h2 id="in-action">
-        In action
-        <a class="headerlink" href="#in-action" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <p>
-        This type of bot is most useful inside scripts (for example to send a message at
+          This type of bot is most useful inside scripts (for example to send a message at
 some function completion). This is an example implementation (but check the
-        <code class="code docutils literal notranslate">
-         <span class="pre">
-          decorator
-         </span>
-        </code>
-        section):
-       </p>
-       <div class="highlight-python notranslate">
-        <div class="highlight">
-         <pre><span></span><span class="kn">from</span> <span class="nn">codebots.bots</span> <span class="kn">import</span> <span class="n">TeleBot</span>
+          <code class="code docutils literal notranslate">
+           <span class="pre">
+            decorator
+           </span>
+          </code>
+          section):
+         </p>
+         <div class="highlight-python notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="kn">from</span> <span class="nn">codebots.bots</span> <span class="kn">import</span> <span class="n">TeleBot</span>
 
 <span class="c1"># Create a TeleBot instance from the credentials that you have set-up before</span>
 <span class="c1"># (if you don't know how, check the documentation page)</span>
@@ -485,8 +492,10 @@ some function completion). This is an example implementation (but check the
 <span class="c1"># Ask the bot to send a test message</span>
 <span class="n">bot</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="s1">'ciao mamma'</span><span class="p">)</span>
 </pre>
-        </div>
-       </div>
+          </div>
+         </div>
+        </section>
+       </section>
       </article>
      </div>
     </div>
@@ -532,13 +541,13 @@ some function completion). This is an example implementation (but check the
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              May 05, 2021.
+              May 10, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.5.4.
+      4.0.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

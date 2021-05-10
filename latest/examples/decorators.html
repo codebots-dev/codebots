@@ -3,6 +3,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -69,7 +70,7 @@
   <link href="../genindex.html" rel="index" title="Index"/>
   <link href="../search.html" rel="search" title="Search"/>
   <link href="slackbot.html" rel="next" title="Get notified on slack"/>
-  <link href="cli.html" rel="prev" title="Use codebots from the command line"/>
+  <link href="cli-sshbot.html" rel="prev" title="set-up sshbot"/>
   <link href="../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
  </head>
  <body data-md-color-accent="cyan" data-md-color-primary="blue" dir="ltr">
@@ -318,28 +319,30 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <h1 id="examples-decorators--page-root">
-        Add a decorator to your code
-        <a class="headerlink" href="#examples-decorators--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <p>
-        This example shows how simple it is to get a message whenever a function
+       <section id="add-a-decorator-to-your-code">
+        <h1 id="examples-decorators--page-root">
+         Add a decorator to your code
+         <a class="headerlink" href="#examples-decorators--page-root" title="Permalink to this headline">
+          ¶
+         </a>
+        </h1>
+        <p>
+         This example shows how simple it is to get a message whenever a function
 is complete.
-       </p>
-       <h2 id="in-action">
-        In action
-        <a class="headerlink" href="#in-action" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <p>
-        this is an example implementation:
-       </p>
-       <div class="highlight-python notranslate">
-        <div class="highlight">
-         <pre><span></span><span class="kn">import</span> <span class="nn">codebots</span>
+        </p>
+        <section id="in-action">
+         <h2 id="in-action">
+          In action
+          <a class="headerlink" href="#in-action" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <p>
+          this is an example implementation:
+         </p>
+         <div class="highlight-python notranslate">
+          <div class="highlight">
+           <pre><span></span><span class="kn">import</span> <span class="nn">codebots</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="c1"># Simply add the `monitor` decorator before your funcion (Note the capital letters!)</span>
@@ -356,8 +359,10 @@ is complete.
 
 <span class="n">example_function</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre>
-        </div>
-       </div>
+          </div>
+         </div>
+        </section>
+       </section>
       </article>
      </div>
     </div>
@@ -366,7 +371,7 @@ is complete.
   <footer class="md-footer">
    <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="cli.html" rel="prev" title="Use codebots from the command line">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="cli-sshbot.html" rel="prev" title="set-up sshbot">
       <div class="md-flex__cell md-flex__cell--shrink">
        <i class="md-icon md-icon--arrow-back md-footer-nav__button">
        </i>
@@ -376,13 +381,12 @@ is complete.
         <span class="md-footer-nav__direction">
          Previous
         </span>
-        Use
+        set-up
         <code class="code docutils literal notranslate">
          <span class="pre">
-          codebots
+          sshbot
          </span>
         </code>
-        from the command line
        </span>
       </div>
      </a>
@@ -409,13 +413,13 @@ is complete.
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              May 05, 2021.
+              May 10, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.5.4.
+      4.0.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

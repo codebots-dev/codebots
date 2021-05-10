@@ -3,6 +3,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -68,7 +69,7 @@
   </script>
   <link href="../genindex.html" rel="index" title="Index"/>
   <link href="../search.html" rel="search" title="Search"/>
-  <link href="sshbot.html" rel="next" title="Create a bot to deploy your application to the server using SSH"/>
+  <link href="sshbot.html" rel="next" title="Create a bot to deploy your application to a server using git"/>
   <link href="telegrambot.html" rel="prev" title="Get notified on telegram"/>
   <link href="../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
  </head>
@@ -301,88 +302,89 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <h1 id="examples-emailbot--page-root">
-        Get notified via email
-        <a class="headerlink" href="#examples-emailbot--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <p>
-        This example shows how to set-up an emailbot.
-       </p>
-       <p>
-        First, you need to setup an email account.
-       </p>
-       <div class="admonition warning">
-        <p class="admonition-title">
-         Warning
+       <section id="get-notified-via-email">
+        <h1 id="examples-emailbot--page-root">
+         Get notified via email
+         <a class="headerlink" href="#examples-emailbot--page-root" title="Permalink to this headline">
+          ¶
+         </a>
+        </h1>
+        <p>
+         This example shows how to set-up an emailbot.
         </p>
         <p>
-         Create a brand new account!
+         First, you need to setup an email account.
         </p>
-        <p>
-         It is STRONGLY advised to create a new email account (must be
-         <cite>
-          GMAIL
-         </cite>
-         )!!
+        <div class="admonition warning">
+         <p class="admonition-title">
+          Warning
+         </p>
+         <p>
+          Create a brand new account!
+         </p>
+         <p>
+          It is STRONGLY advised to create a new email account (must be
+          <cite>
+           GMAIL
+          </cite>
+          )!!
 You will have to save the login credentials on your system, which is a huge
 security issue!
-        </p>
-       </div>
-       <div class="admonition note">
-        <p class="admonition-title">
-         Note
-        </p>
+         </p>
+        </div>
+        <div class="admonition note">
+         <p class="admonition-title">
+          Note
+         </p>
+         <p>
+          Allow ‘less secure app access’
+         </p>
+         <p>
+          in order for the bot to be able to send messages, you have to turn on the
+          <strong>
+           less secure app acces
+          </strong>
+          option in the gmail security settings.
+         </p>
+        </div>
         <p>
-         Allow ‘less secure app access’
-        </p>
-        <p>
-         in order for the bot to be able to send messages, you have to turn on the
-         <strong>
-          less secure app acces
-         </strong>
-         option in the gmail security settings.
-        </p>
-       </div>
-       <p>
-        Now you have to register your credentials. You can simply do it from the command
+         Now you have to register your credentials. You can simply do it from the command
 line (obviously change the placeholders with your credentials):
-       </p>
-       <div class="highlight-bash notranslate">
-        <div class="highlight">
-         <pre><span></span>$ emailbot set-token <span class="s2">"username@gmail.com"</span> <span class="s2">"PaSsWoRd!"</span>
+        </p>
+        <div class="highlight-bash notranslate">
+         <div class="highlight">
+          <pre><span></span>$ emailbot set-token <span class="s2">"username@gmail.com"</span> <span class="s2">"PaSsWoRd!"</span>
 </pre>
+         </div>
         </div>
-       </div>
-       <p>
-        Alternatively, manually create a secret json file somewhere hidden on your
+        <p>
+         Alternatively, manually create a secret json file somewhere hidden on your
 system with the username and the password. Then run the following command:
-       </p>
-       <div class="highlight-bash notranslate">
-        <div class="highlight">
-         <pre><span></span>$ codebots set-tokens-path <span class="s2">"path=to-the-folder-where-the-json-file-is-saved"</span>
+        </p>
+        <div class="highlight-bash notranslate">
+         <div class="highlight">
+          <pre><span></span>$ codebots set-tokens-path <span class="s2">"path=to-the-folder-where-the-json-file-is-saved"</span>
 </pre>
+         </div>
         </div>
-       </div>
-       <p>
-        The json file should look like this:
-       </p>
-       <div class="highlight-json notranslate">
-        <div class="highlight">
-         <pre><span></span><span class="p">{</span>
+        <p>
+         The json file should look like this:
+        </p>
+        <div class="highlight-json notranslate">
+         <div class="highlight">
+          <pre><span></span><span class="p">{</span>
     <span class="nt">"username"</span><span class="p">:</span> <span class="nt">"username@gmail.com"</span>
     <span class="nt">"password"</span><span class="p">:</span> <span class="s2">"PaSsWoRd!"</span>
 <span class="p">}</span>
 </pre>
+         </div>
         </div>
-       </div>
-       <p>
-        Here an example on how to receive an email from the bot:
-       </p>
-       <div class="highlight-python notranslate">
-        <div class="highlight">
-         <pre><span></span><span class="kn">from</span> <span class="nn">codebots.bots</span> <span class="kn">import</span> <span class="n">EmailBot</span>
+        <p>
+         Here an example on how to receive an email from the bot:
+        </p>
+        <div class="highlight-python notranslate">
+         <div class="highlight">
+          <pre><span></span><span class="kn">from</span> <span class="nn">codebots.bots</span> <span class="kn">import</span> <span class="n">EmailBot</span>
 
 <span class="c1"># Crete the bot: not it can send emails on behalf of the Sender account</span>
 <span class="n">bot</span> <span class="o">=</span> <span class="n">EmailBot</span><span class="p">()</span>
@@ -403,8 +405,9 @@ system with the username and the password. Then run the following command:
 <span class="c1"># Ask the bot to compose your email and send it</span>
 <span class="n">bot</span><span class="o">.</span><span class="n">send_email</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
 </pre>
+         </div>
         </div>
-       </div>
+       </section>
       </article>
      </div>
     </div>
@@ -427,13 +430,13 @@ system with the username and the password. Then run the following command:
        </span>
       </div>
      </a>
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="sshbot.html" rel="next" title="Create a bot to deploy your application to the server using SSH">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="sshbot.html" rel="next" title="Create a bot to deploy your application to a server using git">
       <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
        <span class="md-flex__ellipsis">
         <span class="md-footer-nav__direction">
          Next
         </span>
-        Create a bot to deploy your application to the server using SSH
+        Create a bot to deploy your application to a server using git
        </span>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
@@ -450,13 +453,13 @@ system with the username and the password. Then run the following command:
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              May 05, 2021.
+              May 10, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.5.4.
+      4.0.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

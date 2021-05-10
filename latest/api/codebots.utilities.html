@@ -3,6 +3,7 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Docutils 0.17.1: http://docutils.sourceforge.net/" name="generator"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
   <meta content="ie=edge" http-equiv="x-ua-compatible"/>
   <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
@@ -338,203 +339,213 @@
      </div>
      <div class="md-content">
       <article class="md-content__inner md-typeset" role="main">
-       <h1 id="api-codebots-utilities--page-root">
-        codebots.utilities
-        <a class="headerlink" href="#api-codebots-utilities--page-root" title="Permalink to this headline">
-         ¶
-        </a>
-       </h1>
-       <p>
-        Collection of helper functions. Most users are not concerned about them.
-       </p>
-       <h2 id="tokens">
-        tokens
-        <a class="headerlink" href="#tokens" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <table class="longtable docutils align-default">
-        <colgroup>
-         <col style="width: 10%"/>
-         <col style="width: 90%"/>
-        </colgroup>
-        <tbody>
-         <tr class="row-odd">
-          <td>
-           <p>
-            <a class="reference internal" href="generated/codebots.utilities.tokens.set_token_dir.html#codebots.utilities.tokens.set_token_dir" title="codebots.utilities.tokens.set_token_dir">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               set_token_dir
-              </span>
-             </code>
-            </a>
-            (path)
-           </p>
-          </td>
-          <td>
-           <p>
-            Set the location where codebots looks for the bots credentials.
-           </p>
-          </td>
-         </tr>
-         <tr class="row-even">
-          <td>
-           <p>
-            <a class="reference internal" href="generated/codebots.utilities.tokens.reset_token_dir.html#codebots.utilities.tokens.reset_token_dir" title="codebots.utilities.tokens.reset_token_dir">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               reset_token_dir
-              </span>
-             </code>
-            </a>
-            ()
-           </p>
-          </td>
-          <td>
-           <p>
-            Reset the credentials folder to default.
-           </p>
-          </td>
-         </tr>
-         <tr class="row-odd">
-          <td>
-           <p>
-            <a class="reference internal" href="generated/codebots.utilities.tokens.add_token.html#codebots.utilities.tokens.add_token" title="codebots.utilities.tokens.add_token">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               add_token
-              </span>
-             </code>
-            </a>
-            (bot, **kwargs)
-           </p>
-          </td>
-          <td>
-           <p>
-            Create a json file with the credential settings needed for the bot to operate.
-           </p>
-          </td>
-         </tr>
-        </tbody>
-       </table>
-       <h2 id="message">
-        message
-        <a class="headerlink" href="#message" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <table class="longtable docutils align-default">
-        <colgroup>
-         <col style="width: 10%"/>
-         <col style="width: 90%"/>
-        </colgroup>
-        <tbody>
-         <tr class="row-odd">
-          <td>
-           <p>
-            <a class="reference internal" href="generated/codebots.utilities.message.format_message.html#codebots.utilities.message.format_message" title="codebots.utilities.message.format_message">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               format_message
-              </span>
-             </code>
-            </a>
-            (message[, to_replace])
-           </p>
-          </td>
-          <td>
-           <p>
-           </p>
-          </td>
-         </tr>
-        </tbody>
-       </table>
-       <h2 id="ssh">
-        ssh
-        <a class="headerlink" href="#ssh" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <table class="longtable docutils align-default">
-        <colgroup>
-         <col style="width: 10%"/>
-         <col style="width: 90%"/>
-        </colgroup>
-        <tbody>
-         <tr class="row-odd">
-          <td>
-           <p>
-            <a class="reference internal" href="generated/codebots.utilities.ssh.gen_keypair.html#codebots.utilities.ssh.gen_keypair" title="codebots.utilities.ssh.gen_keypair">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               gen_keypair
-              </span>
-             </code>
-            </a>
-            ([ssh_folder, password])
-           </p>
-          </td>
-          <td>
-           <p>
-            Create a set of public and private keys and save them in the given folder.
-           </p>
-          </td>
-         </tr>
-         <tr class="row-even">
-          <td>
-           <p>
-            <a class="reference internal" href="generated/codebots.utilities.ssh.add_pubkey_to_server.html#codebots.utilities.ssh.add_pubkey_to_server" title="codebots.utilities.ssh.add_pubkey_to_server">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               add_pubkey_to_server
-              </span>
-             </code>
-            </a>
-            (bot, ssh_folder[, os_type])
-           </p>
-          </td>
-          <td>
-           <p>
-            Adds the public key to the server’s list.
-           </p>
-          </td>
-         </tr>
-        </tbody>
-       </table>
-       <h2 id="deploy">
-        deploy
-        <a class="headerlink" href="#deploy" title="Permalink to this headline">
-         ¶
-        </a>
-       </h2>
-       <table class="longtable docutils align-default">
-        <colgroup>
-         <col style="width: 10%"/>
-         <col style="width: 90%"/>
-        </colgroup>
-        <tbody>
-         <tr class="row-odd">
-          <td>
-           <p>
-            <a class="reference internal" href="generated/codebots.utilities.deploy.configure_local.html#codebots.utilities.deploy.configure_local" title="codebots.utilities.deploy.configure_local">
-             <code class="xref py py-obj docutils literal notranslate">
-              <span class="pre">
-               configure_local
-              </span>
-             </code>
-            </a>
-            (local_repo, server_complete_path)
-           </p>
-          </td>
-          <td>
-           <p>
-            Configure the local repository to sync with the server.
-           </p>
-          </td>
-         </tr>
-        </tbody>
-       </table>
+       <section id="codebots-utilities">
+        <h1 id="api-codebots-utilities--page-root">
+         codebots.utilities
+         <a class="headerlink" href="#api-codebots-utilities--page-root" title="Permalink to this headline">
+          ¶
+         </a>
+        </h1>
+        <p>
+         Collection of helper functions. Most users are not concerned about them.
+        </p>
+        <section id="tokens">
+         <h2 id="tokens">
+          tokens
+          <a class="headerlink" href="#tokens" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.utilities.tokens.set_token_dir.html#codebots.utilities.tokens.set_token_dir" title="codebots.utilities.tokens.set_token_dir">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 set_token_dir
+                </span>
+               </code>
+              </a>
+              (path)
+             </p>
+            </td>
+            <td>
+             <p>
+              Set the location where codebots looks for the bots credentials.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.utilities.tokens.reset_token_dir.html#codebots.utilities.tokens.reset_token_dir" title="codebots.utilities.tokens.reset_token_dir">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 reset_token_dir
+                </span>
+               </code>
+              </a>
+              ()
+             </p>
+            </td>
+            <td>
+             <p>
+              Reset the credentials folder to default.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.utilities.tokens.add_token.html#codebots.utilities.tokens.add_token" title="codebots.utilities.tokens.add_token">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 add_token
+                </span>
+               </code>
+              </a>
+              (alias, **kwargs)
+             </p>
+            </td>
+            <td>
+             <p>
+              Create a json file with the credential settings needed for the bot to operate.
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </section>
+        <section id="message">
+         <h2 id="message">
+          message
+          <a class="headerlink" href="#message" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.utilities.message.format_message.html#codebots.utilities.message.format_message" title="codebots.utilities.message.format_message">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 format_message
+                </span>
+               </code>
+              </a>
+              (message[, to_replace])
+             </p>
+            </td>
+            <td>
+             <p>
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </section>
+        <section id="ssh">
+         <h2 id="ssh">
+          ssh
+          <a class="headerlink" href="#ssh" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.utilities.ssh.gen_keypair.html#codebots.utilities.ssh.gen_keypair" title="codebots.utilities.ssh.gen_keypair">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 gen_keypair
+                </span>
+               </code>
+              </a>
+              ([ssh_folder, password])
+             </p>
+            </td>
+            <td>
+             <p>
+              Create a set of public and private keys and save them in the given folder.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.utilities.ssh.add_pubkey_to_server.html#codebots.utilities.ssh.add_pubkey_to_server" title="codebots.utilities.ssh.add_pubkey_to_server">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 add_pubkey_to_server
+                </span>
+               </code>
+              </a>
+              (bot, ssh_folder[, os_type])
+             </p>
+            </td>
+            <td>
+             <p>
+              Adds the public key to the server’s list.
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </section>
+        <section id="deploy">
+         <h2 id="deploy">
+          deploy
+          <a class="headerlink" href="#deploy" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.utilities.deploy.configure_local.html#codebots.utilities.deploy.configure_local" title="codebots.utilities.deploy.configure_local">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 configure_local
+                </span>
+               </code>
+              </a>
+              (local_repo, server_complete_path)
+             </p>
+            </td>
+            <td>
+             <p>
+              Configure the local repository to sync with the server.
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </section>
+       </section>
       </article>
      </div>
     </div>
@@ -580,13 +591,13 @@
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              May 05, 2021.
+              May 10, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      3.5.4.
+      4.0.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for
