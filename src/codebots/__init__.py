@@ -1,6 +1,6 @@
 __author__ = """Francesco Ranaudo"""
 __email__ = 'francesco.ranaudo@gmail.com'
-__version__ = '0.8.4'
+__version__ = '0.9.0'
 
 import os
 import json
