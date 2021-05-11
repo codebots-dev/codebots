@@ -19,11 +19,11 @@ This is a collection of simple bots to help with boring tasks during coding.
 
 Currently supported bots:
 
-* EmailBot: useful to get an email when a task is complete
-* SlackBot: same thing, but you get a slack message instead.
-* TeleBot: again the same thing, but you get a message on Telegram this time.
-* sshBot: this is different...it will help you with ssh stuff.
-* DeployBot: this bot is in charge of helping you with repository deployments.
+* :code:`EmailBot`: useful to get an email when a task is complete
+* :code:`SlackBot`: same thing, but you get a slack message instead.
+* :code:`TeleBot`: again the same thing, but you get a message on Telegram this time.
+* :code:`sshBot`: this is different...it will help you with ssh stuff.
+* :code:`DeployBot`: this bot is in charge of helping you with repository deployments.
 
 Full documentation: https://franaudo.github.io/codebots/latest/.
 

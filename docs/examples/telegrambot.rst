@@ -18,13 +18,13 @@ Set-up a :code:`TeleBot`
 Now that your bot is ready, you need to store your token on your machine and link
 it to :code:`codebots`. Piece of cake... ;)
 
-1. Open your Terminal and type (make sure to remove the `<` `>` when pasting your token:
+1. Open your Terminal and type the following (remove the `<` `>` when pasting your token):
 
 .. code-block:: bash
 
     telebot set-token <paste-your-token-here>
 
-2. DONE! if everything went smooth, you should be able to send messages over slack. Try it:
+2. **DONE!** if everything went smooth, you should be able to send messages over slack. Try it:
 
 .. code-block:: bash
 
@@ -40,3 +40,19 @@ some function completion). This is an example implementation (but check the
 
 .. literalinclude:: /../examples/telegram_message.py
     :language: python
+
+
+If you are using the command line to run your code, then you can concatenate the
+:code:`telebot` at the end of your command, like this:
+
+.. code-block:: cmd
+
+    dir && telebot send "done!"
+
+
+Here there are instructions for the several options to concatenate commands in
+bash_, powershell_ and cmd_
+
+.. _bash: https://stackoverflow.com/a/5130889/7883410
+.. _powershell: https://superuser.com/a/1533059
+.. _cmd: https://stackoverflow.com/a/8055430/7883410
