@@ -42,6 +42,7 @@ setup(
             "emailbot=codebots.cli:emailbot",
             "sshbot=codebots.cli:sshbot",
             "deploybot=codebots.cli:deploybot",
+            "latexbot=codebots.cli:latexbot",
         ],
     },
     install_requires=requirements,

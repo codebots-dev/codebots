@@ -10,6 +10,7 @@ You can get detaled information about each of the bots with the :code:`--help` o
     slackbot    --help
     sshbot      --help
     deploybot   --help
+    latexbot    --help
 
 
 """
@@ -23,6 +24,7 @@ from codebots.bots import TeleBot
 from codebots.bots import EmailBot
 from codebots.bots import sshBot
 from codebots.bots.deploybot import DeployBot
+from codebots.bots.latexbot import LatexBot
 from codebots.utilities.ssh import gen_keypair, add_pubkey_to_server
 from codebots.utilities.tokens import add_token, get_telegram_chatid, set_token_dir, reset_token_dir
 from codebots.utilities.deploy import configure_local, configure_server
@@ -350,6 +352,49 @@ def configure_remote(project, branch, sshbot):
     """
     bot = DeployBot(project)
     out = configure_server(bot.server_repo_path, branch, sshbot)
+    click.echo(out)
+
+# ------------------------------- LATEX ----------------------------------#
+
+
+@click.group()
+def latexbot():
+    """bot to help with latex documents"""
+    pass
+
+
+@latexbot.command()
+@click.option('--input', default='None', help='path to the folder containing the .tex files')
+@click.option('--output', default='None', help='path to the folder where the .docx files will be saved')
+def convert_tex_to_docx(input, output):
+    """Convert the .tex files in a folder to .docx.\n
+
+    Parameters\n
+    ----------\n
+    input : str\n
+        path to the folder containing the .tex files.\n
+    """
+    bot = LatexBot()
+    if input == 'None':
+        input = os.getcwd()
+    if output == 'None':
+        output = None
+    out = bot.convert_tex_to_docx(input, output)
+    click.echo(out)
+
+
+@latexbot.command()
+# @click.argument('type')
+def convert_overleaf_to_docx():
+    """Convert an overleaf project to a .docx file.\n
+
+    Parameters\n
+    ----------\n
+    project : str\n
+        name of the project for the setting file.\n
+    """
+    bot = LatexBot()
+    out = bot.convert_overleaf_to_docx("5c5b20af636606525ca0dbc0", 'C:/temp')
     click.echo(out)
 
 
