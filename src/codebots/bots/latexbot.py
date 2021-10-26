@@ -22,7 +22,7 @@ class LatexBot(BaseBot):
     def __init__(self, config_file=None, sender=None) -> None:
         self.__name__ = "latexbot"
 
-    def install_dependencies(self, **kwargs):
+    def install_dependencies(self, git, pandoc, miktex):
         """Installs the dependencies needed, namely:
             - git
             - pandoc 2.15
@@ -35,11 +35,11 @@ class LatexBot(BaseBot):
         Kwargs
         ------
         git : bool, optional
-            install git if not already present, by default True
+            install git if not already present
         pandoc : bool, optional
-            install pandoc if not already present, by default True
-        latex : bool, optional
-            install latex (miktex distribution) if not already present, by default False
+            install pandoc if not already present
+        miktex : bool, optional
+            install latex (miktex distribution) if not already present
 
         Raises
         ------
@@ -63,21 +63,20 @@ class LatexBot(BaseBot):
                     {'url': 'https://github.com/git-for-windows/git/releases/download/v2.33.1.windows.1/Git-2.33.1-64-bit.exe',
                      'function': 'install_exe',
                      'file_name': 'git.exe'},
-                    'latex':
+                    'miktex':
                     {'url': 'https://miktex.org/download/ctan/systems/win32/miktex/setup/windows-x64/basic-miktex-21.8-x64.exe',
                      'function': 'install_exe',
                      'file_name': 'miktex.exe'}
                 }
             for tool, parameter in settings.items():
                 file_path = Path().joinpath(temp_dir.name, parameter['file_name'])
-                if not os_tools.is_tool(tool) and kwargs[tool]:
+                if not os_tools.is_tool(tool) and locals()[tool]:
                     print(f'downloading {tool}')
                     download_file(url=parameter['url'],
                                   file_path=file_path)
                     print(f'installing {tool}')
                     installation_function = getattr(os_tools, parameter['function'])
                     installation_function(file_path=file_path)
-                    # install_msi(file_path=file_path)
 
                 else:
                     print(f'{tool} skipped or already installed')

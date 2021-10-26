@@ -1,6 +1,7 @@
 import subprocess
 
 
+### ------------------------ CROSS PLATFORM ---------------------------------###
 def is_tool(name):
     """Check whether `name` is on PATH and marked as executable."""
 
@@ -10,6 +11,7 @@ def is_tool(name):
     return which(name) is not None
 
 
+### ---------------------------- WINDOWS ------------------------------------###
 def install_msi(file_path):
     """Perform a silent install of a msi package (Windows only)
 
@@ -49,6 +51,7 @@ def install_exe(file_path):
     return out
 
 
+### ------------------------------ DEBUG ------------------------------------###
 if __name__ == "__main__":
     # print(is_tool("latexmk"))
     install_exe('c:/temp/miktex.exe')

@@ -364,17 +364,20 @@ def latexbot():
 
 
 @latexbot.command()
-def configure():
+@click.option('--git', default=True, help='if True, install git')
+@click.option('--pandoc', default=True, help='if True, install pandoc')
+@click.option('--miktex', default=False, help='if True, install miktex')
+def configure(git, pandoc, miktex):
     """Download dependencies and set everything up.\n
     """
     bot = LatexBot()
-    out = bot.install_dependencies(git=True, pandoc=True, latex=False)
+    out = bot.install_dependencies(git, pandoc, miktex)
     click.echo(out)
 
 
 @latexbot.command()
-@click.option('--input', default='None', help='path to the folder containing the .tex files')
-@click.option('--output', default='None', help='path to the folder where the .docx files will be saved')
+@click.option('--input', default=None, help='path to the folder containing the .tex files')
+@click.option('--output', default=None, help='path to the folder where the .docx files will be saved')
 def convert_tex_to_docx(input, output):
     """Convert the .tex files in a folder to .docx.\n
 
@@ -384,9 +387,9 @@ def convert_tex_to_docx(input, output):
         path to the folder containing the .tex files.\n
     """
     bot = LatexBot()
-    if input == 'None':
+    if not input:
         input = os.getcwd()
-    if output == 'None':
+    if not output:  # TODO: change!
         output = None
     out = bot.convert_tex_to_docx(input, output)
     click.echo(out)
