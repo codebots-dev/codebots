@@ -41,12 +41,13 @@ class LatexBot(BaseBot):
             installed on your machine.
         """
         temp_dir = tempfile.TemporaryDirectory()
-        out = subprocess.run(["git", "clone", f"https://git.overleaf.com/{document_code}"], cwd=temp_dir.name)
-        if out.returncode == 0:
-            print(f"project temporary saved in {temp_dir.name}")
-        else:
-            raise Exception
-        # temp_dir.cleanup()
+        try:
+            out = subprocess.run(["git", "clone", f"https://git.overleaf.com/{document_code}"], cwd=temp_dir.name)
+            if out.returncode == 0:
+                print(f"project temporary saved in {temp_dir.name}")
+        except:
+            temp_dir.cleanup()
+            raise RuntimeError
         return temp_dir
 
     def convert_tex_to_docx(self, input_path, output_path=None):
