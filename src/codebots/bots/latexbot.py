@@ -4,11 +4,13 @@ import subprocess
 import tempfile
 from pathlib import Path
 from sys import platform
+from threading import local
 
 
 from ._bot import BaseBot
 from ..utilities.web_tools import download_file
 from ..utilities import os_tools
+from .drivebot import DriveBot
 
 __all__ = [
     'LatexBot',
@@ -127,8 +129,11 @@ class LatexBot(BaseBot):
             path to the folder containing the .tex file(s)
         output_path : str, optional
             path to the output .docx file(s), by default None
+        open_docx : bool, optional
+            open the docx file after creation, by default False
         """
         pathlist = Path(input_path).rglob('*.tex')
+        output_paths = []
         for file in pathlist:
             if not output_path:
                 output = str(file).split('.tex')[0]+'.docx'
@@ -137,13 +142,15 @@ class LatexBot(BaseBot):
                 output = Path().joinpath(output_path, str(file.name).split('.tex')[0]+'.docx')
             out = subprocess.run(['pandoc', '-o', output, '-t', 'docx', file])
             print(f"docx saved in {output}")
+            output_paths.append(output)
             # print("The exit code was: %d" % out.returncode)
             if open_docx:
                 print("opening file... don't forget to save it (save as...)!")
                 p = subprocess.Popen(output, shell=True)
                 p.wait()
+        return output_paths
 
-    def convert_overleaf_to_docx(self, document_code, output_path):
+    def convert_overleaf_to_docx(self, document_code, output_path=None, open_docx=True, upload=False):
         """convert the overleaf project into a .docx file. Any .tex file in the
         overleaf repository will be converted into a .docx file with the same name.
 
@@ -152,13 +159,23 @@ class LatexBot(BaseBot):
         document_code : str
             code of the overleaf project. you can find in the address bar in your
             broweser when you open the overleaf project.
-        output_path : str
-            path to the output .docx file
+        output_path : str, optional
+            path to the output .docx file, by default None. If not provided the
+            file is saved in the temporary folder and therefore deleted. Use in
+            combination with `open_docx` so you can save it as a different file.
+        open_docx : bool, optional
+            open the docx file after creation, by default True. Use this to
+            inspect the conversion and save the file in a different location.
         """
         temp_dir = self._clone_overleaf_temp(document_code)
         try:
-            self.convert_tex_to_docx(Path().joinpath(temp_dir.name, document_code), output_path)
-
+            output_paths = self.convert_tex_to_docx(Path().joinpath(
+                temp_dir.name, document_code), output_path, open_docx)
+            if upload:
+                drivebot = DriveBot(authentication='local')
+                for p in output_paths:
+                    path = Path(p)
+                    drivebot.upload_local_file(path, path.name)
             temp_dir.cleanup()
             print("temporary clone removed")
         except:

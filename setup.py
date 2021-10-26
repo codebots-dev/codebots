@@ -43,6 +43,7 @@ setup(
             "sshbot=codebots.cli:sshbot",
             "deploybot=codebots.cli:deploybot",
             "latexbot=codebots.cli:latexbot",
+            "drivebot=codebots.cli:drivebot",
         ],
     },
     install_requires=requirements,

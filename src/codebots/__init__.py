@@ -17,6 +17,7 @@ DATA = os.path.abspath(os.path.join(HOME, 'data'))
 DOCS = os.path.abspath(os.path.join(HOME, 'docs'))
 TEMP = os.path.abspath(os.path.join(HOME, 'temp'))
 SETTINGS = os.path.join(HERE, './settings.json')
+SECRETS = os.path.join(HERE, './client_secrets.json')
 
 
 with open(SETTINGS, 'r') as f:

@@ -11,6 +11,7 @@ You can get detaled information about each of the bots with the :code:`--help` o
     sshbot      --help
     deploybot   --help
     latexbot    --help
+    drivebot    --help
 
 
 """
@@ -25,6 +26,7 @@ from codebots.bots import EmailBot
 from codebots.bots import sshBot
 from codebots.bots.deploybot import DeployBot
 from codebots.bots.latexbot import LatexBot
+from codebots.bots.drivebot import DriveBot
 from codebots.utilities.ssh import gen_keypair, add_pubkey_to_server
 from codebots.utilities.tokens import add_token, get_telegram_chatid, set_token_dir, reset_token_dir
 from codebots.utilities.deploy import configure_local, configure_server
@@ -398,7 +400,9 @@ def convert_tex_to_docx(input, output):
 @latexbot.command()
 @click.argument('project')
 @click.option('--output', default=None, help='path to the folder where the .docx files will be saved, by default None')
-def convert_overleaf_to_docx(project, output):
+@click.option('--inspect', default=True, help='open the file after the conversion')
+@click.option('--upload', default=False, help='if True upload the docx to your Google Drive')
+def convert_overleaf_to_docx(project, output, inspect, upload):
     """Convert an overleaf project to a .docx file.\n
 
     Parameters\n
@@ -407,11 +411,28 @@ def convert_overleaf_to_docx(project, output):
         name of the project for the setting file.\n
     """
     bot = LatexBot()
-    out = bot.convert_overleaf_to_docx(project, output)
+    out = bot.convert_overleaf_to_docx(project, output, inspect, upload)
     click.echo(out)
+
+
+# ------------------------------ DRIVEBOT ----------------------------------#
+
+@click.group()
+def drivebot():
+    """bot to help with Google Drive"""
+    pass
+
+
+@drivebot.command()
+@click.option('--type', default='web', help='choose how you want to authenticate')
+@click.option('--save', default=True, help='save the credentials as .json file')
+def authenticate(type, save):
+    """Sign in your Google Drive.\n
+    """
+    bot = DriveBot(type, save)
+    click.echo('done!')
 
 
 # -------------------------------- DEBUG ----------------------------------#
 if __name__ == "__main__":
     sys.exit(main())
-    "5c5b20af636606525ca0dbc0"  # pragma: no cover
