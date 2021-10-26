@@ -116,7 +116,7 @@ class LatexBot(BaseBot):
             raise RuntimeError
         return temp_dir
 
-    def convert_tex_to_docx(self, input_path, output_path=None):
+    def convert_tex_to_docx(self, input_path, output_path=None, open_docx=False):
         """convert all the .tex files in a folder into .docx files. If no `output_path`
         is provided, the .docx files will be saved in the same directory as the .tex
         files.
@@ -130,10 +130,18 @@ class LatexBot(BaseBot):
         """
         pathlist = Path(input_path).rglob('*.tex')
         for file in pathlist:
-            output = str(file).split('.tex')[
-                0]+'.docx' if not output_path else Path().joinpath(output_path, str(file.name).split('.tex')[0]+'.docx')
-            out = subprocess.run(["pandoc", "-o", output, "-t", "docx", file])
-            print("The exit code was: %d" % out.returncode)
+            if not output_path:
+                output = str(file).split('.tex')[0]+'.docx'
+                open_docx = True
+            else:
+                output = Path().joinpath(output_path, str(file.name).split('.tex')[0]+'.docx')
+            out = subprocess.run(['pandoc', '-o', output, '-t', 'docx', file])
+            print(f"docx saved in {output}")
+            # print("The exit code was: %d" % out.returncode)
+            if open_docx:
+                print("opening file... don't forget to save it (save as...)!")
+                p = subprocess.Popen(output, shell=True)
+                p.wait()
 
     def convert_overleaf_to_docx(self, document_code, output_path):
         """convert the overleaf project into a .docx file. Any .tex file in the
@@ -148,7 +156,11 @@ class LatexBot(BaseBot):
             path to the output .docx file
         """
         temp_dir = self._clone_overleaf_temp(document_code)
-        self.convert_tex_to_docx(Path().joinpath(temp_dir.name, document_code), output_path)
-        print(f"project saved in {output_path}")
-        temp_dir.cleanup()
-        print("temporary clone removed")
+        try:
+            self.convert_tex_to_docx(Path().joinpath(temp_dir.name, document_code), output_path)
+
+            temp_dir.cleanup()
+            print("temporary clone removed")
+        except:
+            temp_dir.cleanup()
+            raise Exception("ERROR")

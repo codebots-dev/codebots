@@ -396,8 +396,9 @@ def convert_tex_to_docx(input, output):
 
 
 @latexbot.command()
-# @click.argument('type')
-def convert_overleaf_to_docx():
+@click.argument('project')
+@click.option('--output', default=None, help='path to the folder where the .docx files will be saved, by default None')
+def convert_overleaf_to_docx(project, output):
     """Convert an overleaf project to a .docx file.\n
 
     Parameters\n
@@ -406,10 +407,11 @@ def convert_overleaf_to_docx():
         name of the project for the setting file.\n
     """
     bot = LatexBot()
-    out = bot.convert_overleaf_to_docx("5c5b20af636606525ca0dbc0", 'C:/temp')
+    out = bot.convert_overleaf_to_docx(project, output)
     click.echo(out)
 
 
 # -------------------------------- DEBUG ----------------------------------#
 if __name__ == "__main__":
-    sys.exit(main())  # pragma: no cover
+    sys.exit(main())
+    "5c5b20af636606525ca0dbc0"  # pragma: no cover

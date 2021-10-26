@@ -53,5 +53,11 @@ def install_exe(file_path):
 
 ### ------------------------------ DEBUG ------------------------------------###
 if __name__ == "__main__":
+    import os
     # print(is_tool("latexmk"))
-    install_exe('c:/temp/miktex.exe')
+    # install_exe('c:/temp/miktex.exe')
+    p = subprocess.Popen('C:/temp/main.docx', shell=True)
+    p.wait()
+    # os.startfile('C:/temp/main.docx')
+
+    print('ciao')
