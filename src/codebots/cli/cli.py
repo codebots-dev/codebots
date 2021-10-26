@@ -364,6 +364,15 @@ def latexbot():
 
 
 @latexbot.command()
+def configure():
+    """Download dependencies and set everything up.\n
+    """
+    bot = LatexBot()
+    out = bot.install_dependencies(git=True, pandoc=True, latex=False)
+    click.echo(out)
+
+
+@latexbot.command()
 @click.option('--input', default='None', help='path to the folder containing the .tex files')
 @click.option('--output', default='None', help='path to the folder where the .docx files will be saved')
 def convert_tex_to_docx(input, output):
