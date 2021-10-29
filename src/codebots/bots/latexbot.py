@@ -1,11 +1,9 @@
-import os
-import importlib
 import subprocess
+from subprocess import Popen, PIPE
 import tempfile
 from pathlib import Path
 from sys import platform
-from threading import local
-
+from getpass import getpass
 
 from ._bot import BaseBot
 from ..utilities.web_tools import download_file
@@ -21,7 +19,7 @@ class LatexBot(BaseBot):
     """LatexBot.
     """
 
-    def __init__(self, config_file=None, sender=None) -> None:
+    def __init__(self) -> None:
         self.__name__ = "latexbot"
 
     def install_dependencies(self, git, pandoc, miktex):
@@ -32,7 +30,13 @@ class LatexBot(BaseBot):
 
         Parameters
         ----------
-        None
+        git : bool
+            if True install git
+        pandoc : bool
+            if True install pandoc
+        miktex : bool
+            if True install miktex
+
 
         Kwargs
         ------
@@ -52,7 +56,16 @@ class LatexBot(BaseBot):
         try:
 
             if platform == "linux" or platform == "linux2":  # linux
-                raise NotImplementedError("your os is currently not supported")
+                if git:
+                    print("git is pre-installed in linux")
+                if miktex:
+                    print("NotImplemented")
+                settings = {
+                    'pandoc':
+                    {'url': 'https://github.com/jgm/pandoc/releases/download/2.15/pandoc-2.15-1-amd64.deb',
+                     'function': 'install_deb',
+                     'file_name': 'pandoc-2.15-1-amd64.deb'},
+                }
             elif platform == "darwin":  # OS X
                 raise NotImplementedError("your os is currently not supported")
             elif platform == "win32":  # Windows
@@ -85,6 +98,12 @@ class LatexBot(BaseBot):
         except:
             temp_dir.cleanup()
             raise Exception("ERROR, something went wrong")
+
+    def add_overleaf_project(self, name, code):
+        raise NotImplementedError()
+
+    def add_document(self, name, path):
+        raise NotImplementedError()
 
     def _clone_overleaf_temp(self, document_code):
         """Temporarily clone the overleaf project on the local machine.
@@ -140,14 +159,29 @@ class LatexBot(BaseBot):
                 open_docx = True
             else:
                 output = Path().joinpath(output_path, str(file.name).split('.tex')[0]+'.docx')
-            out = subprocess.run(['pandoc', '-o', output, '-t', 'docx', file])
-            print(f"docx saved in {output}")
+            if platform == "linux" or platform == "linux2":
+                password = getpass("Please enter your password: ")
+                # sudo requires the flag '-S' in order to take input from stdin
+                proc = Popen(f"sudo -S pandoc -o {output} -t docx {file}".split(), stdin=PIPE, stdout=PIPE, stderr=PIPE)
+                # Popen only accepts byte-arrays so you must encode the string
+                stdout, stderr = proc.communicate(password.encode())
+                print(stdout.decode())
+                print(stderr.decode())
+                # out = subprocess.run(['sudo', 'pandoc', '-o', output, '-t', 'docx', file])
+            else:
+                out = subprocess.run(['pandoc', '-o', output, '-t', 'docx', file])
+                if out.returncode == 0:
+                    print(f"docx saved in {output}")
+                else:
+                    raise Exception("could not save docx")
             output_paths.append(output)
-            # print("The exit code was: %d" % out.returncode)
             if open_docx:
                 print("opening file... don't forget to save it (save as...)!")
-                p = subprocess.Popen(output, shell=True)
-                p.wait()
+                if platform == "linux" or platform == "linux2":  # linux
+                    print("Not yet supported!")  # p = subprocess.run(["libreoffice", output])
+                else:
+                    p = subprocess.Popen(output, shell=True)
+                    p.wait()
         return output_paths
 
     def convert_overleaf_to_docx(self, document_code, output_path=None, open_docx=True, upload=False):
@@ -166,6 +200,14 @@ class LatexBot(BaseBot):
         open_docx : bool, optional
             open the docx file after creation, by default True. Use this to
             inspect the conversion and save the file in a different location.
+        upload : bool, optional
+            uploads the document to your google drive, by default False.
+
+        Notes
+        -----
+        In order for the upload to succeed, you must configure the `drivebot`
+        first by running `drivebot configure -type=web -save=True` in the command
+        line.
         """
         temp_dir = self._clone_overleaf_temp(document_code)
         try:

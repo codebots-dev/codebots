@@ -1,4 +1,5 @@
 import subprocess
+import os
 
 
 ### ------------------------ CROSS PLATFORM ---------------------------------###
@@ -50,14 +51,29 @@ def install_exe(file_path):
         print("installation complete")
     return out
 
+### ------------------------------ LINUX ------------------------------------###
 
+
+def install_deb(file_path):
+    out = subprocess.run(["sudo", "dpkg", "-i", file_path])
+    if out.returncode == 0:
+        print("installation complete")
+
+
+def register_GPG_key(keyserver="hkp://keyserver.ubuntu.com:80", recv_key="D6BC243565B2087BC3F897C9277A7293F59E4889"):
+    out = subprocess.run(["sudo", "apt-key", "adv", "--keyserver", keyserver, "--recv-keys", recv_key])
+    return out
+
+
+def install_miktex_ubuntu(url="http://miktex.org/download/ubuntu bionic universe"):
+    os.system(f"echo deb {url} | sudo tee /etc/apt/sources.list.d/miktex.list")
+    os.system("sudo apt-get update")
+    os.system("sudo apt-get install miktex")
+
+    # out=subprocess.run(["sudo", "aptpkey", "adv", "--keyserver", keyserver, "--recv-keys", recv_key])
+    # if out.returncode == 0:
+    #     print("installation complete")
 ### ------------------------------ DEBUG ------------------------------------###
 if __name__ == "__main__":
-    import os
-    # print(is_tool("latexmk"))
-    # install_exe('c:/temp/miktex.exe')
-    p = subprocess.Popen('C:/temp/main.docx', shell=True)
-    p.wait()
-    # os.startfile('C:/temp/main.docx')
-
-    print('ciao')
+    register_GPG_key()
+    install_miktex_ubuntu()

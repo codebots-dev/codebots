@@ -433,6 +433,17 @@ def authenticate(type, save):
     click.echo('done!')
 
 
+@drivebot.command()
+@click.argument('path_to_file')
+@click.argument('name')
+def upload_local_file(path_to_file, name):
+    """Upload a local file to your Google Drive.\n
+    """
+    bot = DriveBot('web')
+    bot.upload_local_file(path_to_file, name)
+    click.echo('done!')
+
+
 # -------------------------------- DEBUG ----------------------------------#
 if __name__ == "__main__":
     sys.exit(main())

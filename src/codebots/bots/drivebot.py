@@ -1,13 +1,8 @@
-import authentication
-from googleapiclient.discovery import build
-from googleapiclient.http import MediaFileUpload
 import os
 from pydrive.drive import GoogleDrive
 from pydrive.auth import GoogleAuth
 from codebots import SECRETS
 
-
-from ._bot import BaseBot
 
 __all__ = [
     'DriveBot'
