@@ -1,5 +1,4 @@
 from ..bots import sshBot
-from pathlib import Path
 
 
 def configure_local(local_repo, server_complete_path):

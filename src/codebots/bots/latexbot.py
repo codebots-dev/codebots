@@ -38,8 +38,8 @@ class LatexBot(BaseBot):
             if True install miktex
 
 
-        Kwargs
-        ------
+        Keyword Arguments
+        -----------------
         git : bool, optional
             install git if not already present
         pandoc : bool, optional

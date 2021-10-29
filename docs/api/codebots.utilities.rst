@@ -49,3 +49,28 @@ deploy
 
    configure_local
    configutre_server
+
+
+OS tools
+--------
+
+.. currentmodule:: codebots.utilities.os_tools
+
+.. autosummary::
+   :toctree: generated
+
+   is_tool
+   install_msi
+   install_exe
+   install_deb
+
+
+Web tools
+---------
+
+.. currentmodule:: codebots.utilities.web_tools
+
+.. autosummary::
+   :toctree: generated
+
+   download_file

@@ -58,3 +58,24 @@ Deployment
 
     DeployBot
 
+
+Latex
+-----
+
+.. currentmodule:: codebots.bots.latexbot
+
+.. autosummary::
+   :toctree: generated
+
+    LatexBot
+
+
+Google Drive
+------------
+
+.. currentmodule:: codebots.bots.drivebot
+
+.. autosummary::
+   :toctree: generated
+
+    DriveBot
