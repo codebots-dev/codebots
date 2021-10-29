@@ -95,7 +95,7 @@ class LatexBot(BaseBot):
 
                 else:
                     print(f'{tool} skipped or already installed')
-        except:
+        except Exception:
             temp_dir.cleanup()
             raise Exception("ERROR, something went wrong")
 
@@ -132,7 +132,7 @@ class LatexBot(BaseBot):
             out = subprocess.run(["git", "clone", f"https://git.overleaf.com/{document_code}"], cwd=temp_dir.name)
             if out.returncode == 0:
                 print(f"project temporary saved in {temp_dir.name}")
-        except:
+        except Exception:
             temp_dir.cleanup()
             raise RuntimeError
         return temp_dir
@@ -155,10 +155,10 @@ class LatexBot(BaseBot):
         output_paths = []
         for file in pathlist:
             if not output_path:
-                output = str(file).split('.tex')[0]+'.docx'
+                output = str(file).split('.tex')[0] + '.docx'
                 open_docx = True
             else:
-                output = Path().joinpath(output_path, str(file.name).split('.tex')[0]+'.docx')
+                output = Path().joinpath(output_path, str(file.name).split('.tex')[0] + '.docx')
             if platform == "linux" or platform == "linux2":
                 password = getpass("Please enter your password: ")
                 # sudo requires the flag '-S' in order to take input from stdin
@@ -220,6 +220,6 @@ class LatexBot(BaseBot):
                     drivebot.upload_local_file(path, path.name)
             temp_dir.cleanup()
             print("temporary clone removed")
-        except:
+        except Exception:
             temp_dir.cleanup()
             raise Exception("ERROR")

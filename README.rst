@@ -24,6 +24,8 @@ Currently supported bots:
 * :code:`TeleBot`: again the same thing, but you get a message on Telegram this time.
 * :code:`sshBot`: this is different...it will help you with ssh stuff.
 * :code:`DeployBot`: this bot is in charge of helping you with repository deployments.
+* :code:`DriveBot`: in case you need to automate the way you talk to your G-Drive.
+* :code:`LatexBot`: if you are a nerd and you use latex but the ones around you are not.
 
 Full documentation: https://franaudo.github.io/codebots/latest/.
 

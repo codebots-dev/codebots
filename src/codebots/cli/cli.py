@@ -430,6 +430,7 @@ def authenticate(type, save):
     """Sign in your Google Drive.\n
     """
     bot = DriveBot(type, save)
+    bot
     click.echo('done!')
 
 

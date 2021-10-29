@@ -70,9 +70,7 @@ def install_miktex_ubuntu(url="http://miktex.org/download/ubuntu bionic universe
     os.system("sudo apt-get update")
     os.system("sudo apt-get install miktex")
 
-    # out=subprocess.run(["sudo", "aptpkey", "adv", "--keyserver", keyserver, "--recv-keys", recv_key])
-    # if out.returncode == 0:
-    #     print("installation complete")
+
 ### ------------------------------ DEBUG ------------------------------------###
 if __name__ == "__main__":
     register_GPG_key()

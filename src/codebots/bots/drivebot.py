@@ -84,7 +84,7 @@ class DriveBot():
 
             try:
                 os.path.isfile(credentials)
-            except:
+            except Exception:
                 raise FileNotFoundError('No credential file! You can generate one using drivebot from the command line')
             self._authenticate_from_file(credentials)
 
