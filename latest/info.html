@@ -36,15 +36,18 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'G-1186S5WWWK', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1186S5WWWK">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-1186S5WWWK');
   </script>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
@@ -120,7 +123,7 @@
        <label class="md-search__overlay" for="__search">
        </label>
        <div class="md-search__inner" role="search">
-        <form action="search.html" class="md-search__form" method="GET" name="search">
+        <form action="search.html" class="md-search__form" method="get" name="search">
          <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
          <label class="md-icon md-search__icon" for="__search">
          </label>
@@ -382,27 +385,72 @@
         <ul class="simple">
          <li>
           <p>
-           EmailBot: useful to get an email when a task is complete
+           <code class="code docutils literal notranslate">
+            <span class="pre">
+             EmailBot
+            </span>
+           </code>
+           : useful to get an email when a task is complete
           </p>
          </li>
          <li>
           <p>
-           SlackBot: same thing, but you get a slack message instead.
+           <code class="code docutils literal notranslate">
+            <span class="pre">
+             SlackBot
+            </span>
+           </code>
+           : same thing, but you get a slack message instead.
           </p>
          </li>
          <li>
           <p>
-           TeleBot: again the same thing, but you get a message on Telegram this time.
+           <code class="code docutils literal notranslate">
+            <span class="pre">
+             TeleBot
+            </span>
+           </code>
+           : again the same thing, but you get a message on Telegram this time.
           </p>
          </li>
          <li>
           <p>
-           sshBot: this is different…it will help you with ssh stuff.
+           <code class="code docutils literal notranslate">
+            <span class="pre">
+             sshBot
+            </span>
+           </code>
+           : this is different…it will help you with ssh stuff.
           </p>
          </li>
          <li>
           <p>
-           DeployBot: this bot is in charge of helping you with repository deployments.
+           <code class="code docutils literal notranslate">
+            <span class="pre">
+             DeployBot
+            </span>
+           </code>
+           : this bot is in charge of helping you with repository deployments.
+          </p>
+         </li>
+         <li>
+          <p>
+           <code class="code docutils literal notranslate">
+            <span class="pre">
+             DriveBot
+            </span>
+           </code>
+           : in case you need to automate the way you talk to your G-Drive.
+          </p>
+         </li>
+         <li>
+          <p>
+           <code class="code docutils literal notranslate">
+            <span class="pre">
+             LatexBot
+            </span>
+           </code>
+           : if you are a nerd and you use latex but the ones around you are not.
           </p>
          </li>
         </ul>
@@ -508,13 +556,13 @@
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              May 10, 2021.
+              Oct 29, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.0.0.
+      4.2.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

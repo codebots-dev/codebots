@@ -36,15 +36,18 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'G-1186S5WWWK', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1186S5WWWK">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-1186S5WWWK');
   </script>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
@@ -70,7 +73,7 @@
   <link href="genindex.html" rel="index" title="Index"/>
   <link href="search.html" rel="search" title="Search"/>
   <link href="api/codebots.html" rel="next" title="codebots"/>
-  <link href="examples/deploybot.html" rel="prev" title="Create a bot to operate on a server using SSH [WIP]"/>
+  <link href="examples/deploybot.html" rel="prev" title="Deploy your code on a server using Git"/>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
  </head>
  <body data-md-color-accent="cyan" data-md-color-primary="blue" dir="ltr">
@@ -120,7 +123,7 @@
        <label class="md-search__overlay" for="__search">
        </label>
        <div class="md-search__inner" role="search">
-        <form action="search.html" class="md-search__form" method="GET" name="search">
+        <form action="search.html" class="md-search__form" method="get" name="search">
          <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
          <label class="md-icon md-search__icon" for="__search">
          </label>
@@ -347,7 +350,7 @@
   <footer class="md-footer">
    <div class="md-footer-nav">
     <nav class="md-footer-nav__inner md-grid">
-     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="examples/deploybot.html" rel="prev" title="Create a bot to operate on a server using SSH [WIP]">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="examples/deploybot.html" rel="prev" title="Deploy your code on a server using Git">
       <div class="md-flex__cell md-flex__cell--shrink">
        <i class="md-icon md-icon--arrow-back md-footer-nav__button">
        </i>
@@ -357,7 +360,7 @@
         <span class="md-footer-nav__direction">
          Previous
         </span>
-        Create a bot to operate on a server using SSH [WIP]
+        Deploy your code on a server using Git
        </span>
       </div>
      </a>
@@ -384,13 +387,13 @@
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              May 10, 2021.
+              Oct 29, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.0.0.
+      4.2.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

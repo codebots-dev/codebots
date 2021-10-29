@@ -36,15 +36,18 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="../_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'G-1186S5WWWK', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1186S5WWWK">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-1186S5WWWK');
   </script>
   <link href="../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
@@ -120,7 +123,7 @@
        <label class="md-search__overlay" for="__search">
        </label>
        <div class="md-search__inner" role="search">
-        <form action="../search.html" class="md-search__form" method="GET" name="search">
+        <form action="../search.html" class="md-search__form" method="get" name="search">
          <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
          <label class="md-icon md-search__icon" for="__search">
          </label>
@@ -329,6 +332,16 @@
                deploy
               </a>
              </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#os-tools">
+               OS tools
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#web-tools">
+               Web tools
+              </a>
+             </li>
             </ul>
            </nav>
           </li>
@@ -503,7 +516,7 @@
             </td>
             <td>
              <p>
-              Adds the public key to the server’s list.
+              Adds the public key to the server's list.
              </p>
             </td>
            </tr>
@@ -539,6 +552,136 @@
             <td>
              <p>
               Configure the local repository to sync with the server.
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </section>
+        <section id="os-tools">
+         <h2 id="os-tools">
+          OS tools
+          <a class="headerlink" href="#os-tools" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.utilities.os_tools.is_tool.html#codebots.utilities.os_tools.is_tool" title="codebots.utilities.os_tools.is_tool">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 is_tool
+                </span>
+               </code>
+              </a>
+              (name)
+             </p>
+            </td>
+            <td>
+             <p>
+              Check whether
+              <cite>
+               name
+              </cite>
+              is on PATH and marked as executable.
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.utilities.os_tools.install_msi.html#codebots.utilities.os_tools.install_msi" title="codebots.utilities.os_tools.install_msi">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 install_msi
+                </span>
+               </code>
+              </a>
+              (file_path)
+             </p>
+            </td>
+            <td>
+             <p>
+              Perform a silent install of a msi package (Windows only)
+             </p>
+            </td>
+           </tr>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.utilities.os_tools.install_exe.html#codebots.utilities.os_tools.install_exe" title="codebots.utilities.os_tools.install_exe">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 install_exe
+                </span>
+               </code>
+              </a>
+              (file_path)
+             </p>
+            </td>
+            <td>
+             <p>
+              Call the installation executable
+             </p>
+            </td>
+           </tr>
+           <tr class="row-even">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.utilities.os_tools.install_deb.html#codebots.utilities.os_tools.install_deb" title="codebots.utilities.os_tools.install_deb">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 install_deb
+                </span>
+               </code>
+              </a>
+              (file_path)
+             </p>
+            </td>
+            <td>
+             <p>
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </section>
+        <section id="web-tools">
+         <h2 id="web-tools">
+          Web tools
+          <a class="headerlink" href="#web-tools" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.utilities.web_tools.download_file.html#codebots.utilities.web_tools.download_file" title="codebots.utilities.web_tools.download_file">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 download_file
+                </span>
+               </code>
+              </a>
+              (url, file_path)
+             </p>
+            </td>
+            <td>
+             <p>
+              [summary]
              </p>
             </td>
            </tr>
@@ -591,13 +734,13 @@
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              May 10, 2021.
+              Oct 29, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.0.0.
+      4.2.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

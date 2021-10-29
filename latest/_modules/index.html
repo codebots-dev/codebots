@@ -35,15 +35,18 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="../_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'G-1186S5WWWK', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1186S5WWWK">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-1186S5WWWK');
   </script>
   <link href="../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
@@ -117,7 +120,7 @@
        <label class="md-search__overlay" for="__search">
        </label>
        <div class="md-search__inner" role="search">
-        <form action="../search.html" class="md-search__form" method="GET" name="search">
+        <form action="../search.html" class="md-search__form" method="get" name="search">
          <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
          <label class="md-icon md-search__icon" for="__search">
          </label>
@@ -297,8 +300,18 @@
          </a>
         </li>
         <li>
+         <a href="codebots/bots/drivebot.html">
+          codebots.bots.drivebot
+         </a>
+        </li>
+        <li>
          <a href="codebots/bots/emailbot.html">
           codebots.bots.emailbot
+         </a>
+        </li>
+        <li>
+         <a href="codebots/bots/latexbot.html">
+          codebots.bots.latexbot
          </a>
         </li>
         <li>
@@ -327,6 +340,11 @@
          </a>
         </li>
         <li>
+         <a href="codebots/utilities/os_tools.html">
+          codebots.utilities.os_tools
+         </a>
+        </li>
+        <li>
          <a href="codebots/utilities/ssh.html">
           codebots.utilities.ssh
          </a>
@@ -334,6 +352,11 @@
         <li>
          <a href="codebots/utilities/tokens.html">
           codebots.utilities.tokens
+         </a>
+        </li>
+        <li>
+         <a href="codebots/utilities/web_tools.html">
+          codebots.utilities.web_tools
          </a>
         </li>
        </ul>
@@ -354,13 +377,13 @@
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              May 10, 2021.
+              Oct 29, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.0.0.
+      4.2.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

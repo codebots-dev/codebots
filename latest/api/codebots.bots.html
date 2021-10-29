@@ -36,15 +36,18 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="../_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'G-1186S5WWWK', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1186S5WWWK">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-1186S5WWWK');
   </script>
   <link href="../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
@@ -120,7 +123,7 @@
        <label class="md-search__overlay" for="__search">
        </label>
        <div class="md-search__inner" role="search">
-        <form action="../search.html" class="md-search__form" method="GET" name="search">
+        <form action="../search.html" class="md-search__form" method="get" name="search">
          <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
          <label class="md-icon md-search__icon" for="__search">
          </label>
@@ -332,6 +335,16 @@
              <li class="md-nav__item">
               <a class="md-nav__link" href="#deployment">
                Deployment
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#latex">
+               Latex
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#google-drive">
+               Google Drive
               </a>
              </li>
             </ul>
@@ -548,6 +561,76 @@
           </tbody>
          </table>
         </section>
+        <section id="latex">
+         <h2 id="latex">
+          Latex
+          <a class="headerlink" href="#latex" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.bots.latexbot.LatexBot.html#codebots.bots.latexbot.LatexBot" title="codebots.bots.latexbot.LatexBot">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 LatexBot
+                </span>
+               </code>
+              </a>
+              ()
+             </p>
+            </td>
+            <td>
+             <p>
+              LatexBot.
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </section>
+        <section id="google-drive">
+         <h2 id="google-drive">
+          Google Drive
+          <a class="headerlink" href="#google-drive" title="Permalink to this headline">
+           ¶
+          </a>
+         </h2>
+         <table class="longtable docutils align-default">
+          <colgroup>
+           <col style="width: 10%"/>
+           <col style="width: 90%"/>
+          </colgroup>
+          <tbody>
+           <tr class="row-odd">
+            <td>
+             <p>
+              <a class="reference internal" href="generated/codebots.bots.drivebot.DriveBot.html#codebots.bots.drivebot.DriveBot" title="codebots.bots.drivebot.DriveBot">
+               <code class="xref py py-obj docutils literal notranslate">
+                <span class="pre">
+                 DriveBot
+                </span>
+               </code>
+              </a>
+              (authentication[, save_credentials])
+             </p>
+            </td>
+            <td>
+             <p>
+              Bot to help with handling your Google Drive.
+             </p>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </section>
        </section>
       </article>
      </div>
@@ -594,13 +677,13 @@
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              May 10, 2021.
+              Oct 29, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.0.0.
+      4.2.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for

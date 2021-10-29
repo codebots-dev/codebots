@@ -35,15 +35,18 @@
   <meta content="#2196f3" name="theme-color"/>
   <script src="_static/javascripts/modernizr.js">
   </script>
-  <script>
-   window.ga = window.ga || function () {
-          (ga.q = ga.q || []).push(arguments)
-      };
-      ga.l = +new Date;
-      ga('create', 'G-1186S5WWWK', 'auto');
-      ga('send', 'pageview');
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1186S5WWWK">
   </script>
-  <script async="" src="https://www.google-analytics.com/analytics.js">
+  <script>
+   window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-1186S5WWWK');
   </script>
   <link href="_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
   <title>
@@ -117,7 +120,7 @@
        <label class="md-search__overlay" for="__search">
        </label>
        <div class="md-search__inner" role="search">
-        <form action="search.html" class="md-search__form" method="GET" name="search">
+        <form action="search.html" class="md-search__form" method="get" name="search">
          <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
          <label class="md-icon md-search__icon" for="__search">
          </label>
@@ -327,6 +330,18 @@
          </strong>
         </a>
         |
+        <a href="#I">
+         <strong>
+          I
+         </strong>
+        </a>
+        |
+        <a href="#L">
+         <strong>
+          L
+         </strong>
+        </a>
+        |
         <a href="#M">
          <strong>
           M
@@ -371,14 +386,24 @@
          <td style="width: 33%; vertical-align: top;">
           <ul>
            <li>
-            <a href="api/generated/codebots.utilities.ssh.add_pubkey_to_server.html#codebots.utilities.ssh.add_pubkey_to_server">
-             add_pubkey_to_server() (in module codebots.utilities.ssh)
+            <a href="api/generated/methods/codebots.bots.latexbot.LatexBot.add_document.html#codebots.bots.latexbot.LatexBot.add_document">
+             add_document() (codebots.bots.latexbot.LatexBot method)
+            </a>
+           </li>
+           <li>
+            <a href="api/generated/methods/codebots.bots.latexbot.LatexBot.add_overleaf_project.html#codebots.bots.latexbot.LatexBot.add_overleaf_project">
+             add_overleaf_project() (codebots.bots.latexbot.LatexBot method)
             </a>
            </li>
           </ul>
          </td>
          <td style="width: 33%; vertical-align: top;">
           <ul>
+           <li>
+            <a href="api/generated/codebots.utilities.ssh.add_pubkey_to_server.html#codebots.utilities.ssh.add_pubkey_to_server">
+             add_pubkey_to_server() (in module codebots.utilities.ssh)
+            </a>
+           </li>
            <li>
             <a href="api/generated/codebots.utilities.tokens.add_token.html#codebots.utilities.tokens.add_token">
              add_token() (in module codebots.utilities.tokens)
@@ -410,10 +435,6 @@
              </li>
             </ul>
            </li>
-          </ul>
-         </td>
-         <td style="width: 33%; vertical-align: top;">
-          <ul>
            <li>
             <a href="api/generated/codebots.utilities.deploy.configure_local.html#codebots.utilities.deploy.configure_local">
              configure_local() (in module codebots.utilities.deploy)
@@ -424,6 +445,10 @@
              connect() (codebots.bots.slackbot.SlackBot method)
             </a>
            </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
            <li>
             <a href="api/generated/methods/codebots.bots.sshbot.sshBot.connect_sftp_client.html#codebots.bots.sshbot.sshBot.connect_sftp_client">
              connect_sftp_client() (codebots.bots.sshbot.sshBot method)
@@ -432,6 +457,21 @@
            <li>
             <a href="api/generated/methods/codebots.bots.sshbot.sshBot.connect_ssh_client.html#codebots.bots.sshbot.sshBot.connect_ssh_client">
              connect_ssh_client() (codebots.bots.sshbot.sshBot method)
+            </a>
+           </li>
+           <li>
+            <a href="api/generated/methods/codebots.bots.latexbot.LatexBot.convert_overleaf_to_docx.html#codebots.bots.latexbot.LatexBot.convert_overleaf_to_docx">
+             convert_overleaf_to_docx() (codebots.bots.latexbot.LatexBot method)
+            </a>
+           </li>
+           <li>
+            <a href="api/generated/methods/codebots.bots.latexbot.LatexBot.convert_tex_to_docx.html#codebots.bots.latexbot.LatexBot.convert_tex_to_docx">
+             convert_tex_to_docx() (codebots.bots.latexbot.LatexBot method)
+            </a>
+           </li>
+           <li>
+            <a href="api/generated/methods/codebots.bots.drivebot.DriveBot.create_and_upload.html#codebots.bots.drivebot.DriveBot.create_and_upload">
+             create_and_upload() (codebots.bots.drivebot.DriveBot method)
             </a>
            </li>
           </ul>
@@ -450,13 +490,28 @@
              deploy_to_server() (codebots.bots.deploybot.DeployBot method)
             </a>
            </li>
+           <li>
+            <a href="api/generated/codebots.bots.deploybot.DeployBot.html#codebots.bots.deploybot.DeployBot">
+             DeployBot (class in codebots.bots.deploybot)
+            </a>
+           </li>
           </ul>
          </td>
          <td style="width: 33%; vertical-align: top;">
           <ul>
            <li>
-            <a href="api/generated/codebots.bots.deploybot.DeployBot.html#codebots.bots.deploybot.DeployBot">
-             DeployBot (class in codebots.bots.deploybot)
+            <a href="api/generated/codebots.utilities.web_tools.download_file.html#codebots.utilities.web_tools.download_file">
+             download_file() (in module codebots.utilities.web_tools)
+            </a>
+           </li>
+           <li>
+            <a href="api/generated/attributes/codebots.bots.drivebot.DriveBot.drive.html#codebots.bots.drivebot.DriveBot.drive">
+             drive (codebots.bots.drivebot.DriveBot property)
+            </a>
+           </li>
+           <li>
+            <a href="api/generated/codebots.bots.drivebot.DriveBot.html#codebots.bots.drivebot.DriveBot">
+             DriveBot (class in codebots.bots.drivebot)
             </a>
            </li>
           </ul>
@@ -521,8 +576,8 @@
          <td style="width: 33%; vertical-align: top;">
           <ul>
            <li>
-            <a href="api/generated/codebots.utilities.ssh.gen_keypair.html#codebots.utilities.ssh.gen_keypair">
-             gen_keypair() (in module codebots.utilities.ssh)
+            <a href="api/generated/attributes/codebots.bots.drivebot.DriveBot.gauth.html#codebots.bots.drivebot.DriveBot.gauth">
+             gauth (codebots.bots.drivebot.DriveBot property)
             </a>
            </li>
           </ul>
@@ -530,8 +585,69 @@
          <td style="width: 33%; vertical-align: top;">
           <ul>
            <li>
+            <a href="api/generated/codebots.utilities.ssh.gen_keypair.html#codebots.utilities.ssh.gen_keypair">
+             gen_keypair() (in module codebots.utilities.ssh)
+            </a>
+           </li>
+           <li>
             <a href="api/generated/methods/codebots.bots.sshbot.sshBot.get_folder_from_server.html#codebots.bots.sshbot.sshBot.get_folder_from_server">
              get_folder_from_server() (codebots.bots.sshbot.sshBot method)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="I">
+        I
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="api/generated/codebots.utilities.os_tools.install_deb.html#codebots.utilities.os_tools.install_deb">
+             install_deb() (in module codebots.utilities.os_tools)
+            </a>
+           </li>
+           <li>
+            <a href="api/generated/methods/codebots.bots.latexbot.LatexBot.install_dependencies.html#codebots.bots.latexbot.LatexBot.install_dependencies">
+             install_dependencies() (codebots.bots.latexbot.LatexBot method)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="api/generated/codebots.utilities.os_tools.install_exe.html#codebots.utilities.os_tools.install_exe">
+             install_exe() (in module codebots.utilities.os_tools)
+            </a>
+           </li>
+           <li>
+            <a href="api/generated/codebots.utilities.os_tools.install_msi.html#codebots.utilities.os_tools.install_msi">
+             install_msi() (in module codebots.utilities.os_tools)
+            </a>
+           </li>
+           <li>
+            <a href="api/generated/codebots.utilities.os_tools.is_tool.html#codebots.utilities.os_tools.is_tool">
+             is_tool() (in module codebots.utilities.os_tools)
+            </a>
+           </li>
+          </ul>
+         </td>
+        </tr>
+       </table>
+       <h2 id="L">
+        L
+       </h2>
+       <table class="indextable genindextable" style="width: 100%">
+        <tr>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
+            <a href="api/generated/codebots.bots.latexbot.LatexBot.html#codebots.bots.latexbot.LatexBot">
+             LatexBot (class in codebots.bots.latexbot)
             </a>
            </li>
           </ul>
@@ -677,6 +793,15 @@
          <td style="width: 33%; vertical-align: top;">
           <ul>
            <li>
+            <a href="api/generated/methods/codebots.bots.drivebot.DriveBot.upload_local_file.html#codebots.bots.drivebot.DriveBot.upload_local_file">
+             upload_local_file() (codebots.bots.drivebot.DriveBot method)
+            </a>
+           </li>
+          </ul>
+         </td>
+         <td style="width: 33%; vertical-align: top;">
+          <ul>
+           <li>
             <a href="api/generated/attributes/codebots.bots.emailbot.Sender.username.html#codebots.bots.emailbot.Sender.username">
              username (codebots.bots.emailbot.Sender property)
             </a>
@@ -702,13 +827,13 @@
        © Copyright 2021, Francesco Ranaudo.
       </div>
       Last updated on
-              May 10, 2021.
+              Oct 29, 2021.
       <br/>
       Created using
       <a href="http://www.sphinx-doc.org/">
        Sphinx
       </a>
-      4.0.0.
+      4.2.0.
              and
       <a href="https://github.com/bashtage/sphinx-material/">
        Material for
