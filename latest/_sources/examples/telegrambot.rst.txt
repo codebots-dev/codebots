@@ -45,7 +45,7 @@ some function completion). This is an example implementation (but check the
 If you are using the command line to run your code, then you can concatenate the
 :code:`telebot` at the end of your command, like this:
 
-.. code-block:: cmd
+.. code-block:: console
 
     dir && telebot send "done!"
 
