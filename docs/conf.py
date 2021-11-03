@@ -10,7 +10,7 @@ html_title = "codebots"
 
 copyright = "2021, Francesco Ranaudo"
 author = "Francesco Ranaudo"
-release = "0.11.0"
+release = "0.11.1"
 # # The full version, including alpha/beta/rc tags
 # release = LooseVersion(sphinx_material.__version__).vstring
 
