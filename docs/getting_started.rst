@@ -96,3 +96,33 @@ deployment of our app?! You can do all this with :code:`codebots`...magic! :)
 
    examples/sshbot.rst
    examples/deploybot.rst
+
+access your cloud storage
+=========================
+
+Sometimes you want to automate how you access, manipulate and edit your files in
+your cloud storage. `Drivebot` will help you with that! For now only
+Google Drive is supported, but soon more cloud providers will be supported.
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :glob:
+
+   examples/drivebot.rst
+
+latex made easy
+===============
+
+Latex can be intimitading at the beginning. What to install? where to find the
+right software? how to convert to different formats? I had these questions
+(I still do...) and therefore I chose to create a bot to help me (and you!).
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :glob:
+
+   examples/latexbot_cli.rst
+   examples/latexbot_install.rst
+   examples/latexbot_overleaf.rst

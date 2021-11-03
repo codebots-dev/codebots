@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 
-# """Tests for `codebots` package."""
+"""Tests for `codebots` package."""
 
-# import pytest
+import pytest
 
-# from click.testing import CliRunner
+from click.testing import CliRunner
 
-# from codebots.cli import cli
+from codebots.cli import cli
 
 
 # @pytest.fixture
@@ -34,6 +34,7 @@
 #     help_result = runner.invoke(cli.main, ['--help'])
 #     assert help_result.exit_code == 0
 #     assert '--help  Show this message and exit.' in help_result.output
+
 
 def test_dummy():
     assert True
