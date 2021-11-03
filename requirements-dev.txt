@@ -38,5 +38,6 @@ gitpython
 paramiko
 Click>=7.0
 pydrive
+tqdm
 
 -e .
