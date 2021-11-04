@@ -1,5 +1,5 @@
-Welcome to codebots's documentation!
-====================================
+Welcome to `codebots`' documentation!
+=====================================
 
 .. image:: https://github.com/franaudo/codebots/actions/workflows/docs.yml/badge.svg
         :target: https://github.com/franaudo/codebots/actions/workflows/docs.yml
@@ -35,8 +35,8 @@ Welcome to codebots's documentation!
    authors
    license
    history
+   GitHub Repository <https://github.com/franaudo/codebots>
 
 Indices and tables
 ------------------
 - :ref:`genindex`
-- :ref:`modindex`

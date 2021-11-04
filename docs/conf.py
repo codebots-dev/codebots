@@ -59,8 +59,9 @@ html_static_path = ["_static"]
 html_theme = "furo"
 html_show_sourcelink = False
 html_theme_options = {
-    "light_logo": "logo.jpeg",
-    "dark_logo": "logo.jpeg",
+    "sidebar_hide_name": True,
+    "light_logo": "logo_white.png",
+    "dark_logo": "logo_black.png",
 }
 html_last_updated_fmt = ""
 html_use_index = True
