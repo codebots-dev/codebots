@@ -14,6 +14,8 @@ Codebots
         :target: https://github.com/franaudo/codebots/actions/workflows/codeql-analysis.yml
         :alt: CodeQL
 
+.. image:: https://zenodo.org/badge/351589325.svg
+   :target: https://zenodo.org/badge/latestdoi/351589325
 
 This is a collection of simple bots to help with boring tasks during coding.
 
