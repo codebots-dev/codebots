@@ -1,0 +1,9 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Francesco
+    given-names: Ranaudo
+    orcid: https://orcid.org/https://orcid.org/0000-0002-1612-5612
+title: franaudo/codebots: doi
+version: v0.9.1
+date-released: 2022-08-17
