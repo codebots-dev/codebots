@@ -4,12 +4,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+    <meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
         <title>codebots.utilities.deploy - codebots</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -20,38 +20,38 @@
   --color-code-foreground: black;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
     }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" />
-      <line x1="4" y1="6" x2="20" y2="6" />
-      <line x1="10" y1="12" x2="20" y2="12" />
-      <line x1="6" y1="18" x2="20" y2="18" />
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
     </svg>
   </symbol>
   <symbol id="svg-menu" viewBox="0 0 24 24">
     <title>Menu</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
       <line x1="3" y1="12" x2="21" y2="12"></line>
       <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -60,14 +60,14 @@
   </symbol>
   <symbol id="svg-arrow-right" viewBox="0 0 24 24">
     <title>Expand</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
       <polyline points="9 18 15 12 9 6"></polyline>
     </svg>
   </symbol>
   <symbol id="svg-sun" viewBox="0 0 24 24">
     <title>Light mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -82,7 +82,7 @@
   </symbol>
   <symbol id="svg-moon" viewBox="0 0 24 24">
     <title>Dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
@@ -90,7 +90,7 @@
   </symbol>
   <symbol id="svg-sun-half" viewBox="0 0 24 24">
     <title>Auto light/dark mode</title>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <circle cx="12" cy="12" r="9" />
@@ -218,6 +218,7 @@
 
 </div>
 </div>
+
       </div>
       
     </div>
@@ -225,6 +226,12 @@
   <div class="main">
     <div class="content">
       <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
         <div class="content-icon-container">
           <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
@@ -245,7 +252,7 @@
 
 
 <div class="viewcode-block" id="configure_local"><a class="viewcode-back" href="../../../api/generated/codebots.utilities.deploy.configure_local.html#codebots.utilities.deploy.configure_local">[docs]</a><span class="k">def</span> <span class="nf">configure_local</span><span class="p">(</span><span class="n">local_repo</span><span class="p">,</span> <span class="n">server_complete_path</span><span class="p">):</span>
-    <span class="sd">"""Configure the local repository to sync with the server.</span>
+    <span class="sd">&quot;&quot;&quot;Configure the local repository to sync with the server.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -253,17 +260,17 @@
 <span class="sd">        path to the local clone of the repository</span>
 <span class="sd">    server_complete_path : str</span>
 <span class="sd">        complete path to the server repository (*username@host:pat/to/server/repository*)</span>
-<span class="sd">    """</span>
-    <span class="k">if</span> <span class="s1">'deploy'</span> <span class="ow">in</span> <span class="n">local_repo</span><span class="o">.</span><span class="n">remotes</span><span class="p">:</span>
-        <span class="n">local_repo</span><span class="o">.</span><span class="n">delete_remote</span><span class="p">(</span><span class="s2">"deploy"</span><span class="p">)</span>
-    <span class="n">local_repo</span><span class="o">.</span><span class="n">create_remote</span><span class="p">(</span><span class="s2">"deploy"</span><span class="p">,</span> <span class="n">server_complete_path</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="s1">&#39;deploy&#39;</span> <span class="ow">in</span> <span class="n">local_repo</span><span class="o">.</span><span class="n">remotes</span><span class="p">:</span>
+        <span class="n">local_repo</span><span class="o">.</span><span class="n">delete_remote</span><span class="p">(</span><span class="s2">&quot;deploy&quot;</span><span class="p">)</span>
+    <span class="n">local_repo</span><span class="o">.</span><span class="n">create_remote</span><span class="p">(</span><span class="s2">&quot;deploy&quot;</span><span class="p">,</span> <span class="n">server_complete_path</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="s2">"""`deploy` added to remotes.</span>
-<span class="s2">        local repository configured!"""</span></div>
+    <span class="k">return</span> <span class="s2">&quot;&quot;&quot;`deploy` added to remotes.</span>
+<span class="s2">        local repository configured!&quot;&quot;&quot;</span></div>
 
 
-<span class="k">def</span> <span class="nf">configure_server</span><span class="p">(</span><span class="n">server_repo_path</span><span class="p">,</span> <span class="n">branch</span><span class="o">=</span><span class="s1">'main'</span><span class="p">,</span> <span class="n">sshbot</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">os_type</span><span class="o">=</span><span class="s1">'linux'</span><span class="p">):</span>
-    <span class="sd">"""Configure the server side:</span>
+<span class="k">def</span> <span class="nf">configure_server</span><span class="p">(</span><span class="n">server_repo_path</span><span class="p">,</span> <span class="n">branch</span><span class="o">=</span><span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="n">sshbot</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">os_type</span><span class="o">=</span><span class="s1">&#39;linux&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Configure the server side:</span>
 <span class="sd">        - check if server has git repository folder;</span>
 <span class="sd">        - if not create a bare repository;</span>
 <span class="sd">        - configure the server repository to sync with the local.</span>
@@ -274,35 +281,35 @@
 <span class="sd">        path to the server bare repository.</span>
 <span class="sd">    sshbot : obj, optional</span>
 <span class="sd">        instance of an `sshBot` with access to the server, by default None.</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1"># git_folder = Path(server_repo_path).joinpath('.git')</span>
-    <span class="n">git_folder</span> <span class="o">=</span> <span class="n">server_repo_path</span> <span class="o">+</span> <span class="s1">'/.git'</span>
+    <span class="c1"># git_folder = Path(server_repo_path).joinpath(&#39;.git&#39;)</span>
+    <span class="n">git_folder</span> <span class="o">=</span> <span class="n">server_repo_path</span> <span class="o">+</span> <span class="s1">&#39;/.git&#39;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">sshbot</span><span class="p">:</span>
         <span class="n">sshbot</span> <span class="o">=</span> <span class="n">sshBot</span><span class="p">()</span>
 
     <span class="c1"># check if server folder exists and if it is a git repository</span>
-    <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"if test -d </span><span class="si">{}</span><span class="s2">; then echo </span><span class="si">{}</span><span class="s2">; fi"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">server_repo_path</span><span class="p">,</span> <span class="n">git_folder</span><span class="p">]]</span>
+    <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;if test -d </span><span class="si">{}</span><span class="s2">; then echo </span><span class="si">{}</span><span class="s2">; fi&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;yes&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">server_repo_path</span><span class="p">,</span> <span class="n">git_folder</span><span class="p">]]</span>
     <span class="n">std_dict</span> <span class="o">=</span> <span class="n">sshbot</span><span class="o">.</span><span class="n">execute_cmds</span><span class="p">(</span><span class="n">tests</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-    <span class="n">cmds</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">'mkdir'</span> <span class="k">if</span> <span class="n">os_type</span> <span class="o">==</span> <span class="s1">'windows'</span> <span class="k">else</span> <span class="s1">'mkdir -p'</span><span class="p">,</span> <span class="n">server_repo_path</span><span class="p">),</span>
-            <span class="s1">'git --git-dir=</span><span class="si">{}</span><span class="s1"> init -b </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">git_folder</span><span class="p">,</span> <span class="n">branch</span><span class="p">),</span>
-            <span class="s1">'git --git-dir=</span><span class="si">{}</span><span class="s1"> config receive.denyCurrentBranch updateInstead'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">git_folder</span><span class="p">)]</span>
+    <span class="n">cmds</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;mkdir&#39;</span> <span class="k">if</span> <span class="n">os_type</span> <span class="o">==</span> <span class="s1">&#39;windows&#39;</span> <span class="k">else</span> <span class="s1">&#39;mkdir -p&#39;</span><span class="p">,</span> <span class="n">server_repo_path</span><span class="p">),</span>
+            <span class="s1">&#39;git --git-dir=</span><span class="si">{}</span><span class="s1"> init -b </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">git_folder</span><span class="p">,</span> <span class="n">branch</span><span class="p">),</span>
+            <span class="s1">&#39;git --git-dir=</span><span class="si">{}</span><span class="s1"> config receive.denyCurrentBranch updateInstead&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">git_folder</span><span class="p">)]</span>
 
-    <span class="k">if</span> <span class="n">std_dict</span><span class="p">[</span><span class="s2">"stdout"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">'yes'</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">std_dict</span><span class="p">[</span><span class="s2">&quot;stdout&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;yes&#39;</span><span class="p">:</span>
         <span class="n">cmd</span> <span class="o">=</span> <span class="n">cmds</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">cmd</span> <span class="o">=</span> <span class="n">cmds</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="n">std_dict</span><span class="p">[</span><span class="s2">"stdout"</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">'yes'</span> <span class="k">else</span> <span class="p">[</span><span class="n">cmds</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">cmd</span> <span class="o">=</span> <span class="n">cmds</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">if</span> <span class="n">std_dict</span><span class="p">[</span><span class="s2">&quot;stdout&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;yes&#39;</span> <span class="k">else</span> <span class="p">[</span><span class="n">cmds</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">sshbot</span><span class="o">.</span><span class="n">execute_cmds</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">out</span><span class="p">[</span><span class="s2">"stdout"</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="s1">''</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;stdout&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">out</span><span class="p">[</span><span class="s2">"stderr"</span><span class="p">]:</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="s1">''</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">out</span><span class="p">[</span><span class="s2">&quot;stderr&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">x</span>
-    <span class="k">return</span> <span class="s1">'server repository configured!'</span>
+    <span class="k">return</span> <span class="s1">&#39;server repository configured!&#39;</span>
 </pre></div>
         </article>
       </div>
@@ -312,14 +319,22 @@
           
           
         </div>
-
-        <div class="related-information">
-              Copyright &#169; 2021, Francesco Ranaudo |
-            Last updated on Nov 04, 2021. |
-            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
-              and
-              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021, Francesco Ranaudo
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            <div class="last-updated">
+              Last updated on Aug 17, 2022</div>
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
         </div>
         
       </footer>
@@ -333,8 +348,9 @@
 </div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/scripts/main.js"></script>
+    <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
