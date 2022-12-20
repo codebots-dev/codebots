@@ -223,3 +223,53 @@ class LatexBot(BaseBot):
         except Exception:
             temp_dir.cleanup()
             raise Exception("ERROR")
+
+    def convert_docx_to_tex(self, input_path, output_path=None, open_docx=False):
+        """convert all the .tex files in a folder into .docx files. If no `output_path`
+        is provided, the .docx files will be saved in the same directory as the .tex
+        files.
+
+        Parameters
+        ----------
+        input_path : str
+            path to the folder containing the .tex file(s)
+        output_path : str, optional
+            path to the output .docx file(s), by default None
+        open_docx : bool, optional
+            open the docx file after creation, by default False
+        """
+        pathlist = Path(input_path).rglob('*.tex')
+        output_paths = []
+        for file in pathlist:
+            if not output_path:
+                output = str(file).split('.tex')[0] + '.docx'
+                open_docx = True
+            else:
+                output = Path().joinpath(output_path, str(file.name).split('.tex')[0] + '.docx')
+            if platform == "linux" or platform == "linux2":
+                password = getpass("Please enter your password: ")
+                # sudo requires the flag '-S' in order to take input from stdin
+                proc = Popen(f"sudo -S pandoc -o {output} -t docx {file}".split(), stdin=PIPE, stdout=PIPE, stderr=PIPE)
+                # Popen only accepts byte-arrays so you must encode the string
+                stdout, stderr = proc.communicate(password.encode())
+                print(stdout.decode())
+                print(stderr.decode())
+                # out = subprocess.run(['sudo', 'pandoc', '-o', output, '-t', 'docx', file])
+            else:
+                out = subprocess.run(['pandoc', '-o', output, '-t', 'tex', file])
+                if out.returncode == 0:
+                    print(f"tex saved in {output}")
+                else:
+                    raise Exception("could not save docx")
+            output_paths.append(output)
+            if open_docx:
+                print("opening file... don't forget to save it (save as...)!")
+                if platform == "linux" or platform == "linux2":  # linux
+                    print("Not yet supported!")  # p = subprocess.run(["libreoffice", output])
+                else:
+                    p = subprocess.Popen(output, shell=True)
+                    p.wait()
+        return output_paths
+
+    def convert_gdoc_to_overleaf(self):
+        raise NotImplementedError()
