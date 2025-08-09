@@ -33,8 +33,14 @@ class DriveBot():
         if True stores the credentials in the .tokens folder for future use, by default True.
     """
 
-    def __init__(self, authentication, save_credentials=True) -> None:
-        GoogleAuth.DEFAULT_SETTINGS['client_config_file'] = SECRETS
+    def __init__(self, authentication=None, save_credentials=True) -> None:
+        # Modern token handling: env var first, then config file
+        env_token = os.getenv("DRIVEBOT_TOKEN")
+        if env_token:
+            self.token = env_token
+        else:
+            from .. import TOKENS, SECRETS
+            GoogleAuth.DEFAULT_SETTINGS['client_config_file'] = SECRETS
         self._gauth = GoogleAuth()
         self._drive = self._authenticate(authentication, save_credentials)
 
@@ -46,7 +52,7 @@ class DriveBot():
     @property
     def drive(self):
         """obj :  pydrive GoogleDrive object"""
-        return self._gdrive
+        return self._drive
 
     def _authenticate(self, authentication, save_credentials):
         """Sign in your Google Drive.

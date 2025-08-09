@@ -41,23 +41,36 @@ class sshBot(BaseBot):
     """
 
     def __init__(self, alias=None, config_file=None, **kwargs) -> None:
-
-        self.__name__ = "sshbot"
-        if not config_file:
-            if not alias:
-                if not kwargs:
-                    raise ValueError("Either an existing config_file or the credentials must be passed")
-                self._credentials = kwargs
-                for k, v in self._credentials.items():
-                    self.__setattr__(k, v)
-            else:
-                from .. import TOKENS
-                config_file = os.path .join(TOKENS, f"{alias}.json")
-                super().__init__(config_file)
+        env_host = os.getenv("SSHBOT_HOSTNAME")
+        env_user = os.getenv("SSHBOT_USERNAME")
+        env_pass = os.getenv("SSHBOT_PASSWORD")
+        env_pvtkey = os.getenv("SSHBOT_PVTKEY")
+        if env_host and env_user:
+            self.hostname = env_host
+            self.username = env_user
+            self.password = env_pass
+            self.pvtkey = env_pvtkey
         else:
-            super().__init__(config_file)
-
-        self.host_address = self.hostname if '.' in self.hostname else socket.gethostbyname(self.hostname)
+            if not config_file:
+                if not alias:
+                    if not kwargs:
+                        raise ValueError("Either an existing config_file or the credentials must be passed")
+                    self._credentials = kwargs
+                    for k, v in self._credentials.items():
+                        setattr(self, k, v)
+                else:
+                    from .. import TOKENS
+                    config_file = os.path.join(TOKENS, f"{alias}.json")
+                    super().__init__(config_file)
+            else:
+                super().__init__(config_file)
+            # Ensure all required attributes are set
+            for attr in ["hostname", "username", "password", "pvtkey"]:
+                if not hasattr(self, attr):
+                    setattr(self, attr, self._credentials.get(attr, None))
+        self.host_address = getattr(self, 'hostname', None)
+        if self.host_address and '.' not in self.host_address:
+            self.host_address = socket.gethostbyname(self.host_address)
         self._ssh_client = None
         self._sftp_client = None
 
@@ -66,21 +79,22 @@ class sshBot(BaseBot):
         return self._ssh_client
 
     @property
-    def sfpt_client(self):
-        return self._sfpt_client
+    def sftp_client(self):
+        return self._sftp_client
 
     def connect_ssh_client(self):
-        """Establish the ssh connection
-
-        Returns
-        -------
-        obj
-            ssh_client obj
-        """
+        """Establish the ssh connection"""
+        import paramiko
+        hostname = getattr(self, 'hostname', None)
+        username = getattr(self, 'username', None)
+        password = getattr(self, 'password', None)
+        pvtkey = getattr(self, 'pvtkey', None)
+        if not hostname or not username:
+            raise ValueError("Missing required SSH credentials: hostname and username.")
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        k = paramiko.RSAKey.from_private_key_file(self.pvtkey, password=self.password) if self.pvtkey else None
-        ssh_client.connect(hostname=self.host_address, username=self.username, password=self.password, pkey=k)
+        k = paramiko.RSAKey.from_private_key_file(pvtkey, password=password) if pvtkey else None
+        ssh_client.connect(hostname=hostname, username=username, password=password, pkey=k)
         print("\nconnected\n")
         return ssh_client
 

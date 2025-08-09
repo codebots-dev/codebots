@@ -20,10 +20,17 @@ class TeleBot(BaseBot):
 
     def __init__(self, config_file=None) -> None:
         self.__name__ = "telebot"
-        if not config_file:
-            from .. import TOKENS
-            config_file = os.path .join(TOKENS, "telegram.json")
-        super().__init__(config_file)
+        env_token = os.getenv("TELEBOT_BOT_TOKEN")
+        env_chatid = os.getenv("TELEBOT_BOT_CHATID")
+        if env_token and env_chatid:
+            self._credentials = {"bot_token": env_token, "bot_chatID": env_chatid}
+            self.bot_token = env_token
+            self.bot_chatID = env_chatid
+        else:
+            if not config_file:
+                from .. import TOKENS
+                config_file = os.path.join(TOKENS, "telegram.json")
+            super().__init__(config_file)
         self._url = self._compose_url()
 
     def _compose_url(self):

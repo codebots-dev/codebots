@@ -20,10 +20,10 @@ class SlackBot(BaseBot):
     """
 
     def __init__(self, config_file=None) -> None:
+        # Use BaseBot for modern token handling
         if not config_file:
             from .. import TOKENS
             config_file = os.path.join(TOKENS, "slack.json")
-        self.__name__ = "slackbot"
         super().__init__(config_file)
         self._client = self.connect()
 
@@ -33,42 +33,27 @@ class SlackBot(BaseBot):
         return self._client
 
     def connect(self):
-        """connect to the slack webclient.
-
-        Returns
-        -------
-        class
-            slack WebClient class
-        """
-        return WebClient(token=self.bot_token)
+        """connect to the slack webclient."""
+        token = getattr(self, 'bot_token', None)
+        if not token:
+            raise ValueError("Slack bot token not found. Set SLACKBOT_BOT_TOKEN env var or provide a token file.")
+        return WebClient(token=token)
 
     def _fetch_channel_id(self, channel, output=False, verbose=False):
-        """Retrive the channel ID from its name
-
-        Parameters
-        ----------
-        channel : str
-            slack channel where the message is sent to.
-        output : bool, optional
-            return the channel id, by default False
-        verbose : bool, optional
-            print output, by default False
-
-        Returns
-        -------
-        str
-            id of the channel
-        """
+        """Retrive the channel ID from its name"""
         result = self.client.conversations_list()
-        for chn in result["channels"]:
+        channels = result.get("channels", [])
+        conversation_id = None
+        for chn in channels:
             if chn["name"] == channel:
                 conversation_id = chn["id"]
-                # Print result
                 if verbose:
                     print(f"Found conversation ID: {conversation_id}")
                 if output:
                     return conversation_id
                 break
+        if conversation_id is None:
+            raise ValueError(f"Channel '{channel}' not found.")
         return conversation_id
 
     def send_message(self, verbose=False, **kwargs):

@@ -54,13 +54,20 @@ class DeployBot(BaseBot):
 
     def __init__(self, project=None, config_file=None) -> None:
         self.__name__ = "deploybot"
+        # Use BaseBot for modern token handling
         if not config_file:
             if not project:
                 raise ValueError("Either a project name or a config_file must be passed")
             from .. import TOKENS
-            config_file = os.path .join(TOKENS, "{}.json".format(project))
+            config_file = os.path.join(TOKENS, f"{project}.json")
         super().__init__(config_file)
-        self.server_complete_path = "{}:{}".format(self.server_address, self.server_repo_path)
+        # Ensure required attributes are set from credentials
+        self.local_repo_path = getattr(self, 'local_repo_path', None)
+        self.server_repo_path = getattr(self, 'server_repo_path', None)
+        self.server_address = getattr(self, 'server_address', None)
+        if not all([self.local_repo_path, self.server_repo_path, self.server_address]):
+            raise ValueError("Missing required deployment configuration. Check your token file or environment variables.")
+        self.server_complete_path = f"{self.server_address}:{self.server_repo_path}"
         self.local_repo = Repo(self.local_repo_path)
 
     def deploy_to_server(self, remote_name="deploy", local_name="master", commit_message="deployed"):
